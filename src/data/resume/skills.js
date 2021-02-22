@@ -1,10 +1,38 @@
 // TODO: Add Athletic Skills, Office Skills,
 // Data Engineering, Data Science, ML Engineering, ... ?
 
+const levels = [
+  {
+    level: 1,
+    title: 'No Experience',
+    description: 'This is just a baseline - nothing in this list has a "1" rating',
+  },
+  {
+    level: 2,
+    title: 'Limited Exposure',
+    description: 'I have used it before, either briefly or in a limited capacity',
+  },
+  {
+    level: 3,
+    title: 'Significant Exposure',
+    description: 'I have used it either academically or for a non-trivial project, but may not be familiar with more advanced features',
+  },
+  {
+    level: 4,
+    title: 'Proficiency',
+    description: 'I have used it almost daily for at least 6 months, either academically or for work/personal projects',
+  },
+  {
+    level: 5,
+    title: 'Mastery',
+    description: 'I am reserving this level for skills I have honed to near perfection; hopefully more to come soon!',
+  },
+];
+
 const skills = [
   {
     title: 'Javascript',
-    competency: 4,
+    competency: 1,
     category: ['Web Development', 'Languages', 'Javascript'],
   },
   {
