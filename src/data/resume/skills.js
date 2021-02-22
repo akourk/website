@@ -247,4 +247,4 @@ const categories = [
     color: colors[index],
   }));
 
-export { categories, skills };
+export { levels, categories, skills };
