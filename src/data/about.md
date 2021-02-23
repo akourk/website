@@ -25,13 +25,13 @@ I am currently looking for new opportunities as a Software Engineer.
 
 - In 2014, I graduated, but I wasn't done learning. I continued as an athletic coach while enrolled in math classes on the side.
 
-- In 2016, I adopted my best friend, and sidekick, [Molly](public/images/molly.jpg)
+- In 2016, I adopted my best friend, and sidekick, [Molly](https://github.com/akourk/website/blob/main/public/images/molly.jpg?raw=true)
 
 - In 2017, I enrolled in Bellevue College's first B.S. in Computer Science cohort.
 
 - In the summer of 2019, I enrolled in the [42 Silicon Valley](https://www.42.us.org/) Piscine, and a month later was accepted into their full-time program.
 
-- in 2020, in the midst of the global covid pandemic, I graduated from Bellevue College!
+- In 2020, in the midst of the global covid pandemic, I graduated from Bellevue College!
 
 Ask me in person for other stories that I'm afraid to share with the internet.
 

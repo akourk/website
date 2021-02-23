@@ -20,9 +20,7 @@ const SideBar = () => (
     <section className="blurb">
       <h2>About</h2>
       <p>Hi, I&apos;m Alex. I like building things.
-        I am a <a href="https://www.bellevuecollege.edu/">Bellevue College</a> graduate, and
-        <a href="https://www.evergreen.edu/">a Evergreen State College</a> graduate. Before CS
-        I was a CrossFit Coach.
+        I am a <a href="https://www.bellevuecollege.edu/">Bellevue College</a> and <a href="https://www.evergreen.edu/">Evergreen State College</a> graduate. Before Computer Science I was a CrossFit Coach.
       </p>
       <ul className="actions">
         <li>

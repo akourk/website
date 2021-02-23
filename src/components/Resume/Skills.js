@@ -73,9 +73,15 @@ class Skills extends Component {
         <div className="link-to" id="skills" />
         <div className="title">
           <h3>Skills</h3>
-          <p>Note: I think these sections are silly, but everyone seems to have one.
-            Here is a *mostly* honest overview of my skills.
-          </p>
+          <h4>Note: I use the following definitions for &quot;skill&quot; ratings.</h4>
+          <ol className="skill-level-container">
+            {this.state.levels.map((level) => (
+              <li key={level.level}>
+                <h5>{level.title}</h5>
+                <p><i>{level.description}</i></p>
+              </li>
+            ))}
+          </ol>
         </div>
         <div className="skill-button-container">
           {this.getButtons()}
