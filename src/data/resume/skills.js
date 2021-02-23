@@ -48,7 +48,7 @@ const skills = [
   },
   {
     title: 'Bash',
-    competency: 3,
+    competency: 2,
     category: ['Tools', 'Languages'],
   },
   {
