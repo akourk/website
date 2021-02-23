@@ -12,36 +12,34 @@ const data = [
       + 'formatted the data, and then rendered charts and graphs for easy viewing.',
   },
   {
-    title: 'Harvest',
-    subtitle: 'Won 3rd. place in 2015 Techcrunch Disrupt SF Hackathon',
-    link: 'https://devpost.com/software/harvest',
-    image: '/images/projects/harvest.jpg',
-    date: '2015-09-20',
+    title: 'Smart Doorbell',
+    subtitle: 'A smart doorbell to detect people and objects in real time.',
+    image: '/images/projects/ringItemDetector.jpg',
+    date: '2019-06-05',
     desc:
-      'Won ~ $7000 in prizes for an advanced, low cost monitoring solution '
-      + 'for crops. Harvest was designed to catch irrigation leaks, overwatering, '
-      + 'and nutrient deficiencies at an affordable price for the developing world.',
+      'Deconstructed a Ring Doorbell and used the API to send videos directly '
+      + 'to the AWS SageMaker Object Detection algorithm and Rekognition, then  '
+      + 'used AWS SNS to send a text message to the resident.',
   },
   {
-    title: 'Space Potato',
-    subtitle: 'A kickstarter funded potato powered weather balloon.',
-    link: 'http://www.spacepotato.org',
-    image: '/images/projects/spacepotato.jpg',
-    date: '2015-06-28',
+    title: 'Loocator',
+    subtitle: 'A simple bathroom locator.',
+    // link: 'http://www.loocator.com',
+    image: '/images/projects/loocator.png',
+    date: '2020-04-19',
     desc:
-      'Launched a potato battery powered weather balloon with two cameras '
-      + 'and gps transponder. Resulting photos were published in a coffee table book. '
-      + 'You can email me for a copy.',
+      'Built for a hackathon, "UWB Hacks the Cloud," Loocator is a web app where users '
+      + 'can view bathrooms near their current location and see different amenities, '
+      + 'such as whether or not it is ADA Accessible, or if there is a door code.',
   },
   {
-    title: 'Cat Detector',
-    subtitle: 'A convolutional neural network to classify cats! (and dogs)',
-    image: '/images/projects/catdetector.jpg',
-    date: '2015-05-15',
+    title: 'Handwriting Reader',
+    subtitle: 'An artificial neural network to classify handwritten digits.',
+    image: '/images/projects/ANNhandwriting.png',
+    date: '2019-09-23',
     desc:
-      'Trained a convolutional neural network to classify between ~ 80 cats breeds. '
-      + 'Over 60,000 cats were classified before server bills made the project too expensive '
-      + 'to continue hosting.',
+      'Created an artificial neural network algorithm to classify handwritten digits 0-9. '
+      + 'The algorithm was ~90% accurate on the MNIST data set.',
   },
 ];
 
