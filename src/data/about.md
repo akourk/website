@@ -25,7 +25,7 @@ I am currently looking for new opportunities as a Software Engineer.
 
 - In 2014, I graduated, but I wasn't done learning. I continued as an athletic coach while enrolled in math classes on the side.
 
-- In 2016, I adopted my best friend, and sidekick, [Molly](https://github.com/akourk/website/blob/main/public/images/molly.jpg?raw=true)
+- In 2016, I adopted my best friend, and sidekick, [Molly.](https://github.com/akourk/website/blob/main/public/images/molly.jpg?raw=true)
 
 - In 2017, I enrolled in Bellevue College's first B.S. in Computer Science cohort.
 
