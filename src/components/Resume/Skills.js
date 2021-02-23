@@ -4,18 +4,23 @@ import PropTypes from 'prop-types';
 import CategoryButton from './Skills/CategoryButton';
 import SkillBar from './Skills/SkillBar';
 
-const handleProps = ({ categories, skills }) => ({
+const handleProps = ({ categories, skills, levels }) => ({
   buttons: categories.map((cat) => cat.name).reduce((obj, key) => ({
     ...obj,
     [key]: false,
   }), { All: true }),
   skills,
+  levels,
 });
 
 class Skills extends Component {
   constructor(props) {
     super(props);
-    this.state = handleProps({ categories: props.categories, skills: props.skills });
+    this.state = handleProps({
+      categories: props.categories,
+      skills: props.skills,
+      levels: props.levels,
+    });
   }
 
   getRows() {
@@ -104,11 +109,17 @@ Skills.propTypes = {
     name: PropTypes.string,
     color: PropTypes.string,
   })),
+  levels: PropTypes.arrayOf(PropTypes.shape({
+    level: PropTypes.number,
+    title: PropTypes.string,
+    description: PropTypes.string,
+  })),
 };
 
 Skills.defaultProps = {
   skills: [],
   categories: [],
+  levels: [],
 };
 
 export default Skills;

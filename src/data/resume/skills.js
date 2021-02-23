@@ -4,23 +4,23 @@
 const levels = [
   {
     level: 1,
-    title: 'No Experience',
-    description: 'This is just a baseline - nothing in this list has a "1" rating',
+    title: 'Very Limited Exposure',
+    description: 'This is just a baseline - I have only been introduced to the technology.',
   },
   {
     level: 2,
     title: 'Limited Exposure',
-    description: 'I have used it before, either briefly or in a limited capacity',
+    description: 'I have used it before, either briefly or in a limited capacity.',
   },
   {
     level: 3,
     title: 'Significant Exposure',
-    description: 'I have used it either academically or for a non-trivial project, but may not be familiar with more advanced features',
+    description: 'I have used it either academically or for a non-trivial project, but may not be familiar with more advanced features.',
   },
   {
     level: 4,
     title: 'Proficiency',
-    description: 'I have used it almost daily for at least 6 months, either academically or for work/personal projects',
+    description: 'I have used it almost daily for at least 6 months, either academically or for work/personal projects.',
   },
   {
     level: 5,
@@ -62,12 +62,12 @@ const skills = [
   },
   {
     title: 'ElasticSearch',
-    competency: 2,
+    competency: 1,
     category: ['Web Development', 'Databases'],
   },
   {
     title: 'Data Mining',
-    competency: 3,
+    competency: 1,
     category: ['Data Science'],
   },
   {
@@ -122,7 +122,7 @@ const skills = [
   },
   {
     title: 'Pandas',
-    competency: 3,
+    competency: 2,
     category: ['Data Engineering', 'Data Science', 'Python'],
   },
   {
