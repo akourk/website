@@ -1,16 +1,17 @@
 // TODO: Add Athletic Skills, Office Skills,
 // Data Engineering, Data Science, ML Engineering, ... ?
+// soft skills?
 
 const levels = [
   {
     level: 1,
     title: 'Very Limited Exposure',
-    description: 'This is just a baseline - I have only been introduced to the technology.',
+    description: 'This is just a baseline - I have only used the technology in a very limited capacity.',
   },
   {
     level: 2,
     title: 'Limited Exposure',
-    description: 'I have used it before, either briefly or in a limited capacity.',
+    description: 'I have used it before, either briefly or in a limited capacity, but am somewhat familiar.',
   },
   {
     level: 3,
@@ -72,7 +73,7 @@ const skills = [
   },
   {
     title: 'Flask',
-    competency: 2,
+    competency: 1,
     category: ['Web Development', 'Python'],
   },
   {
@@ -134,6 +135,11 @@ const skills = [
     title: 'C#',
     competency: 2,
     category: ['Languages'],
+  },
+  {
+    title: 'Machine learning',
+    competency: 1,
+    category: ['Data Engineering', 'Data Science'],
   },
 ].map((skill) => ({ ...skill, category: skill.category.sort() }));
 
