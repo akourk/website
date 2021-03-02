@@ -5,7 +5,7 @@ const positions = [
     link: 'https://microsoft.com',
     daterange: 'October 2019 - Present',
     points: [
-      'Collaborate with other analysts to tune detection algorithms and identify malicious actors..',
+      'Collaborate with other analysts to tune detection algorithms and identify malicious actors.',
       'Independently derive trends in data and work with partnered teams to patch vulnerabilities.',
       'Maintain discretion while working with highly sensitive data.',
       'Self-managed and trusted to make difficult judgement calls even when data is limited.',
