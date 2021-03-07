@@ -19,8 +19,8 @@ const SideBar = () => (
 
     <section className="blurb">
       <h2>About</h2>
-      <p>Hi, I&apos;m Alex. I like building things.
-        I am a <a href="https://www.bellevuecollege.edu/">Bellevue College</a> and <a href="https://www.evergreen.edu/">Evergreen State College</a> graduate. Before Computer Science I was a CrossFit Coach.
+      <p>Hi, I&apos;m Alex. I like taking on challenging new projects, learning, and building.
+        I am a <a href="https://www.bellevuecollege.edu/">Bellevue College</a> Computer Science and <a href="https://www.evergreen.edu/">Evergreen State College</a> Philosophy graduate. Before Computer Science I was a CrossFit Coach.
       </p>
       <ul className="actions">
         <li>

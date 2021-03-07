@@ -61,3 +61,4 @@ I am currently looking for new opportunities as a Software Engineer.
 - [Hacker News](https://news.ycombinator.com/)
 - [Vitalik Buterin](https://medium.com/@VitalikButerin)
 - [Less Wrong](https://www.lesswrong.com/)
+- [Krebs on Security](https://krebsonsecurity.com/)
