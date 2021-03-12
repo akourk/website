@@ -45,7 +45,7 @@ I am currently looking for new opportunities as a Software Engineer.
 - Olympic-Style Weightlifting, CrossFit, and Health
 - Music and nice headphones ([Sennheiser HD650](https://en-us.sennheiser.com/high-quality-headphones-around-ear-audio-surround-hd-650), [Schitt](https://www.schiit.com/))
 - Mechanical pencils ([rotring](https://www.rotring.com/us/))
-- Podcasts ([The Partially Examined Life](https://partiallyexaminedlife.com/), [This American Life](https://www.thisamericanlife.org/), [Radiolab](https://www.wnycstudios.org/shows/radiolab), [Hidden Brain](https://www.npr.org/series/423302056/hidden-brain), [Inquiring Minds](https://inquiring.show), and others)
+- Podcasts ([The Partially Examined Life](https://partiallyexaminedlife.com/), [This American Life](https://www.thisamericanlife.org/), [Radiolab](https://www.wnycstudios.org/shows/radiolab), and others)
 - Good design ([Dieter Rams](https://us.gestalten.com/products/less-and-more-dieter-rams))
 
 # I aspire to
@@ -57,8 +57,9 @@ I am currently looking for new opportunities as a Software Engineer.
 
 # Websites I enjoy
 
-- [Scott Aaronson](https://www.scottaaronson.com/blog/)
 - [Hacker News](https://news.ycombinator.com/)
+- [Scott Aaronson](https://www.scottaaronson.com/blog/)
 - [Vitalik Buterin](https://medium.com/@VitalikButerin)
 - [Less Wrong](https://www.lesswrong.com/)
 - [Krebs on Security](https://krebsonsecurity.com/)
+- [Stratechery](https://stratechery.com/)
