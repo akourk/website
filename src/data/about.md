@@ -33,7 +33,7 @@ I am currently looking for new opportunities as a Software Engineer.
 
 - Shortly before graduating, I started my current position at [Microsoft](https://www.microsoft.com/en-us/), working as a Security Analyst.
 
-- At 30, in the midst of the global COVID-19 pandemic, I graduated from Bellevue College.
+- At 30, in the midst of the COVID-19 pandemic, I graduated from Bellevue College.
 
 # I like
 
