@@ -15,23 +15,23 @@ I am currently looking for new opportunities as a Software Engineer.
 
 - I loved gaming, starting with the NES, to the Game Boy, then eventually back to PC games like Age of Empires and Command & Conquer.
 
-- At 13, I broke my nose by kneeing myself in the face on the trampoline. That was the last front flip I'll ever attempt.
-
-- 14 - 17, I played a lot of video games. My favorites included Counter Strike, Diablo II, Warcraft III, and World of Warcraft.
-
 - At 18, I enrolled in my local community college and changed my major too many times to count. I found passion in learning about health and fitness, and briefly majored in Physical Therapy.
 
 - I became certified and spent the next 12 years working as an athletic trainer. I've made life-long friendships and cherished memories in the gym.
 
-- After reading a few philosophy books, I decided it's what I wanted to study. At 22, I transferred to Evergreen State College to focus on Philosophy.
+- After reading a few philosophy books, I decided it's what I wanted to study. At 22, I transferred to Evergreen State College to study Philosophy.
 
-- At 24, I graduated, but I wasn't finished learning. I continued as an athletic coach while enrolled in math classes on the side.
+- At 24, I graduated, but continued taking courses related to Computer Science.
 
 - At 26, I adopted my best friend, and sidekick, [Molly.](https://github.com/akourk/website/blob/main/public/images/molly.jpg?raw=true)
 
 - At 27, I enrolled in Bellevue College's first B.S. in Computer Science cohort.
 
-- At 29, I enrolled in the [42 Silicon Valley](https://www.42.us.org/) Piscine, and a month later was accepted into their full-time program.
+- I attended the [42 Silicon Valley](https://www.42.us.org/) Piscine the summer of my Junior year, and a month later was accepted into their full-time program.
+
+- For my Senior Capstone project, I worked with a non-profit, [WattTime](https://www.watttime.org/), helping to curve carbon-based emissions from power plants.
+
+- Shortly before graduating, I started my current position at [Microsoft](https://www.microsoft.com/en-us/), working as a Security Analyst.
 
 - At 30, in the midst of the global COVID-19 pandemic, I graduated from Bellevue College.
 
