@@ -33,17 +33,22 @@ const levels = [
 const skills = [
   {
     title: 'Javascript',
-    competency: 2,
+    competency: 4,
     category: ['Web Development', 'Languages', 'Javascript'],
   },
   {
     title: 'Node.JS',
-    competency: 2,
+    competency: 3,
     category: ['Web Development', 'Javascript'],
   },
   {
     title: 'React',
-    competency: 2,
+    competency: 4,
+    category: ['Web Development', 'Javascript'],
+  },
+  {
+    title: 'Redux',
+    competency: 3,
     category: ['Web Development', 'Javascript'],
   },
   {
@@ -119,7 +124,7 @@ const skills = [
   {
     title: 'Java',
     competency: 4,
-    category: ['Languages', 'Javascript'],
+    category: ['Languages'],
   },
   {
     title: 'Pandas',

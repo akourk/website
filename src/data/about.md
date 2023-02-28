@@ -11,29 +11,27 @@ I am currently looking for new opportunities as a Software Engineer.
 
 - My mom had a computer in her shop where I would wait after elementary school for her to finish work. It ran Windows 3.0. My favorite games were Lemmings, The Oregon Trail, and Minesweeper.
 
-- Eventually we subscribed to AOL. I still remember installing it from a floppy disk. I remember waiting hours for a song to download on Napster.
-
-- I loved gaming, starting with the NES, to the Game Boy, then eventually back to PC games like Age of Empires and Command & Conquer.
-
 - At 18, I enrolled in my local community college and changed my major too many times to count. I found passion in learning about health and fitness, and briefly majored in Physical Therapy.
 
-- I became certified and spent the next 12 years working as an athletic trainer. I've made life-long friendships and cherished memories in the gym.
+- I became certified and spent the next 15 years working as an athletic trainer. I've made life-long friendships and cherished memories in the gym.
 
-- After reading a few philosophy books, I decided it's what I wanted to study. At 22, I transferred to Evergreen State College to study Philosophy.
+- After reading a few philosophy books, I decided that's what I wanted to study. At 22, I transferred to Evergreen State College to study Philosophy.
 
-- At 24, I graduated, but continued taking courses related to Computer Science.
+- At 24, I graduated, but continued taking courses in Math and Computer Science
 
-- At 26, I adopted my best friend, and sidekick, [Molly.](https://github.com/akourk/website/blob/main/public/images/molly.jpg?raw=true)
+- At 26, I adopted my best friend, and sidekick, [Marley.](https://github.com/akourk/website/blob/main/public/images/marley.jpg?raw=true)
 
 - At 27, I enrolled in Bellevue College's first B.S. in Computer Science cohort.
 
 - I attended the [42 Silicon Valley](https://www.42.us.org/) Piscine the summer of my Junior year, and a month later was accepted into their full-time program.
 
-- For my Senior Capstone project, I worked with a non-profit, [WattTime](https://www.watttime.org/), helping to curve carbon-based emissions from power plants.
+- For my Senior Capstone project, I worked with a non-profit, [WattTime](https://www.watttime.org/), helping to curve carbon-based emissions.
 
-- Shortly before graduating, I started my current position at [Microsoft](https://www.microsoft.com/en-us/), working as a Security Analyst.
+- Shortly before graduating, I started working at [Microsoft](https://www.microsoft.com/en-us/), working as a Security Analyst.
 
 - At 30, in the midst of the COVID-19 pandemic, I graduated from Bellevue College.
+
+- Exactly 3 years after starting at Microsoft, I left and joined State Farm as a Software Engineer.
 
 # I like
 
@@ -50,7 +48,6 @@ I am currently looking for new opportunities as a Software Engineer.
 
 # I aspire to
 
-- always find inspiration.
 - keep learning.
 - do better.
 - help others.
