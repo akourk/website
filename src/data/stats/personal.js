@@ -27,7 +27,7 @@ const data = [
   {
     key: 'countries',
     label: 'Countries visited',
-    value: 2,
+    value: 4,
     link:
       'https://www.google.com/maps/place/North+Pacific+Ocean/@28.2154471,-172.4085114,4z/data=!3m1!4b1!4m5!3m4!1s0x32d44045aa3394d1:0xe8fd2fa6b02e4120!8m2!3d32.694866!4d-162.070312',
   },
