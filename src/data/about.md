@@ -1,7 +1,7 @@
 
 # Intro
 
-I am a Computer Science and Philosophy graduate in the Seattle area. I am particularly interested in projects that touch on health and social impact.
+I am a Software Engineer in the Seattle area. I am particularly interested in projects that touch on health and social impact.
 
 # Currently
 
@@ -9,29 +9,31 @@ I am currently looking for new opportunities as a Software Engineer.
 
 # Some history
 
-- My mom had a computer in her shop where I would wait after elementary school for her to finish work. It ran Windows 3.0. My favorite games were Lemmings, The Oregon Trail, and Minesweeper.
+- 1990: Born in Washington. I grew up tinkering on a computer running Windows 3.0. I mostly played games and pirated music.
 
-- At 18, I enrolled in my local community college and changed my major too many times to count. I found passion in learning about health and fitness, and briefly majored in Physical Therapy.
+- 2004: Started High School. While in HS took a few computer classes: an A+ Computer Technician class, and a Cisco Networking class. I also played more video games, and wrote a bot to play Diablo II for me.
 
-- I became certified and spent the next 15 years working as an athletic trainer. I've made life-long friendships and cherished memories in the gym.
+- 2008: Enrolled in my local community college and briefly focused on Nutrition, Business, and Kinesiology. I also became a certified athletic trainer and spent the next 15 years coaching.
 
-- After reading a few philosophy books, I decided that's what I wanted to study. At 22, I transferred to Evergreen State College to study Philosophy.
+- 2011: Enrolled at Eastern Washington University and studied to become a Physical Therapist.
 
-- At 24, I graduated, but continued taking courses in Math and Computer Science
+- 2012: Transferred to The Evergreen State College and changed my focus to Philosophy
 
-- At 26, I adopted my best friend, and sidekick, [Marley.](https://github.com/akourk/website/blob/main/public/images/marley.jpg?raw=true)
+- 2014: Graduated from Evergreen but continued coaching and enrolling in Math/CS classes.
 
-- At 27, I enrolled in Bellevue College's first B.S. in Computer Science cohort.
+- 2016: [Marley.](https://github.com/akourk/website/blob/main/public/images/marley.jpg?raw=true)
 
-- I attended the [42 Silicon Valley](https://www.42.us.org/) Piscine the summer of my Junior year, and a month later was accepted into their full-time program.
+- 2017: Enrolled in Bellevue College's first B.S. in Computer Science cohort.
 
-- For my Senior Capstone project, I worked with a non-profit, [WattTime](https://www.watttime.org/), helping to curve carbon-based emissions.
+- 2019: Attended the [42 Silicon Valley](https://www.42.us.org/) Piscine the summer of my Junior year, and a month later was accepted into their full-time program.
 
-- Shortly before graduating, I started working at [Microsoft](https://www.microsoft.com/en-us/), working as a Security Analyst.
+- 2020: For my Senior Capstone project, I worked with a non-profit, [WattTime](https://www.watttime.org/), helping to curve carbon-based emissions.
 
-- At 30, in the midst of the COVID-19 pandemic, I graduated from Bellevue College.
+- 2020: Began a new job at [Microsoft](https://www.microsoft.com/en-us/), working as a Security Analyst.
 
-- Exactly 3 years after starting at Microsoft, I left and joined State Farm as a Software Engineer.
+- 2020: In the midst of the COVID-19 pandemic, I graduated from Bellevue College.
+
+- 2022: Exactly 3 years after starting at Microsoft, I started a new role at State Farm as a Software Engineer.
 
 # I like
 
