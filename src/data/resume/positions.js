@@ -1,14 +1,15 @@
 const positions = [
   {
     company: 'State Farm',
-    position: 'Software Engineer',
+    position: 'Lead Software Engineer',
     link: 'https://www.statefarm.com',
     daterange: 'October 2022 - Present',
-    description: 'Supporting State Farm\'s modernization strategy, updating the insurance policy view enabling customers to update and view existing insurance policies.',
+    description: 'Modernizing customer-facing insurance policy tools as part of State Farm\'s enterprise digital transformation.',
     points: [
-      'Developed several front-end flows using JavaScript, React, and Redux, keeping extensibility in mind.',
-      'Worked on incrementally replacing an outdated Cobol mainframe with a more modern and efficient Java/Spring back-end.',
-      'Updated existing flows to facilitate more customer agency and refine end-user experience.',
+      'Implemented multiple customer-facing flows using TypeScript, JavaScript, React, and Redux, designing components for long-term extensibility and shared use across teams.',
+      'Contributed to a major legacy migration effort by helping replace COBOL mainframe workflows with a modern Java/Spring microservices architecture.',
+      'Refactored and optimized existing UI flows to improve clarity, reduce navigation friction, and give users more control over policy updates.',
+      'Collaborated cross-functionally with design and backend teams to validate requirements and deliver incremental improvements safely and efficiently.',
     ],
   },
   {
@@ -16,13 +17,13 @@ const positions = [
     position: 'Security Analyst',
     link: 'https://microsoft.com',
     daterange: 'October 2019 - October 2022',
-    description: 'Monitored, tracked, and analyzed instances of services abuse on Microsoft\'s platforms, providing critical feedback and input to the algorithms used to safeguard corporate systems across the world.',
+    description: 'Monitored and investigated security, spam, and abuse signals across Microsoft platforms to protect algorithmic integrity and reduce system misuse.',
     points: [
-      'Performed false-positive/false-negatives analysis, summarizing findings and providing feedback to tune algorithms',
-      'Worked on incremental improvements to the product.',
-      'Led team meetings to define strategy for approaching obscure cases, leading to high resolution rates.',
-      'Maintained self-driven cadence of work in an unstructured environment, leading to a high case handling rate and recognition as a high performer by the team.',
-      'Prepared and maintained comprehensive onboarding programming and responsible for training new hires.',
+      'Performed detailed false-positive / false-negative analysis and delivered structured feedback that helped tune algorithmic detection models across global Microsoft services.',
+      'Identified patterns in emerging abuse cases and proposed detection improvements, contributing to ongoing product hardening.',
+      'Led team review sessions for complex and ambiguous cases, driving consensus and improving case resolution rates.',
+      'Maintained a consistently high case throughput in an unstructured, self-directed work environment; recognized repeatedly as a top performer.',
+      'Built and maintained onboarding documentation and trained new analysts, improving ramp-up efficiency and knowledge retention.',
     ],
   },
   {
@@ -32,10 +33,10 @@ const positions = [
     daterange: 'September 2019 - June 2020',
     description: 'Built automated carbon emissions data acquisition tools to form a global database to assist in time-based and geography-based "curving" of emissions to reduce carbon footprint.',
     points: [
-      'Analyzed the reporting techniques of balancing authorities worldwide to determine requirements for scrapers.',
-      'Developed custom web scrapers using Python for each balancing authority globally (10+) to gather emissions data 288 times daily and post to an SQL database.',
-      'Cleaned, converted, and stored reported data, ensuring that any inconsistencies were corrected and that the end data quality was research-grade.',
-      'Built a ReactJS dashboard that leverages WattTime data to present data visually and in terms that are flexible and extensible to the end consumer.',
+      'Analyzed emissions reporting standards across >20 global balancing authorities to determine requirements for automated extraction.',
+      'Built custom Python scrapers to collect emissions data 288x daily and store it in a centralized SQL database with consistent schema.',
+      'Cleaned, normalized, and validated incoming datasets to ensure research-grade accuracy and reliability.',
+      'Developed a ReactJS data visualization dashboard enabling users to explore time-based and geographic emissions patterns.',
     ],
   },
   {
@@ -45,9 +46,9 @@ const positions = [
     daterange: 'January 2019 - March 2019',
     description: 'Motivated and enthusiastic Teaching Assistant for high-level CS courses, providing careful attention to students struggling with difficult concepts.',
     points: [
-      'Supplemented learning plan for struggling students in both one-on-one and in group settings.',
-      'Innovated new teaching methods by adaptively responding to student needs and influencing course curriculum.',
-      'Carefully identified different preferred learning methods to tailor specific teaching strategies on a case-by-case basis.',
+      'Supported upper-division CS courses by guiding students through challenging concepts in both 1:1 and group settings.',
+      'Adapted instructional strategies to individual learning styles and provided targeted remediation for struggling students.',
+      'Contributed feedback that helped instructors refine curricula and improve course clarity.',
     ],
   },
   {
@@ -57,9 +58,10 @@ const positions = [
     daterange: 'August 2015 - May 2020',
     description: 'Successfully aided in growing a small fitness business from start-up to profitability through innovating business strategies, fostering a welcoming community, and providing top level coaching.',
     points: [
-      'Designed and developed an exhaustive, multi-step new client orientation program which resulted in an 85% new client contract rate.',
-      'Planned and organized various community engagement activities including numerous competitions, fund-raisers, and social outings, resulting in 75% client retention rate',
-      'Involved in every level of business and trusted to make major decisions bringing the business to profitability and seeing nearly 300% growth annually.',
+      'Designed a structured multi-step client onboarding program that increased new-client conversion to 85%.',
+      'Organized community events, competitions, and fundraisers that contributed to 75% member retention and overall business growth.',
+      'Played an integral role in day-to-day operations, including programming, coaching, event planning, and business decisions during a period of ~300% annual growth.',
+      'Fostered an inclusive and motivating training environment, contributing to the gym’s long-term success and community reputation.',
     ],
   },
 ];

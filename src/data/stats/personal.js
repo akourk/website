@@ -18,6 +18,29 @@ const Age = () => {
   return <>{age}</>;
 };
 
+const DuolingoStreak = () => {
+  const [days, setDays] = useState();
+
+  const calculateDays = () => {
+    const startDate = new Date('2023-06-25');
+    const now = new Date();
+    const diffTime = Math.abs(now - startDate);
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    setDays(diffDays);
+  };
+
+  useEffect(() => {
+    calculateDays();
+    const timer = setInterval(() => calculateDays(), 1000 * 60 * 60); // Update every hour
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+  return <>{days} days</>;
+};
+
+// Removed GitHub commits stat due to API limitations
+
 const data = [
   {
     key: 'age',
@@ -27,14 +50,18 @@ const data = [
   {
     key: 'countries',
     label: 'Countries visited',
-    value: 4,
-    link:
-      'https://www.google.com/maps/place/North+Pacific+Ocean/@28.2154471,-172.4085114,4z/data=!3m1!4b1!4m5!3m4!1s0x32d44045aa3394d1:0xe8fd2fa6b02e4120!8m2!3d32.694866!4d-162.070312',
+    value: 'USA, Canada, Japan, Australia, Iceland, Greece',
   },
   {
     key: 'location',
     label: 'Current city',
     value: 'Seattle, WA',
+  },
+  {
+    key: 'duolingo',
+    label: 'Duolingo streak',
+    value: <DuolingoStreak />,
+    link: 'https://www.duolingo.com/',
   },
 ];
 

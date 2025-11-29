@@ -39,6 +39,13 @@ const Resume = () => (
           </div>
 
         </div>
+        <a
+          href={`${process.env.PUBLIC_URL}/AlexKourkoumelisResume.pdf`}
+          download="AlexKourkoumelisResume.pdf"
+          className="button"
+        >
+          Download PDF
+        </a>
       </header>
       <Education data={degrees} />
       <Experience data={positions} />

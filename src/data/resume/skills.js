@@ -48,7 +48,7 @@ const skills = [
   },
   {
     title: 'Redux',
-    competency: 3,
+    competency: 4,
     category: ['Web Development', 'Javascript'],
   },
   {
@@ -83,7 +83,7 @@ const skills = [
   },
   {
     title: 'Git',
-    competency: 3,
+    competency: 4,
     category: ['Tools'],
   },
   {
@@ -98,12 +98,12 @@ const skills = [
   },
   {
     title: 'Typescript',
-    competency: 2,
+    competency: 4,
     category: ['Web Development', 'Languages', 'Javascript'],
   },
   {
     title: 'HTML/CSS',
-    competency: 3,
+    competency: 4,
     category: ['Web Development', 'Languages'],
   },
   {
@@ -145,6 +145,41 @@ const skills = [
     title: 'Machine learning',
     competency: 1,
     category: ['Data Engineering', 'Data Science'],
+  },
+  {
+    title: 'Spring Framework',
+    competency: 3,
+    category: ['Web Development', 'Java'],
+  },
+  {
+    title: 'Microservices Architecture',
+    competency: 2,
+    category: ['Web Development', 'Tools'],
+  },
+  {
+    title: 'CI/CD',
+    competency: 4,
+    category: ['Tools', 'Web Development'],
+  },
+  {
+    title: 'Security/Threat Analysis',
+    competency: 3,
+    category: ['Security', 'Tools'],
+  },
+  {
+    title: 'Docker/Kubernetes',
+    competency: 3,
+    category: ['Tools', 'Web Development'],
+  },
+  {
+    title: 'REST APIs',
+    competency: 4,
+    category: ['Web Development'],
+  },
+  {
+    title: 'Agile/Scrum',
+    competency: 4,
+    category: ['Tools', 'Project Management'],
   },
 ].map((skill) => ({ ...skill, category: skill.category.sort() }));
 

@@ -1,39 +1,31 @@
 
 # Intro
 
-I am a Software Engineer in the Seattle area. I am particularly interested in projects that touch on health and social impact.
+I'm a Software Engineer based in the Seattle area. I enjoy building systems that make people’s lives better—especially projects that intersect with health, sustainability, and social impact.
 
 # Currently
 
-I am currently looking for new opportunities as a Software Engineer.
+I'm exploring new opportunities as a Software Engineer where I can contribute to meaningful, well-crafted products and grow alongside thoughtful teams.
 
-# Some history
+# Background
 
-- 1990: Born in Washington. I grew up tinkering on a computer running Windows 3.0. I mostly played games and pirated music.
+I’ve taken a somewhat unconventional path into software, and I’m grateful for it. I grew up on an old Windows 3.0 machine, spent my teenage years breaking and fixing computers, and eventually found myself coaching athletics, studying philosophy, and wandering through the worlds of nutrition, kinesiology, and physical therapy before committing fully to Computer Science.
 
-- 2004: Started High School. While in HS took a few computer classes: an A+ Computer Technician class, and a Cisco Networking class. I also played more video games, and wrote a bot to play Diablo II for me.
+Along the way:
 
-- 2008: Enrolled in my local community college and briefly focused on Nutrition, Business, and Kinesiology. I also became a certified athletic trainer and spent the next 15 years coaching.
+- I coached for over 15 years and became a certified CrossFit Level 1 Trainer, helping grow a small gym into a thriving community.
 
-- 2011: Enrolled at Eastern Washington University and studied to become a Physical Therapist.
+- I earned a B.A. in Philosophy from Evergreen State College, which continues to shape how I think about systems, people, and the ethics of technology.
 
-- 2012: Transferred to The Evergreen State College and changed my focus to Philosophy
+- I later joined Bellevue College’s first B.S. in Computer Science cohort and completed additional coursework at 42 Silicon Valley.
 
-- 2014: Graduated from Evergreen but continued coaching and enrolling in Math/CS classes.
+- For my senior project, I worked with the non-profit **WattTime**, building global emissions data pipelines used to support carbon-curving initiatives.
 
-- 2016: [Marley.](https://github.com/akourk/website/blob/main/public/images/marley.jpg?raw=true)
+- I joined **Microsoft** as a Security Analyst, focusing on large-scale signal analysis, abuse detection, and improving algorithmic accuracy.
 
-- 2017: Enrolled in Bellevue College's first B.S. in Computer Science cohort.
+- I’m currently a **Lead Software Engineer at State Farm**, helping modernize customer-facing insurance policy tools across legacy and modern platforms.
 
-- 2019: Attended the [42 Silicon Valley](https://www.42.us.org/) Piscine the summer of my Junior year, and a month later was accepted into their full-time program.
-
-- 2020: For my Senior Capstone project, I worked with a non-profit, [WattTime](https://www.watttime.org/), helping to curve carbon-based emissions.
-
-- 2020: Began a new job at [Microsoft](https://www.microsoft.com/en-us/), working as a Security Analyst.
-
-- 2020: In the midst of the COVID-19 pandemic, I graduated from Bellevue College.
-
-- 2022: Exactly 3 years after starting at Microsoft, I started a new role at State Farm as a Software Engineer.
+Through all of this, I’ve always been driven by the same things: curiosity, a desire to understand how systems work, and a commitment to helping people—whether that’s through software, coaching, or education.
 
 # I like
 
@@ -46,13 +38,13 @@ I am currently looking for new opportunities as a Software Engineer.
 - Music and nice headphones ([Sennheiser HD650](https://en-us.sennheiser.com/high-quality-headphones-around-ear-audio-surround-hd-650), [Schitt](https://www.schiit.com/))
 - Mechanical pencils ([rotring](https://www.rotring.com/us/))
 - Podcasts ([The Partially Examined Life](https://partiallyexaminedlife.com/), [This American Life](https://www.thisamericanlife.org/), [Radiolab](https://www.wnycstudios.org/shows/radiolab), and others)
-- Good design ([Dieter Rams](https://us.gestalten.com/products/less-and-more-dieter-rams))
+- Clean, functional design ([Dieter Rams](https://us.gestalten.com/products/less-and-more-dieter-rams))
 
 # I aspire to
 
-- keep learning.
-- do better.
-- help others.
+- keep learning
+- do better
+- help others
 
 # Websites I enjoy
 
