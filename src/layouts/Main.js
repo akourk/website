@@ -7,20 +7,25 @@ import Navigation from '../components/Template/Navigation';
 import SideBar from '../components/Template/SideBar';
 import ScrollToTop from '../components/Template/ScrollToTop';
 
-const Main = (props) => (
+const Main = ({
+  children = null,
+  fullPage = false,
+  title = null,
+  description = "Alex Kourkoumelis' personal website.",
+}) => (
   <HelmetProvider>
     <Analytics />
     <ScrollToTop />
     <Helmet titleTemplate="%s | Alex Kourkoumelis" defaultTitle="Alex Kourkoumelis">
-      {props.title && <title>{props.title}</title>}
-      <meta name="description" content={props.description} />
+      {title && <title>{title}</title>}
+      <meta name="description" content={description} />
     </Helmet>
     <div id="wrapper">
       <Navigation />
       <div id="main">
-        {props.children}
+        {children}
       </div>
-      {props.fullPage ? null : <SideBar />}
+      {fullPage ? null : <SideBar />}
     </div>
   </HelmetProvider>
 );
@@ -33,13 +38,6 @@ Main.propTypes = {
   fullPage: PropTypes.bool,
   title: PropTypes.string,
   description: PropTypes.string,
-};
-
-Main.defaultProps = {
-  children: null,
-  fullPage: false,
-  title: null,
-  description: "Alex Kourkoumelis' personal website.",
 };
 
 export default Main;
