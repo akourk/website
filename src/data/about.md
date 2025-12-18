@@ -5,11 +5,11 @@ I'm a Software Engineer based in the Seattle area. I enjoy building systems that
 
 # Currently
 
-I'm always exploring new opportunities as a Software Engineer where I can contribute to meaningful, well-crafted products and grow alongside thoughtful teams.
+I’m a Lead Software Engineer at State Farm, working on modernizing large-scale, customer-facing systems. I’m particularly interested in teams building thoughtful, well-crafted products where engineering quality and real-world impact matter.
 
 # Background
 
-I’ve taken a somewhat unconventional path into software, and I’m grateful for it. I grew up on an old Windows 3.0 machine, spent my teenage years breaking and fixing computers, and eventually found myself coaching athletics, studying philosophy, and wandering through the worlds of nutrition, kinesiology, and physical therapy before committing fully to Computer Science.
+I’ve taken a somewhat unconventional path into software, and I’m grateful for it. I grew up on an old Windows 3.0 machine, spent my teenage years breaking and fixing computers, and eventually found myself coaching athletics, studying philosophy, and wandering through the worlds of health sciences before committing fully to Computer Science.
 
 Along the way:
 
@@ -32,23 +32,21 @@ Through all of this, I’ve always been driven by the same things: curiosity, a 
 - Coffee
 - Dogs
 - Philosophy
-- Meeting new people
 - Reading
-- Health and Fitness
+- Health & fitness
 - Podcasts ([The Partially Examined Life](https://partiallyexaminedlife.com/), [This American Life](https://www.thisamericanlife.org/), [Radiolab](https://www.wnycstudios.org/shows/radiolab), and others)
 - Clean, functional design ([Dieter Rams](https://us.gestalten.com/products/less-and-more-dieter-rams))
 
 # I aspire to
 
-- keep learning
-- do better
-- help others
+- Keep learning
+- Build things that last
+- Help others through thoughtful, well-crafted work
 
-# Websites I enjoy
+# Writing I enjoy
 
 - [Hacker News](https://news.ycombinator.com/)
 - [Scott Aaronson](https://www.scottaaronson.com/blog/)
 - [Vitalik Buterin](https://medium.com/@VitalikButerin)
-- [Less Wrong](https://www.lesswrong.com/)
 - [Krebs on Security](https://krebsonsecurity.com/)
 - [Stratechery](https://stratechery.com/)
