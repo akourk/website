@@ -2,7 +2,7 @@ import {
   createContext, useContext, useEffect, useState,
 } from 'react';
 import type { ReactNode, RefObject } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 /**
  * Focus management across client-side navigation.

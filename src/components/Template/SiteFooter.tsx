@@ -1,4 +1,4 @@
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router';
 
 import ContactIcons from '../Contact/ContactIcons';
 import assetUrl from '../../utils/assetUrl';

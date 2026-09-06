@@ -1,4 +1,4 @@
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router';
 
 import Hamburger from './Hamburger';
 import ThemeToggle from './ThemeToggle';

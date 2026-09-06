@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import type { ReactElement, ReactNode } from 'react';
 
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router';
 import { HelmetProvider } from 'react-helmet-async';
 
 import About from '../pages/About';

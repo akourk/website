@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import type { ReactNode } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 import Masthead from '../components/Template/Masthead';
 import SiteFooter from '../components/Template/SiteFooter';

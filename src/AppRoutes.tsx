@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react';
 import type { ComponentType } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router';
 
 import Main from './layouts/Main'; // fallback for lazy pages
 import { RouteFocusProvider } from './components/Template/RouteFocus';

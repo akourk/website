@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const References = () => (
   <section className="section references" aria-labelledby="references-title">

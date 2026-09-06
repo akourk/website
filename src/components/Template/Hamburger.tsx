@@ -1,5 +1,5 @@
 import { Suspense, lazy, useCallback, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router';
 
 import routes from '../../data/routes';
 import useIsHydrated from '../../utils/useIsHydrated';
