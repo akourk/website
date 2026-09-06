@@ -12,7 +12,8 @@ const Projects = () => (
       <header className="page__header">
         <h1 className="page__title" data-testid="heading">Projects</h1>
         <p className="page__standfirst">
-          A selection of projects that I&apos;m not too ashamed of.
+          Fewer than there used to be. Both of these are current, and the source is
+          public for both.
         </p>
       </header>
       <ul className="project-list">
