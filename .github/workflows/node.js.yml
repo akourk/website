@@ -28,6 +28,8 @@ jobs:
     - run: npm ci
     - name: Lint
       run: npm run lint
+    - name: Typecheck
+      run: npm run typecheck
     - name: Build and Statically Render
       run: npm run build
     - name: Verify prerendered routes
