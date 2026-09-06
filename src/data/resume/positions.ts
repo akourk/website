@@ -28,9 +28,9 @@ const positions: Position[] = [
   },
   {
     company: 'Microsoft',
-    position: 'Security Analyst',
+    position: 'Engineer I, Detection and Abuse Analysis',
     link: 'https://microsoft.com',
-    daterange: 'October 2019 - October 2022',
+    daterange: 'November 2019 - October 2022',
     description: 'Monitored and investigated security, spam, and abuse signals across Microsoft platforms to protect algorithmic integrity and reduce system misuse.',
     points: [
       'Analyzed false-positive and false-negative cases and delivered structured feedback that helped tune detection models used across global services.',
@@ -42,7 +42,7 @@ const positions: Position[] = [
   },
   {
     company: 'WattTime',
-    position: 'Software Engineer (Capstone)',
+    position: 'Software Engineer, Senior Capstone Project',
     link: 'https://www.watttime.org/',
     daterange: 'September 2019 - June 2020',
     description: 'Built automated carbon emissions data acquisition tools to form a global database to assist in time-based and geography-based “curving” of emissions to reduce carbon footprint.',
