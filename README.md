@@ -1,61 +1,115 @@
-# Personal Website
+# akourk.github.io/website
 
 [![Node.js CI](https://github.com/akourk/website/actions/workflows/node.js.yml/badge.svg)](https://github.com/akourk/website/actions/workflows/node.js.yml)
 [![Accessibility](https://github.com/akourk/website/actions/workflows/accessibility.yml/badge.svg)](https://github.com/akourk/website/actions/workflows/accessibility.yml)
 
-See: [mldangelo.com](https://mldangelo.com).
+My personal site: [akourk.github.io/website](https://akourk.github.io/website/).
+React and TypeScript, prerendered to static HTML at build time and served by
+GitHub Pages.
 
-My personal website. An [MIT](https://github.com/mldangelo/personal-site/blob/main/LICENSE) licensed, simple, easily modifiable, statically-exportable [React](https://reactjs.org/), [Jamstack](https://jamstack.org/) application that deploys automatically for free using [github pages](https://pages.github.com/). Built using modern javascript, based on [create-react-app](https://github.com/facebook/create-react-app) with [React-Router](https://reactrouter.com/), SCSS, [github actions](https://github.com/features/actions), and many other useful technologies.
+## How it works
 
-## Adapting this Project
+Every route is written to its own HTML file at build time, so a request for
+`/website/resume` is a file that exists rather than a path the server knows
+nothing about. That fixes deep links, refreshes and bookmarks, and it means
+crawlers and link previews get the page's real text, title and description
+without running any JavaScript.
 
-Building your own personal website from this project can take as little as 30 minutes. Follow the setup instructions below and review **detailed notes and a checklist on adapting this project [here](./docs/adapting-guide.md)**. Please feel free to reach out to me by filing an issue or emailing me at [help@mldangelo.com](mailto:help@mldangelo.com) for help configuring your project.
+The build runs in three steps:
 
-## Contributing
+1. `vite build` produces the client bundle and the HTML shell.
+2. `vite build --ssr` produces a server bundle exporting a `render(path)`.
+3. `scripts/prerender.js` renders every route in `src/data/routes.ts` and
+   writes `dist/<route>/index.html`, injecting the markup and the
+   react-helmet-async head tags into the shell.
 
-Contributions are actively encouraged. Please review the [design goals](./docs/design-goals.md), [roadmap](./docs/roadmap.md), and [contributing guidelines](./docs/contributing.md). If you find a bug, please email me, submit a pull request (I'll buy you a coffee as a thank you), or submit an issue.
+Unknown routes render the NotFound page into `dist/404.html`, which GitHub
+Pages serves with a 404 status. No redirect hack. The client hydrates the
+prerendered markup, after which navigation is client-side as usual.
 
-## Dependencies
+`scripts/check-prerender.js` serves `dist/` the way GitHub Pages does, static
+files with no SPA fallback, and fails the build if any route is missing,
+returns a non-200, has an empty `#root`, or has lost its title, description or
+expected text. Browser testing hides exactly this class of bug, because
+client-side routing works fine once any page has loaded.
 
-Tested with: [node](https://nodejs.org/) >= v12 and optional [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) for managing node versions.
+## Accessibility
 
-## Set up
+Audited against WCAG 2.2 AA, and gated so it stays that way:
 
-To download the repository and install dependencies, run the following commands:
+- `src/test/Accessibility.test.tsx` runs axe-core against the prerendered
+  markup of every route and fails on any violation rated serious or critical.
+- `src/test/Contrast.test.ts` computes the contrast ratios of the palette in
+  `src/static/css/_tokens.scss` and of every colour in the skills chart. axe
+  cannot check contrast in jsdom, which has no layout engine, so this is done
+  arithmetically instead.
+
+Both run in CI on every push, and `npm run test:a11y` runs them locally.
+
+## Running it
+
+Node 22.12 or newer; `.nvmrc` pins the major.
 
 ```bash
-git clone git://github.com/mldangelo/personal-site.git # replace [mldangelo] with your github username if you fork first.
-cd personal-site
-nvm install # this is optional - make sure you're running >= node 12 with `node --version`
+nvm install
 npm install
-```
-
-## Running
-
-Run the following command to build the react application and serve it with fast refresh:
-
-```bash
 npm start
 ```
 
-Your web browser should automatically open to `<ip>:<port>:<path>` default: [http://localhost:3000/](http://localhost:3000/).
+The dev server runs at `http://localhost:5173/website/`. It uses the same base
+path as production on purpose, so a base-path mistake shows up locally instead
+of only after deploying.
+
+| Script | What it does |
+| --- | --- |
+| `npm start` | Vite dev server |
+| `npm run build` | Client build, SSR build, then prerender every route |
+| `npm run check:prerender` | Serve `dist/` statically and assert every route |
+| `npm test` | Vitest, including the axe and contrast suites |
+| `npm run test:a11y` | Just the accessibility suites |
+| `npm run lint` | ESLint, typescript-eslint with type-aware rules |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm run preview` | Serve the built site |
+
+## Editing content
+
+Content lives in `src/data/`, separately from the components that render it:
+
+| File | What it holds |
+| --- | --- |
+| `routes.ts` | Every route. Drives the nav, the router and the prerenderer |
+| `about.md` | The about page, rendered as markdown |
+| `projects.ts` | Project cards |
+| `contact.ts` | Contact links and their icons |
+| `resume/positions.ts` | Jobs |
+| `resume/degrees.ts` | Degrees |
+| `resume/courses.ts` | Selected courses |
+| `resume/skills.ts` | Skills, competency levels and category colours |
+| `stats/personal.tsx` | Rows of the stats table |
+
+Adding a route means adding it to `routes.ts` and registering its page module
+in `src/pageRoutes.ts`; a route with no page module throws at import time
+rather than rendering blank.
 
 ## Deploying
 
-### Deploying to Github Pages
+Pushing to `main` triggers `.github/workflows/github-pages.yml`, which builds
+and publishes `dist/` to the `gh-pages` branch. The site is served from the
+`/website/` subdirectory, which is set once as `base` in `vite.config.ts` and
+read by the router as `import.meta.env.BASE_URL`.
 
-1. Modify the environmental variables and git remote url in [`.github/workflows/github-pages.yml`](.github/workflows/github-pages.yml).
-2. Modify `homepage` in `package.json` to point to where you plan to host your site. If you do not plan on using a custom domain name, it should look like `https://[your-gh-username].github.io/[repository-name - default:personal-site]/`
-3. If you plan on using a custom domain, modify `public/CNAME`. If you don't, delete `public/CNAME`.
+There are no environment variables to set.
 
-Make a commit to `main` and push your changes. That's it.
+## Built with
 
-### Static Export
+Vite, React 18, React Router 6, TypeScript, Sass, Vitest and axe-core.
+Type is [Newsreader](https://fonts.google.com/specimen/Newsreader) and
+[Inter](https://fonts.google.com/specimen/Inter).
 
-To statically export the site without deploying to github pages, delete or disable `.github/workflows/github-pages.yml` and run `npm run predeploy`. This generates a static export of the website as `personal-site/build/`. Copy this and self-host or deploy to a CDN.
+## Credit
 
-## Acknowledgements
-
-* Template based on [Future Imperfect](https://html5up.net/future-imperfect) by [@ajlkn](https://github.com/ajlkn) for [HTML5 UP](html5up.net).
-* Special thanks to [@typpo](https://github.com/typpo) for tirelessly answering all of my node.js and react questions.
-* [@notrueblood](https://github.com/notrueblood)[<sup>[1]</sup>](https://github.com/mldangelo/personal-site/pull/218) and [@sjhsieh](https://github.com/sjhsieh)[<sup>[2]</sup>](https://github.com/mldangelo/personal-site/issues/168) for keeping my ego in check.
+Originally built from [mldangelo/personal-site](https://github.com/mldangelo/personal-site),
+which was itself based on [Future Imperfect](https://html5up.net/future-imperfect)
+by [@ajlkn](https://github.com/ajlkn) for [HTML5 UP](https://html5up.net). The
+build, the stylesheet and the layout have since been replaced, but the site
+started there. MIT licensed, and `LICENSE` keeps the original copyright.
