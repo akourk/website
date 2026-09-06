@@ -1,115 +1,25 @@
-import { Component } from 'react';
-
-import CategoryButton from './Skills/CategoryButton';
-import SkillBar from './Skills/SkillBar';
-import type { Category, Level, Skill } from '../../data/resume/skills';
+import type { SkillGroup } from '../../data/resume/skills';
 
 interface SkillsProps {
-  skills?: Skill[];
-  categories?: Category[];
-  levels?: Level[];
+  data?: SkillGroup[];
 }
 
-interface SkillsState {
-  /** Filter buttons keyed by label, including the synthetic "All". */
-  buttons: Record<string, boolean>;
-  skills: Skill[];
-  levels: Level[];
-}
-
-const handleProps = ({ categories, skills, levels }: Required<SkillsProps>): SkillsState => ({
-  buttons: categories.map((cat) => cat.name).reduce<Record<string, boolean>>((obj, key) => ({
-    ...obj,
-    [key]: false,
-  }), { All: true }),
-  skills,
-  levels,
-});
-
-class Skills extends Component<SkillsProps, SkillsState> {
-  constructor(props: SkillsProps) {
-    super(props);
-    this.state = handleProps({
-      categories: props.categories ?? [],
-      skills: props.skills ?? [],
-      levels: props.levels ?? [],
-    });
-  }
-
-  getRows() {
-    // search for true active categories
-    const actCat = Object.keys(this.state.buttons).reduce((cat, key) => (
-      this.state.buttons[key] ? key : cat
-    ), 'All');
-
-    return this.state.skills.sort((a, b) => {
-      let ret = 0;
-      if (a.competency > b.competency) ret = -1;
-      else if (a.competency < b.competency) ret = 1;
-      else if (a.category[0] > b.category[0]) ret = -1;
-      else if (a.category[0] < b.category[0]) ret = 1;
-      else if (a.title > b.title) ret = 1;
-      else if (a.title < b.title) ret = -1;
-      return ret;
-    }).filter((skill) => actCat === 'All' || skill.category.some((cat) => cat === actCat))
-      .map((skill) => (
-        <SkillBar
-          categories={this.props.categories}
-          data={skill}
-          key={skill.title}
-        />
-      ));
-  }
-
-  getButtons() {
-    return Object.keys(this.state.buttons).map((key) => (
-      <CategoryButton
-        label={key}
-        key={key}
-        active={this.state.buttons}
-        handleClick={this.handleChildClick}
-      />
-    ));
-  }
-
-  handleChildClick = (label: string) => {
-    this.setState((prevState) => {
-      // Toggle button that was clicked. Turn all other buttons off.
-      const buttons = Object.keys(prevState.buttons).reduce<Record<string, boolean>>((obj, key) => ({
-        ...obj,
-        [key]: (label === key) && !prevState.buttons[key],
-      }), {});
-      // Turn on 'All' button if other buttons are off
-      buttons.All = !Object.keys(prevState.buttons).some((key) => buttons[key]);
-      return { buttons };
-    });
-  };
-
-  override render() {
-    return (
-      <section className="section" aria-labelledby="skills-title">
-        <div className="section-anchor" id="skills" />
-        <h2 className="section__title" id="skills-title">Skills</h2>
-        <p>
-          The ratings below are mine, and they mean something specific:
-        </p>
-        <ol className="skills-key">
-          {this.state.levels.map((level) => (
-            <li key={level.level}>
-              <span className="skills-key__name">{level.title}.</span>{' '}
-              {level.description}
-            </li>
-          ))}
-        </ol>
-        <div className="skill-filters" role="group" aria-label="Filter skills by category">
-          {this.getButtons()}
+// A definition list rather than a chart: the group is the term and the skills
+// in it are the description. There is nothing to filter and nothing to rank, so
+// there is no state here either.
+const Skills = ({ data = [] }: SkillsProps) => (
+  <section className="section" aria-labelledby="skills-title">
+    <div className="section-anchor" id="skills" />
+    <h2 className="section__title" id="skills-title">Skills</h2>
+    <dl className="skill-groups">
+      {data.map((group) => (
+        <div className="skill-group" key={group.name}>
+          <dt className="skill-group__name">{group.name}</dt>
+          <dd className="skill-group__items">{group.items.join(', ')}</dd>
         </div>
-        <ul className="skill-list">
-          {this.getRows()}
-        </ul>
-      </section>
-    );
-  }
-}
+      ))}
+    </dl>
+  </section>
+);
 
 export default Skills;

@@ -6,8 +6,6 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, test } from 'vitest';
 
-import { categories } from '../data/resume/skills';
-
 // Read from disk rather than importing: Vitest resolves stylesheet imports to
 // empty strings, `?raw` included, because it does not process CSS by default.
 // Vitest runs with the project root as its working directory.
@@ -72,7 +70,7 @@ const textPairs = [
   ['accent', 'paper'],
   ['accent', 'paper-sunk'],
   ['accent-strong', 'paper'],
-  // Reversed out: the download button and the active filter chip.
+  // Reversed out: the download button on the resume page.
   ['paper', 'ink-strong'],
 ] as const;
 
@@ -90,27 +88,5 @@ describe.each(themes)('%s theme, WCAG 2.2 AA', (theme) => {
     const ratio = contrastRatio(border, bg);
     expect(ratio, `${theme}: control-border (${border}) on paper (${bg}) is ${ratio.toFixed(2)}:1`)
       .toBeGreaterThanOrEqual(AA_NON_TEXT);
-  });
-});
-
-describe('skill chart contrast', () => {
-  // No text is drawn on these bars, so the requirement is not 4.5:1 for text but
-  // 1.4.11's 3:1 for non-text: each bar has to be visible against its track. The
-  // track is near-white in one theme and near-black in the other, so a colour
-  // has to clear it both ways.
-  test.each(categories.map((c) => [c.name, c.color]))(
-    '%s stays visible against the track in both themes',
-    (name, color) => {
-      for (const theme of themes) {
-        const track = palette(theme, 'paper-sunk');
-        const ratio = contrastRatio(color, track);
-        expect(ratio, `${theme}: ${name} (${color}) on the track (${track}) is ${ratio.toFixed(2)}:1`)
-          .toBeGreaterThanOrEqual(AA_NON_TEXT);
-      }
-    },
-  );
-
-  test('every category has a colour', () => {
-    expect(categories.every((c) => /^#[0-9a-f]{6}$/i.test(c.color))).toBe(true);
   });
 });

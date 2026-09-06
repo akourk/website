@@ -1,125 +1,42 @@
 @use '../tokens' as t;
 
-// The skills chart.
+// Skills.
 //
-// The old chart was a stack of 35px coloured bars with the label reversed out
-// of the fill. This keeps the bar, because a chart is the point, but makes it a
-// thin rule under a normally-set label: the reading is in the text and the bar
-// is there to be scanned.
+// This was a chart: a stack of coloured bars, each one as long as a competency
+// Alex had assigned himself. The bars are gone along with the ratings, so what
+// is left is a definition list, set on the same two-column grid the course list
+// uses so the two sections on this page that are really lookup tables look
+// like each other.
 
-.skills-key {
-	color: var(--ink-muted);
+.skill-groups {
 	display: grid;
-	font-size: var(--text--1);
-	gap: var(--space-2) var(--space-5);
-	grid-template-columns: 1fr;
-	list-style: none;
-	margin: 0 0 var(--space-6);
+	gap: var(--space-4);
+	margin: 0;
 	max-width: var(--page-width);
-	padding: 0;
-	counter-reset: skill-level;
-
-	li {
-		counter-increment: skill-level;
-		margin: 0;
-	}
-
-	li::before {
-		color: var(--ink-strong);
-		content: counter(skill-level) '. ';
-		font-weight: 600;
-	}
 }
 
-@media (min-width: t.$bp-wide) {
-	.skills-key {
-		grid-template-columns: repeat(2, 1fr);
-	}
-}
-
-.skills-key__name {
-	color: var(--ink-strong);
-	font-weight: 600;
-}
-
-.skill-filters {
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--space-2);
-	margin-bottom: var(--space-6);
-}
-
-.skill-filter {
-	border: 1px solid var(--control-border);
-	border-radius: 999px;
-	color: var(--ink-muted);
-	font-size: var(--text--1);
-	letter-spacing: 0.01em;
-	// Comfortably past the 24px minimum target.
-	min-height: 2rem;
-	padding: var(--space-1) var(--space-4);
-	transition: border-color 120ms ease, color 120ms ease, background-color 120ms ease;
-}
-
-.skill-filter:hover {
-	border-color: var(--ink-muted);
-	color: var(--ink-strong);
-}
-
-.skill-filter[aria-pressed='true'] {
-	background: var(--ink-strong);
-	border-color: var(--ink-strong);
-	color: var(--paper);
-}
-
-.skill-list {
+.skill-group {
 	display: grid;
-	gap: var(--space-4) var(--space-7);
+	gap: var(--space-1);
 	grid-template-columns: 1fr;
-	list-style: none;
-	margin: 0;
-	padding: 0;
 }
 
-@media (min-width: t.$bp-wide) {
-	.skill-list {
-		grid-template-columns: repeat(2, 1fr);
+@media (min-width: t.$bp-nav) {
+	.skill-group {
+		gap: var(--space-3) var(--space-6);
+		grid-template-columns: 12rem 1fr;
 	}
 }
 
-.skill {
-	margin: 0;
-}
-
-.skill__label {
-	align-items: baseline;
-	display: flex;
-	gap: var(--space-3);
-	justify-content: space-between;
-	margin-bottom: var(--space-2);
-}
-
-.skill__name {
+.skill-group__name {
 	color: var(--ink-strong);
-	font-weight: 500;
-}
-
-.skill__rating {
-	color: var(--ink-muted);
 	font-size: var(--text--1);
-	font-variant-numeric: tabular-nums;
-	white-space: nowrap;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
 }
 
-.skill__track {
-	background: var(--paper-sunk);
-	border-radius: 999px;
-	height: 4px;
-	overflow: hidden;
-}
-
-.skill__fill {
-	border-radius: 999px;
-	display: block;
-	height: 100%;
+.skill-group__items {
+	color: var(--ink-muted);
+	margin: 0;
 }
