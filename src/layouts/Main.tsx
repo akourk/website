@@ -3,7 +3,6 @@ import type { ReactNode } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
-import Analytics from '../components/Template/Analytics';
 import Navigation from '../components/Template/Navigation';
 import SideBar from '../components/Template/SideBar';
 import ScrollToTop from '../components/Template/ScrollToTop';
@@ -38,7 +37,6 @@ const Main = ({
 
   return (
     <>
-      <Analytics />
       <ScrollToTop />
       <Helmet titleTemplate="%s | Alex Kourkoumelis" defaultTitle="Alex Kourkoumelis">
         {title && <title>{title}</title>}
