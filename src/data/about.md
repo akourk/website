@@ -21,7 +21,7 @@ Along the way:
 
 - For my senior project, I worked with the non-profit **WattTime**, building global emissions data pipelines used to support carbon-curving initiatives.
 
-- I joined **Microsoft** as a Security Analyst, focusing on large-scale signal analysis, abuse detection, and improving algorithmic accuracy.
+- I joined **Microsoft** as an Engineer I, working on large-scale signal analysis, abuse detection, and improving algorithmic accuracy.
 
 - I’m currently a **Lead Software Engineer at State Farm**, helping modernize customer-facing insurance policy tools across legacy and modern platforms.
 

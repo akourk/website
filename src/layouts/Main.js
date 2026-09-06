@@ -11,7 +11,7 @@ const Main = ({
   children = null,
   fullPage = false,
   title = null,
-  description = "Alex Kourkoumelis' personal website.",
+  description = "Alex Kourkoumelis, Lead Software Engineer. Frontend architecture, and the incremental replacement of a mainframe that cannot go down.",
 }) => (
   <HelmetProvider>
     <Analytics />
