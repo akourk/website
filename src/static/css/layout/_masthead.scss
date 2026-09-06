@@ -1,0 +1,93 @@
+@use '../tokens' as t;
+
+// The masthead. Type only: no photo, no tagline box, nothing fixed to the
+// viewport. It scrolls away like the top of a printed page.
+
+// One row: identity on the left, navigation or the menu toggle on the right.
+// The identity wraps internally on narrow screens rather than pushing the
+// toggle onto a line of its own.
+.masthead {
+	align-items: center;
+	border-bottom: 1px solid var(--rule);
+	display: flex;
+	gap: var(--space-4) var(--space-6);
+	justify-content: space-between;
+	padding: var(--space-6) 0 var(--space-4);
+}
+
+.masthead__identity {
+	align-items: baseline;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-1) var(--space-4);
+	min-width: 0;
+}
+
+.masthead__name {
+	font-size: var(--text-2);
+	font-weight: 500;
+	letter-spacing: -0.015em;
+	margin: 0;
+
+	a {
+		color: var(--ink-strong);
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.18em;
+	}
+}
+
+.masthead__role {
+	color: var(--ink-muted);
+	font-size: var(--text--1);
+	font-weight: 500;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.masthead__nav {
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-5);
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		margin: 0;
+	}
+
+	a {
+		color: var(--ink-muted);
+		display: inline-block;
+		font-size: var(--text--1);
+		font-weight: 500;
+		letter-spacing: 0.04em;
+		// WCAG 2.2 target size: the label alone is shorter than 24px.
+		padding: var(--space-2) 0;
+		text-decoration: none;
+		text-transform: uppercase;
+	}
+
+	a:hover {
+		color: var(--ink-strong);
+	}
+
+	// The current page is marked with a rule under it, not with colour alone.
+	a[aria-current='page'] {
+		border-bottom: 2px solid var(--accent);
+		color: var(--ink-strong);
+	}
+}
+
+@media (max-width: t.$bp-nav) {
+	.masthead__nav {
+		display: none;
+	}
+}

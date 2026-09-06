@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
 import Main from '../layouts/Main';
@@ -14,12 +13,10 @@ const About = () => (
     title="About"
     description="How a philosophy degree, fifteen years of coaching, and a hand-me-down computer led to software engineering."
   >
-    <article className="post markdown" id="about">
-      <header>
-        <div className="title">
-          <h2 data-testid="heading"><Link to="/about">About Me</Link></h2>
-          <p>(in about {count} words)</p>
-        </div>
+    <article className="page markdown" id="about">
+      <header className="page__header">
+        <h1 className="page__title" data-testid="heading">About Me</h1>
+        <p className="page__standfirst">In about {count} words.</p>
       </header>
       <ReactMarkdown
         source={markdown}

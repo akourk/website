@@ -3,8 +3,8 @@ import type { ReactNode } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
-import Navigation from '../components/Template/Navigation';
-import SideBar from '../components/Template/SideBar';
+import Masthead from '../components/Template/Masthead';
+import SiteFooter from '../components/Template/SiteFooter';
 import ScrollToTop from '../components/Template/ScrollToTop';
 import { useFocusOnRouteChange } from '../components/Template/RouteFocus';
 
@@ -14,7 +14,7 @@ const SITE_URL = 'https://akourk.github.io/website';
 
 interface MainProps {
   children?: ReactNode;
-  /** Hides the sidebar. */
+  /** Drops the footer bio card, for pages that are already about Alex. */
   fullPage?: boolean;
   /** Page name. Fed through the title template; omit for the site's own title. */
   title?: string;
@@ -50,13 +50,13 @@ const Main = ({
         <meta name="twitter:card" content="summary" />
       </Helmet>
       <a className="skip-link" href="#main">Skip to content</a>
-      <div id="wrapper">
-        <Navigation />
+      <div className="shell">
+        <Masthead />
         {/* tabIndex -1 so the skip link can land here without adding a tab stop. */}
         <main id="main" tabIndex={-1} ref={mainRef}>
           {children}
         </main>
-        {fullPage ? null : <SideBar />}
+        <SiteFooter showBio={!fullPage} />
       </div>
     </>
   );

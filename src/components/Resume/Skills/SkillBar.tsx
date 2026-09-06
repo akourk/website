@@ -5,32 +5,34 @@ interface SkillBarProps {
   categories?: Category[];
 }
 
+const MAX_COMPETENCY = 5;
+
 const SkillBar = ({ data, categories = [] }: SkillBarProps) => {
   const { category, competency, title } = data;
 
-  // TODO: Consider averaging colors
-  const titleStyle = {
-    background: categories
-      .filter((cat) => category.includes(cat.name))
-      .map((cat) => cat.color)[0],
-  };
+  // A skill can sit in several categories; the first one after sorting decides
+  // the colour, so the same skill always draws the same.
+  const color = categories
+    .filter((cat) => category.includes(cat.name))
+    .map((cat) => cat.color)[0];
 
-  const barStyle = {
-    ...titleStyle,
-    width: `${String(Math.min(100, Math.max((competency / 5.0) * 100.0, 0)))}%`,
-  };
+  const width = `${String(Math.min(100, Math.max((competency / MAX_COMPETENCY) * 100, 0)))}%`;
 
   return (
-    <div className="skillbar clearfix">
-      <div className="skillbar-title" style={titleStyle}><span>{title}</span></div>
+    <li className="skill">
+      <div className="skill__label">
+        <span className="skill__name">{title}</span>
+        <span className="skill__rating">{competency} of {MAX_COMPETENCY}</span>
+      </div>
       {/*
-        The bar restates the rating that the text beside it already gives, and
-        does it with colour and length alone. Hiding it keeps the chart from
-        being read out twice and keeps the meaning in the text.
+        The bar restates the rating the text beside it already gives, and does it
+        with colour and length alone. Hiding it keeps the chart from being read
+        out twice and keeps the meaning in the text.
       */}
-      <div className="skillbar-bar" style={barStyle} aria-hidden="true" />
-      <div className="skill-bar-percent">{competency} out of 5</div>
-    </div>
+      <div className="skill__track" aria-hidden="true">
+        <span className="skill__fill" style={{ background: color, width }} />
+      </div>
+    </li>
   );
 };
 

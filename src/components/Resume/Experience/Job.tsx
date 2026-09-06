@@ -1,4 +1,3 @@
-
 import type { Position } from '../../../data/resume/positions';
 
 interface JobProps {
@@ -6,13 +5,13 @@ interface JobProps {
 }
 
 const Job = ({ data }: JobProps) => (
-  <article className="jobs-container">
-    <header>
-      <h4><a href={data.link}>{data.company}</a> - {data.position}</h4>
-      <p className="daterange"> {data.daterange}</p>
-    </header>
-    <p className="description"> {data.description}</p>
-    <ul className="points">
+  <article className="entry">
+    <h3 className="entry__title">
+      <a href={data.link}>{data.company}</a>, {data.position}
+    </h3>
+    <p className="entry__meta">{data.daterange}</p>
+    <p className="entry__summary">{data.description}</p>
+    <ul className="entry__points">
       {data.points.map((point) => (
         <li key={point}>{point}</li>
       ))}

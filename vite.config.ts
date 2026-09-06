@@ -11,22 +11,6 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // The inherited html5up/skel stylesheet predates the Sass module system and
-        // triggers a wall of deprecation warnings on every build. Section 6 replaces
-        // it outright; until then, keep the build log readable.
-        silenceDeprecations: [
-          'import',
-          'global-builtin',
-          'color-functions',
-          'slash-div',
-          'if-function',
-        ],
-      },
-    },
-  },
   test: {
     environment: 'jsdom',
     globals: true,

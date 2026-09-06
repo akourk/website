@@ -1,37 +1,21 @@
-// Contact page (/contact)
+// Contact.
 
-#contact {
+.contact__email {
+	font-family: var(--font-display);
+	font-size: var(--text-3);
+	margin-bottom: var(--space-6);
 
-  .email-at{
-    
-    margin: 3em 0;
-    
-    p {
-      margin: 0;
-    }
-    
-    .inline-container {
-      width: 100%;
-
-      span:focus {
-        display: inline-block;
-        outline: none;
-        border: 0;
-        text-align: right;
-      }
-
-    }
-  }
-
+	a {
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.15em;
+	}
 }
 
-.inline {
-    min-width: 150px;
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    font-size: 15;
-    outline: 0;
-    border: 0;
-    text-align: right;
+.contact__social {
+	margin-top: var(--space-6);
+
+	svg {
+		height: 1.35rem;
+		width: 1.35rem;
+	}
 }

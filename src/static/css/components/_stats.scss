@@ -1,0 +1,35 @@
+// The stats table. Rules between rows instead of striped fills, and tabular
+// figures so the ticking age does not wobble.
+
+.stats-table {
+	max-width: var(--page-width);
+
+	tr {
+		border-bottom: 1px solid var(--rule);
+	}
+
+	tr:last-child {
+		border-bottom: 0;
+	}
+
+	th,
+	td {
+		padding: var(--space-4) 0;
+		text-align: left;
+		vertical-align: baseline;
+	}
+
+	// The label is a row header for the value beside it, but it is not a column
+	// heading, so it should not look like one.
+	.stat-label {
+		color: var(--ink-muted);
+		font-weight: 400;
+		padding-right: var(--space-5);
+		width: 40%;
+	}
+
+	td {
+		color: var(--ink-strong);
+		font-variant-numeric: tabular-nums;
+	}
+}

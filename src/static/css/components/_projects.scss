@@ -1,0 +1,74 @@
+@use '../tokens' as t;
+
+// Projects. A plain list of entries with a wide image, rather than the
+// template's bordered cards.
+
+.project-list {
+	display: grid;
+	gap: var(--space-8);
+	grid-template-columns: 1fr;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	// The grid gap does the spacing; the base list rhythm would double it.
+	li + li {
+		margin-top: 0;
+	}
+}
+
+@media (min-width: t.$bp-wide) {
+	.project-list {
+		gap: var(--space-8) var(--space-7);
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.project {
+	max-width: 34rem;
+}
+
+.project__title {
+	font-size: var(--text-2);
+	margin-bottom: var(--space-1);
+
+	a {
+		color: var(--ink-strong);
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: var(--accent);
+		text-decoration: underline;
+		text-underline-offset: 0.15em;
+	}
+}
+
+.project__date {
+	color: var(--ink-muted);
+	display: block;
+	font-size: var(--text--1);
+	letter-spacing: 0.04em;
+	margin-bottom: var(--space-4);
+	text-transform: uppercase;
+}
+
+.project__image {
+	background: var(--paper-sunk);
+	border: 1px solid var(--rule);
+	border-radius: 2px;
+	display: block;
+	margin-bottom: var(--space-4);
+	overflow: hidden;
+
+	img {
+		aspect-ratio: 16 / 10;
+		object-fit: cover;
+		width: 100%;
+	}
+}
+
+.project__description {
+	color: var(--ink-muted);
+	max-width: none;
+}

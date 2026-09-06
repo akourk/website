@@ -8,20 +8,20 @@ interface CellProps {
 }
 
 const Cell = ({ data }: CellProps) => (
-  <div className="cell-container">
-    <article className="mini-post">
-      <header>
-        <h3><a href={data.link}>{data.title}</a></h3>
-        <time className="published">{dayjs(data.date).format('MMMM, YYYY')}</time>
-      </header>
-      <a href={data.link} className="image">
-        <img src={assetUrl(data.image)} alt={data.title} />
-      </a>
-      <div className="description">
-        <p>{data.desc}</p>
+  <li className="project">
+    <article>
+      <h3 className="project__title">
+        {data.link ? <a href={data.link}>{data.title}</a> : data.title}
+      </h3>
+      <time className="project__date" dateTime={data.date}>
+        {dayjs(data.date).format('MMMM YYYY')}
+      </time>
+      <div className="project__image">
+        <img src={assetUrl(data.image)} alt="" />
       </div>
+      <p className="project__description">{data.desc}</p>
     </article>
-  </div>
+  </li>
 );
 
 export default Cell;

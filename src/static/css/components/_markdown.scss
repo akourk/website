@@ -1,13 +1,29 @@
-// About page (/about)
+// The about page is rendered from markdown, so it gets element styles rather
+// than classes. The base stylesheet already covers most of it.
 
 .markdown {
+	h2,
+	h3 {
+		margin-bottom: var(--space-3);
+		margin-top: var(--space-7);
+	}
 
-  p {
-    margin: auto;
-  }
+	ul,
+	ol {
+		margin-top: var(--space-4);
+		max-width: var(--measure);
+	}
 
-  h1 {
-    font-size: .8em;
-    margin-top: 3em;
-  }
+	li > p {
+		margin: 0;
+	}
+
+	li + li {
+		margin-top: var(--space-4);
+	}
+
+	img {
+		border-radius: 2px;
+		margin: var(--space-6) 0;
+	}
 }

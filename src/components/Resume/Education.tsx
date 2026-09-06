@@ -1,4 +1,3 @@
-
 import Degree from './Education/Degree';
 import type { Degree as DegreeData } from '../../data/resume/degrees';
 
@@ -7,18 +6,16 @@ interface EducationProps {
 }
 
 const Education = ({ data = [] }: EducationProps) => (
-  <div className="education">
-    <div className="link-to" id="education" />
-    <div className="title">
-      <h3>Education</h3>
-    </div>
+  <section className="section" aria-labelledby="education-title">
+    <div className="section-anchor" id="education" />
+    <h2 className="section__title" id="education-title">Education</h2>
     {data.map((degree) => (
       <Degree
         data={degree}
         key={degree.school}
       />
     ))}
-  </div>
+  </section>
 );
 
 export default Education;

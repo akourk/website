@@ -14,7 +14,7 @@ import { categories } from '../data/resume/skills';
 // Read from disk rather than importing: Vitest resolves stylesheet imports to
 // empty strings, `?raw` included, because it does not process CSS by default.
 // Vitest runs with the project root as its working directory.
-const vars = readFileSync(resolve('src/static/css/libs/_vars.scss'), 'utf8');
+const tokens = readFileSync(resolve('src/static/css/_tokens.scss'), 'utf8');
 
 const channel = (value: number) => {
   const v = value / 255;
@@ -33,10 +33,10 @@ export const contrastRatio = (a: string, b: string) => {
   return (lighter + 0.05) / (darker + 0.05);
 };
 
-/** Reads a colour out of the SCSS palette so the test tracks the real token. */
+/** Reads a colour custom property so the test tracks the real token. */
 const palette = (name: string) => {
-  const match = new RegExp(`^\\s*${name}:\\s*(#[0-9a-fA-F]{3,8}),?\\s*$`, 'm').exec(vars);
-  if (!match) throw new Error(`No colour named "${name}" in _vars.scss`);
+  const match = new RegExp(`^\\s*--${name}:\\s*(#[0-9a-fA-F]{3,8});`, 'm').exec(tokens);
+  if (!match) throw new Error(`No --${name} colour in _tokens.scss`);
   return match[1];
 };
 
@@ -44,12 +44,16 @@ const AA_TEXT = 4.5;
 
 describe('palette contrast, WCAG 2.2 AA', () => {
   test.each([
-    ['fg', 'bg'],
-    ['fg', 'bg-alt'],
-    ['fg-bold', 'bg'],
-    ['fg-light', 'bg'],
-    ['fg-light', 'bg-alt'],
-    ['accent', 'bg'],
+    ['ink', 'paper'],
+    ['ink', 'paper-sunk'],
+    ['ink-strong', 'paper'],
+    ['ink-muted', 'paper'],
+    ['ink-muted', 'paper-sunk'],
+    ['accent', 'paper'],
+    ['accent', 'paper-sunk'],
+    ['accent-strong', 'paper'],
+    // Reversed out: the button and the active filter chip.
+    ['paper', 'ink-strong'],
   ])('%s on %s clears 4.5:1', (fg, bg) => {
     const ratio = contrastRatio(palette(fg), palette(bg));
     expect(ratio, `${fg} (${palette(fg)}) on ${bg} (${palette(bg)}) is ${ratio.toFixed(2)}:1`)

@@ -1,154 +1,162 @@
-/* Resume */
+@use '../tokens' as t;
 
-#resume {
+// Resume.
 
-	.link-to {
-		position: relative;
-		top: -4.5em;
-	}
+.resume__header {
+	align-items: flex-start;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-5);
+	justify-content: space-between;
+	margin-bottom: var(--space-7);
+}
 
-	.link-container {
-		ul {
-			list-style: none;
-			margin: 0;
-			padding-left: 0;
-		}
+.resume__toc {
+	margin-top: var(--space-4);
 
-		li {
-			display: inline-flex;
-			padding-left: 0;
-		}
-
-		a {
-			border-bottom: none;
-			font-family: _font(family-heading);
-			font-size: 0.7em;
-			font-weight: _font(weight-heading-bold);
-			letter-spacing: _font(kerning-heading);
-			margin: 0;
-			padding: 0 .5em;
-			text-decoration: none;
-			text-transform: uppercase;
-		}
-	}
-
-	.education {
-
-		.title {
-			text-align: center;
-			margin-bottom: 2em;
-		}
-	}
-	.experience {
-		.title {
-			text-align: center;
-		}
-		.job {
-			margin: 1em;
-			p{
-				margin: 0;
-			}
-		}
-	}
-
-	.jobs-container {
-		.points {
-			li {
-				margin: 0;
-				padding: 0;
-					font-size: .9em;
-			}
-		}
-	}
-
-	.description {
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2) var(--space-5);
+		list-style: none;
 		margin: 0;
-		padding-bottom: .5em;
-		font-size: .9em;
+		padding: 0;
 	}
 
-	.courses {
-		padding-top: 1.6em;
-		.title {
-			text-align: center;
-		}
-		.course-list {
-			text-align: center;
-
-			h4 {
-				white-space: nowrap;
-			}
-		}
+	li {
+		margin: 0;
 	}
 
-	.skills {
-		margin-top: 2em;
-		.title {
-			text-align: center;
-			p {
-				font-size: 0.9em;
-			}
-		}
+	a {
+		color: var(--ink-muted);
+		display: inline-block;
+		font-size: var(--text--1);
+		font-weight: 500;
+		letter-spacing: 0.04em;
+		padding: var(--space-2) 0;
+		text-decoration: none;
+		text-transform: uppercase;
 	}
-	.references {
-		margin: 2em 0;
-		.title {
-			text-align: center;
-		}
+
+	a:hover {
+		color: var(--accent);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
 	}
 }
 
-.daterange {
-	margin-bottom: .2em;
-}
+// Education and experience entries share a shape: a title line, a dateline in
+// the margin where there is room, then the detail.
+.entry {
+	margin-top: var(--space-6);
 
-.degree-container {
-	h4 {
-		font-weight: normal;
-	}
-
-	.degree {
-		margin-bottom: .1em;
-		text-transform: none;
-		letter-spacing: 0.16em;
-		font-size: .8em;
-	}
-
-	.school {
-		text-transform: none;
-		padding-top: 0.3em;
-		margin-bottom: 1em;
+	&:first-of-type {
+		margin-top: 0;
 	}
 }
 
-.courses .course-number {
-	display: inline;
-}
-.courses .course-name {
-	display: inline;
-	font-family: "Raleway", Helvetica, sans-serif;
-	font-size: 0.7em;
-  font-weight: 400;
-  letter-spacing: 0.25em;
-  line-height: 2.5;
-  margin-top: -1em;
-  text-transform: uppercase;
-}
+.entry__title {
+	font-size: var(--text-1);
+	margin-bottom: var(--space-1);
 
-.courses ul li{
-  display: inline;
-}
-
-.course-dot {
-	display: inline;
-	// display: none;
-}
-
-@include breakpoint(small) {
-	.course-dot {
-		display: none;
+	a {
+		color: inherit;
+		text-decoration-color: color-mix(in srgb, var(--ink-strong) 25%, transparent);
 	}
-	.course-container a{
-		display: block;
+
+	a:hover {
+		color: var(--accent);
+	}
+}
+
+.entry__meta {
+	color: var(--ink-muted);
+	font-size: var(--text--1);
+	letter-spacing: 0.04em;
+	margin-bottom: var(--space-3);
+	text-transform: uppercase;
+}
+
+.entry__summary {
+	color: var(--ink);
+	margin-bottom: var(--space-3);
+}
+
+.entry__points {
+	color: var(--ink-muted);
+	margin: 0;
+	padding-left: 1.1em;
+
+	li {
+		padding-left: var(--space-1);
+	}
+
+	li::marker {
+		color: var(--rule);
+	}
+}
+
+// Courses read as a list of codes and names, so they are set as a two-column
+// definition-style grid rather than a run of bullets separated by dots.
+.course-list {
+	display: grid;
+	gap: var(--space-2) var(--space-6);
+	grid-template-columns: 1fr;
+	list-style: none;
+	margin: 0;
+	max-width: var(--page-width);
+	padding: 0;
+
+	li {
+		margin: 0;
+	}
+}
+
+@media (min-width: t.$bp-nav) {
+	.course-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.course {
+	align-items: baseline;
+	color: inherit;
+	display: flex;
+	gap: var(--space-3);
+	padding: var(--space-2) 0;
+	text-decoration: none;
+
+	&:hover .course__name {
+		color: var(--accent);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+}
+
+.course__number {
+	color: var(--ink-muted);
+	flex: none;
+	font-family: var(--font-mono);
+	font-size: var(--text--1);
+	font-weight: 400;
+	letter-spacing: 0;
+	min-width: 5.5em;
+	text-transform: none;
+}
+
+.course__name {
+	color: var(--ink);
+	margin: 0;
+}
+
+.references {
+	color: var(--ink-muted);
+
+	a {
+		color: inherit;
+	}
+
+	a:hover {
+		color: var(--accent);
 	}
 }

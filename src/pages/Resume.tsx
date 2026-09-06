@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import Main from '../layouts/Main';
 import assetUrl from '../utils/assetUrl';
 
@@ -25,18 +23,18 @@ const sections = [
 const Resume = () => (
   <Main
     title="Resume"
+    fullPage
     description="Alex Kourkoumelis, Lead Software Engineer. Experience, skills, and education."
   >
-    <article className="post" id="resume">
-      <header>
-        <div className="title">
-          <h2 data-testid="heading"><Link to="/resume">Resume</Link></h2>
+    <article className="page page--wide" id="resume">
+      <header className="resume__header">
+        <div>
+          <h1 className="page__title" data-testid="heading">Resume</h1>
           {/*
-            These were <h4> elements directly under the page's <h2>, which skips
-            a heading level. They are a table of contents, so they are marked up
-            as one.
+            A table of contents, not headings. As <h4> under the page's <h1> it
+            skipped two levels for no reason.
           */}
-          <nav className="link-container" aria-label="Resume sections">
+          <nav className="resume__toc" aria-label="Resume sections">
             <ul>
               {sections.map((sec) => (
                 <li key={sec}>
@@ -44,7 +42,6 @@ const Resume = () => (
                 </li>))}
             </ul>
           </nav>
-
         </div>
         <a
           href={assetUrl('/AlexKourkoumelisResume.pdf')}
@@ -59,7 +56,6 @@ const Resume = () => (
       <Skills skills={skills} categories={categories} levels={levels} />
       <Courses data={courses} />
       <References />
-
     </article>
   </Main>
 );

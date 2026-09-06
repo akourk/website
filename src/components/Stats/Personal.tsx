@@ -2,10 +2,7 @@ import Table from './Table';
 import data from '../../data/stats/personal';
 
 const PersonalStats = () => (
-  <>
-    <h3>Some stats about me</h3>
-    <Table data={data} caption="Personal statistics" />
-  </>
+  <Table data={data} caption="Personal statistics" />
 );
 
 export default PersonalStats;

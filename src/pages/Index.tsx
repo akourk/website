@@ -7,15 +7,13 @@ const Index = () => (
     description={'Alex Kourkoumelis, Lead Software Engineer. React, TypeScript, and the '
     + 'incremental replacement of a mainframe that cannot go down.'}
   >
-    <article className="post" id="index">
-      <header>
-        <div className="title">
-          <h2 data-testid="heading"><Link to="/">Lead Software Engineer</Link></h2>
-          <p>
-            I take high-stakes systems people are afraid to touch,
-            and make them safe to change.
-          </p>
-        </div>
+    <article className="page" id="index">
+      <header className="page__header">
+        <h1 className="page__title" data-testid="heading">Lead Software Engineer</h1>
+        <p className="page__standfirst">
+          I take high-stakes systems people are afraid to touch,
+          and make them safe to change.
+        </p>
       </header>
       <p>
         I&apos;m Alex. I lead frontend architecture at{' '}
@@ -43,12 +41,6 @@ const Index = () => (
         <Link to="/projects">things I&apos;ve built</Link>, or more{' '}
         <Link to="/about">about me</Link>. If you&apos;re working on something interesting,{' '}
         <Link to="/contact">get in touch</Link>.
-      </p>
-      <p className="index-colophon">
-        <small>
-          Source for this site is <a href="https://github.com/akourk/website">on GitHub</a>,
-          built on a template by <a href="https://github.com/mldangelo/personal-site">mldangelo</a>.
-        </small>
       </p>
     </article>
   </Main>

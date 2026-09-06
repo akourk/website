@@ -1,4 +1,3 @@
-
 interface CategoryButtonProps {
   label: string;
   handleClick: (label: string) => void;
@@ -8,7 +7,7 @@ interface CategoryButtonProps {
 
 const CategoryButton = ({ handleClick, active, label }: CategoryButtonProps) => (
   <button
-    className={`skillbutton ${active[label] ? 'skillbutton-active' : ''}`}
+    className="skill-filter"
     type="button"
     // The active button is styled differently but is otherwise indistinguishable
     // to a screen reader, and colour alone cannot carry the selected state.

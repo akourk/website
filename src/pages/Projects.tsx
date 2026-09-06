@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import Main from '../layouts/Main';
 
 import Cell from '../components/Projects/Cell';
@@ -10,19 +8,21 @@ const Projects = () => (
     title="Projects"
     description="Learn about Alex Kourkoumelis's projects."
   >
-    <article className="post" id="projects">
-      <header>
-        <div className="title">
-          <h2 data-testid="heading"><Link to="/projects">Projects</Link></h2>
-          <p>A selection of projects that I&apos;m not too ashamed of</p>
-        </div>
+    <article className="page page--wide" id="projects">
+      <header className="page__header">
+        <h1 className="page__title" data-testid="heading">Projects</h1>
+        <p className="page__standfirst">
+          A selection of projects that I&apos;m not too ashamed of.
+        </p>
       </header>
-      {data.map((project) => (
-        <Cell
-          data={project}
-          key={project.title}
-        />
-      ))}
+      <ul className="project-list">
+        {data.map((project) => (
+          <Cell
+            data={project}
+            key={project.title}
+          />
+        ))}
+      </ul>
     </article>
   </Main>
 );

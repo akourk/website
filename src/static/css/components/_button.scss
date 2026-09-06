@@ -1,86 +1,35 @@
-///
-/// Future Imperfect by HTML5 UP
-/// html5up.net | @ajlkn
-/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-///
+// One button style, used for the resume download and the footer bio's call to
+// action. Solid ink rather than a colour, so it reads as an action without
+// competing with the links around it.
 
-/* Button */
+.button {
+	background: var(--ink-strong);
+	border: 1px solid var(--ink-strong);
+	border-radius: 3px;
+	color: var(--paper);
+	display: inline-block;
+	font-size: var(--text--1);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	padding: var(--space-3) var(--space-5);
+	text-decoration: none;
+	transition: background-color 120ms ease, color 120ms ease;
+	white-space: nowrap;
+}
 
-	input[type="submit"],
-	input[type="reset"],
-	input[type="button"],
-	button,
-	.button {
-		@include vendor('appearance', 'none');
-		@include vendor('transition', (
-			'background-color #{_duration(transition)} ease',
-			'box-shadow #{_duration(transition)} ease',
-			'color #{_duration(transition)} ease'
-		));
-		background-color: transparent;
-		border: 0;
-		box-shadow: inset 0 0 0 1px _palette(border);
-		color: _palette(fg-bold) !important;
-		cursor: pointer;
-		display: inline-block;
-		font-family: _font(family-heading);
-		font-size: 0.6em;
-		font-weight: _font(weight-heading-bold);
-		height: _size(element-height) * 1.75;
-		letter-spacing: _font(kerning-heading);
-		line-height: _size(element-height) * 1.75;
-		padding: 0 2.5em;
-		text-align: center;
-		text-decoration: none;
-		text-transform: uppercase;
-		white-space: nowrap;
+.button:hover {
+	background: var(--paper);
+	color: var(--ink-strong);
+}
 
-		&:hover {
-			box-shadow: inset 0 0 0 1px _palette(accent);
-			color: _palette(accent) !important;
+.button--quiet {
+	background: transparent;
+	border-color: var(--rule);
+	color: var(--ink-strong);
+}
 
-			&:active {
-				background-color: transparentize(_palette(accent), 0.95);
-			}
-		}
-
-		&:before, &:after {
-			color: _palette(fg-light);
-			position: relative;
-		}
-
-		&:before {
-			left: -1em;
-			padding: 0 0 0 0.75em;
-		}
-
-		&:after {
-			left: 1em;
-			padding: 0 0.75em 0 0;
-		}
-
-		&.fit {
-			display: block;
-			margin: 0 0 (_size(element-margin) * 0.5) 0;
-			width: 100%;
-		}
-
-		&.big {
-			font-size: 0.7em;
-			padding: 0 3em;
-		}
-
-		&.small {
-			font-size: 0.5em;
-		}
-
-		&.disabled,
-		&:disabled {
-			@include vendor('pointer-events', 'none');
-			color: _palette(border) !important;
-
-			&:before {
-				color: _palette(border) !important;
-			}
-		}
-	}
+.button--quiet:hover {
+	background: var(--paper-sunk);
+	border-color: var(--ink-muted);
+	color: var(--ink-strong);
+}

@@ -1,0 +1,93 @@
+@use '../tokens' as t;
+
+// The page shell.
+//
+// The old layout was a fixed top bar over a flex row of article plus a 22em
+// right-hand sidebar. That arrangement is the single most recognisable thing
+// about the template it came from, so it is gone. What replaces it is one
+// column: a typographic masthead, the content, and a footer that carries the
+// things the sidebar used to hold.
+
+.shell {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	max-width: var(--page-width-wide);
+	min-height: 100vh;
+	min-height: 100dvh;
+	padding: 0 var(--gutter);
+}
+
+#main {
+	flex: 1;
+	padding: var(--space-8) 0 var(--space-9);
+	width: 100%;
+}
+
+// Long-form pages sit at reading width. Pages that earn the extra room, the
+// resume chart and the project grid, opt out with .page--wide.
+.page {
+	max-width: var(--page-width);
+}
+
+.page--wide {
+	max-width: none;
+}
+
+.page__header {
+	margin-bottom: var(--space-7);
+}
+
+.page__title {
+	margin-bottom: var(--space-3);
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.15em;
+	}
+}
+
+// The line under a page title: a standfirst, a word count, a one-line framing.
+.page__standfirst {
+	color: var(--ink-muted);
+	font-family: var(--font-display);
+	font-size: var(--text-1);
+	font-style: italic;
+	line-height: 1.45;
+	max-width: 46ch;
+}
+
+// A titled block within a page: Education, Experience, Skills, Courses.
+.section {
+	border-top: 1px solid var(--rule);
+	margin-top: var(--space-8);
+	padding-top: var(--space-6);
+
+	&:first-of-type {
+		border-top: 0;
+		margin-top: 0;
+		padding-top: 0;
+	}
+}
+
+.section__title {
+	color: var(--ink-muted);
+	font-family: var(--font-text);
+	font-size: var(--text--1);
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	margin-bottom: var(--space-5);
+	text-transform: uppercase;
+}
+
+// Jump targets for the in-page navigation. Nothing is fixed at the top of the
+// viewport, so this is only breathing room, not clearance.
+.section-anchor {
+	scroll-margin-top: var(--space-6);
+}

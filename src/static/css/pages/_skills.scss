@@ -1,95 +1,125 @@
-/* Skills */
+@use '../tokens' as t;
 
-.skills .title {
-	text-align: center;
+// The skills chart.
+//
+// The old chart was a stack of 35px coloured bars with the label reversed out
+// of the fill. This keeps the bar, because a chart is the point, but makes it a
+// thin rule under a normally-set label: the reading is in the text and the bar
+// is there to be scanned.
+
+.skills-key {
+	color: var(--ink-muted);
+	display: grid;
+	font-size: var(--text--1);
+	gap: var(--space-2) var(--space-5);
+	grid-template-columns: 1fr;
+	list-style: none;
+	margin: 0 0 var(--space-6);
+	max-width: var(--page-width);
+	padding: 0;
+	counter-reset: skill-level;
+
+	li {
+		counter-increment: skill-level;
+		margin: 0;
+	}
+
+	li::before {
+		color: var(--ink-strong);
+		content: counter(skill-level) '. ';
+		font-weight: 600;
+	}
 }
 
-.skill-button-container {
-	margin: 1.5em 0;
-	text-align: center;
+@media (min-width: t.$bp-wide) {
+	.skills-key {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
-.skillbutton {
-	box-shadow: none;
-	// The outline reset here removed the only focus indicator these buttons had.
-	// _a11y.scss supplies a :focus-visible ring instead.
-	min-height: 2.75em;
+.skills-key__name {
+	color: var(--ink-strong);
+	font-weight: 600;
 }
 
-.skillbutton-active {
-	box-shadow: inset 0 0 0 1px _palette(accent);
-	color: _palette(accent) !important;
+.skill-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin-bottom: var(--space-6);
 }
 
-.skillbar {
-	position:relative;
-	display:block;
-	margin-bottom:15px;
-	width:100%;
-	background:#eee;
-	height:35px;
-	border-radius:3px;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	-webkit-transition:0.4s linear;
-	-moz-transition:0.4s linear;
-	-ms-transition:0.4s linear;
-	-o-transition:0.4s linear;
-	transition:0.4s linear;
-	-webkit-transition-property:width, background-color;
-	-moz-transition-property:width, background-color;
-	-ms-transition-property:width, background-color;
-	-o-transition-property:width, background-color;
-	transition-property:width, background-color;
+.skill-filter {
+	border: 1px solid var(--rule);
+	border-radius: 999px;
+	color: var(--ink-muted);
+	font-size: var(--text--1);
+	letter-spacing: 0.01em;
+	// Comfortably past the 24px minimum target.
+	min-height: 2rem;
+	padding: var(--space-1) var(--space-4);
+	transition: border-color 120ms ease, color 120ms ease, background-color 120ms ease;
 }
 
-
-.skillbar-title {
-	position:absolute;
-	top:0;
-	left:0;
-	font-weight:bold;
-	font-size:13px;
-	color:#fff;
-	background:#6adcfa;
-	-webkit-border-top-left-radius:3px;
-	-webkit-border-bottom-left-radius:4px;
-	-moz-border-radius-topleft:3px;
-	-moz-border-radius-bottomleft:3px;
-	border-top-left-radius:3px;
-	border-bottom-left-radius:3px;
+.skill-filter:hover {
+	border-color: var(--ink-muted);
+	color: var(--ink-strong);
 }
 
-.skillbar-title span {
-	display:block;
-	background:rgba(0, 0, 0, 0.1);
-	padding:0 20px;
-	height:35px;
-	line-height:35px;
-	-webkit-border-top-left-radius:3px;
-	-webkit-border-bottom-left-radius:3px;
-	-moz-border-radius-topleft:3px;
-	-moz-border-radius-bottomleft:3px;
-	border-top-left-radius:3px;
-	border-bottom-left-radius:3px;
+.skill-filter[aria-pressed='true'] {
+	background: var(--ink-strong);
+	border-color: var(--ink-strong);
+	color: var(--paper);
 }
 
-.skillbar-bar {
-	height:35px;
-	width:0px;
-	background:#6adcfa;
-	border-radius:3px;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
+.skill-list {
+	display: grid;
+	gap: var(--space-4) var(--space-7);
+	grid-template-columns: 1fr;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
-.skill-bar-percent {
-	position:absolute;
-	right:10px;
-	top:0;
-	// 11px at rgba(0,0,0,0.4) over the #eee track came out at roughly 3:1.
-	font-size:12px;
-	height:35px;
-	line-height:35px;
-	color:_palette(fg-bold);
+@media (min-width: t.$bp-wide) {
+	.skill-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.skill {
+	margin: 0;
+}
+
+.skill__label {
+	align-items: baseline;
+	display: flex;
+	gap: var(--space-3);
+	justify-content: space-between;
+	margin-bottom: var(--space-2);
+}
+
+.skill__name {
+	color: var(--ink-strong);
+	font-weight: 500;
+}
+
+.skill__rating {
+	color: var(--ink-muted);
+	font-size: var(--text--1);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.skill__track {
+	background: var(--paper-sunk);
+	border-radius: 999px;
+	height: 4px;
+	overflow: hidden;
+}
+
+.skill__fill {
+	border-radius: 999px;
+	display: block;
+	height: 100%;
 }

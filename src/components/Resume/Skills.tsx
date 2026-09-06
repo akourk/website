@@ -87,27 +87,27 @@ class Skills extends Component<SkillsProps, SkillsState> {
 
   override render() {
     return (
-      <div className="skills">
-        <div className="link-to" id="skills" />
-        <div className="title">
-          <h3>Skills</h3>
-          <h4>Note: I use the following definitions for &quot;skill&quot; ratings.</h4>
-          <ol className="skill-level-container">
-            {this.state.levels.map((level) => (
-              <li key={level.level}>
-                <h5>{level.title}</h5>
-                <p><i>{level.description}</i></p>
-              </li>
-            ))}
-          </ol>
-        </div>
-        <div className="skill-button-container" role="group" aria-label="Filter skills by category">
+      <section className="section" aria-labelledby="skills-title">
+        <div className="section-anchor" id="skills" />
+        <h2 className="section__title" id="skills-title">Skills</h2>
+        <p>
+          The ratings below are mine, and they mean something specific:
+        </p>
+        <ol className="skills-key">
+          {this.state.levels.map((level) => (
+            <li key={level.level}>
+              <span className="skills-key__name">{level.title}.</span>{' '}
+              {level.description}
+            </li>
+          ))}
+        </ol>
+        <div className="skill-filters" role="group" aria-label="Filter skills by category">
           {this.getButtons()}
         </div>
-        <div className="skill-row-container">
+        <ul className="skill-list">
           {this.getRows()}
-        </div>
-      </div>
+        </ul>
+      </section>
     );
   }
 }

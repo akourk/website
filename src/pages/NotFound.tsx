@@ -15,7 +15,7 @@ const PageNotFound = () => {
         <meta name="robots" content="noindex" />
       </Helmet>
       <h1 data-testid="heading">Page Not Found</h1>
-      <p>Return <Link to="/">home</Link>.</p>
+      <p>There is nothing at this address. Return <Link to="/">home</Link>.</p>
     </main>
   );
 };

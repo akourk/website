@@ -1,67 +1,29 @@
-@import 'libs/vars';
-@import 'libs/functions';
-@import 'libs/mixins';
-@import 'libs/skel';
+// Alex Kourkoumelis, akourk.github.io/website
+//
+// Written for this site. The stylesheet it replaced was html5up's Future
+// Imperfect by way of mldangelo's personal-site: a skel grid framework, a
+// vendor-prefix mixin library, a full CSS reset stacked on top of normalize,
+// and styles for a good deal of furniture this site never had.
+//
+// The order matters: tokens, then a reset, then element defaults, then the
+// layout, then the few things that genuinely need a class.
 
-// NOTE: This import was moved into index.html template
-// @import url('//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Raleway:400,800,900');
+@use 'tokens';
+@use 'reset';
+@use 'base';
+@use 'a11y';
 
-/*
-	Future Imperfect by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+@use 'layout/shell';
+@use 'layout/masthead';
+@use 'layout/footer';
 
-	@include skel-breakpoints((
-		xlarge: '(max-width: 1680px)',
-		large: '(max-width: 1280px)',
-		medium: '(max-width: 980px)',
-		small: '(max-width: 736px)',
-		xsmall: '(max-width: 480px)'
-	));
+@use 'components/button';
+@use 'components/markdown';
+@use 'components/menu';
+@use 'components/projects';
+@use 'components/stats';
 
-	@include skel-layout((
-		reset: 'full',
-		boxModel: 'border',
-		grid: ( gutters: 1em )
-	));
-
-// Base.
-
-	@import 'base/page';
-	@import 'base/typography';
-
-// Component.
-
-	@import 'components/a11y';
-	@import 'components/author';
-	@import 'components/blurb';
-	@import 'components/box';
-	@import 'components/button';
-	@import 'components/form';
-	@import 'components/icon';
-	@import 'components/image';
-	@import 'components/list';
-	@import 'components/mini-post';
-	@import 'components/post';
-	@import 'components/section';
-	@import 'components/table';
-	@import 'components/hamburger';
-	@import 'components/markdown';
-
-
-// Layout.
-
-	@import 'layout/header';
-	@import 'layout/wrapper';
-	@import 'layout/main';
-	@import 'layout/sidebar';
-	@import 'layout/intro';
-	@import 'layout/footer';
-	@import 'layout/menu';
-
-	@import 'pages/contact';
-	@import 'pages/notFound';
-	@import 'pages/resume';
-	@import 'pages/skills';
-	@import 'pages/stats';
+@use 'pages/contact';
+@use 'pages/not-found';
+@use 'pages/resume';
+@use 'pages/skills';

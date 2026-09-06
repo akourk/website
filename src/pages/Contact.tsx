@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import Main from '../layouts/Main';
 import ContactIcons from '../components/Contact/ContactIcons';
 
@@ -8,17 +6,17 @@ const Contact = () => (
     title="Contact"
     description="Get in touch with Alex Kourkoumelis by email, LinkedIn, or GitHub."
   >
-    <article className="post" id="contact">
-      <header>
-        <div className="title">
-          <h2 data-testid="heading"><Link to="/contact">Contact</Link></h2>
-        </div>
+    <article className="page" id="contact">
+      <header className="page__header">
+        <h1 className="page__title" data-testid="heading">Contact</h1>
+        <p className="page__standfirst">
+          The fastest way to reach me is email. I read everything.
+        </p>
       </header>
-      <div className="email-at">
-        <p>Please don&apos;t hesitate to email me at:</p>
-        <p><a href="mailto:akourk@icloud.com">akourk@icloud.com</a></p>
-      </div>
-      <ContactIcons />
+      <p className="contact__email">
+        <a href="mailto:akourk@icloud.com">akourk@icloud.com</a>
+      </p>
+      <ContactIcons className="contact__social" />
     </article>
   </Main>
 );

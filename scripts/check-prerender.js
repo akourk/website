@@ -25,7 +25,7 @@ const expectations = [
   { path: 'about', title: 'About | Alex Kourkoumelis', text: ['About Me', 'philosophy'] },
   { path: 'resume', title: 'Resume | Alex Kourkoumelis', text: ['Selected Courses', 'Bellevue College'] },
   { path: 'projects', title: 'Projects | Alex Kourkoumelis', text: ['Energy Emissions Dashboard', 'Loocator'] },
-  { path: 'stats', title: 'Stats | Alex Kourkoumelis', text: ['Some stats about me', 'Countries visited'] },
+  { path: 'stats', title: 'Stats | Alex Kourkoumelis', text: ['Countries visited', 'Duolingo streak'] },
   { path: 'contact', title: 'Contact | Alex Kourkoumelis', text: ['akourk@icloud.com'] },
 ];
 

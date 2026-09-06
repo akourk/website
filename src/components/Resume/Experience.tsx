@@ -1,4 +1,3 @@
-
 import Job from './Experience/Job';
 import type { Position } from '../../data/resume/positions';
 
@@ -7,18 +6,16 @@ interface ExperienceProps {
 }
 
 const Experience = ({ data = [] }: ExperienceProps) => (
-  <div className="experience">
-    <div className="link-to" id="experience" />
-    <div className="title">
-      <h3>Experience</h3>
-    </div>
+  <section className="section" aria-labelledby="experience-title">
+    <div className="section-anchor" id="experience" />
+    <h2 className="section__title" id="experience-title">Experience</h2>
     {data.map((job) => (
       <Job
         data={job}
         key={job.company}
       />
     ))}
-  </div>
+  </section>
 );
 
 export default Experience;

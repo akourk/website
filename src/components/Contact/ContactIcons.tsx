@@ -2,8 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import data from '../../data/contact';
 
-const ContactIcons = () => (
-  <ul className="icons">
+interface ContactIconsProps {
+  className?: string;
+}
+
+const ContactIcons = ({ className = '' }: ContactIconsProps) => (
+  <ul className={`social ${className}`.trim()}>
     {data.map((s) => (
       <li key={s.label}>
         {/*

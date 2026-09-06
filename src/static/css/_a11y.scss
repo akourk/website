@@ -1,0 +1,77 @@
+// Accessibility utilities. Carried over from the accessibility pass and
+// rewritten against the new tokens.
+
+// Visible to screen readers, not on screen. Used for table captions and for the
+// text half of icon-only controls.
+.screen-reader-only {
+	border: 0;
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+// Off-screen until focused. First element in the document, so it is the first
+// thing a keyboard user reaches on every page.
+.skip-link {
+	background: var(--ink-strong);
+	border-radius: 0 0 4px;
+	color: var(--paper);
+	font-size: var(--text--1);
+	font-weight: 600;
+	left: var(--gutter);
+	letter-spacing: 0.02em;
+	padding: var(--space-3) var(--space-5);
+	position: fixed;
+	text-decoration: none;
+	top: 0;
+	transform: translateY(-150%);
+	z-index: 100;
+
+	&:focus {
+		transform: translateY(0);
+	}
+}
+
+// Browsers clear outlines in enough places that it is worth stating the focus
+// ring once, for everything. :focus-visible keeps it off for mouse clicks.
+a,
+button,
+input,
+select,
+textarea,
+summary,
+[tabindex] {
+	&:focus-visible {
+		border-radius: 2px;
+		outline: 2px solid var(--accent);
+		outline-offset: 3px;
+	}
+}
+
+// #main and the page headings only ever take focus programmatically, from the
+// skip link and the route-change handler. A ring there would be noise.
+#main,
+#main h1,
+#main h2,
+.not-found h1 {
+	&:focus,
+	&:focus-visible {
+		outline: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+	}
+}

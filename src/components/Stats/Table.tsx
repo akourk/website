@@ -8,7 +8,7 @@ interface TableProps {
 }
 
 const Table = ({ data, caption }: TableProps) => (
-  <table>
+  <table className="stats-table">
     <caption className="screen-reader-only">{caption}</caption>
     <tbody>
       {data.map((pair) => (
