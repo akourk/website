@@ -2,17 +2,24 @@
  * The skills section of the resume.
  *
  * This was a chart. Every skill carried a competency from 1 to 5 that Alex had
- * assigned himself, and the page printed the scale above it so a reader knew
- * what each number was supposed to mean. The trouble with a self-awarded score
- * is that it is not evidence of anything, and it starts the one argument that
- * cannot be won in an interview: the reader either disagrees with the number or
- * asks what the missing point would take. Grouping makes the same claim without
- * handing anyone a number to dispute.
+ * assigned himself, and the page printed the scale so a reader knew what each
+ * number was supposed to mean. A self-awarded score is not evidence of
+ * anything, and it starts the one argument that cannot be won in an interview:
+ * the reader either disagrees with the number or asks what the missing point
+ * would take. Grouping makes the same claim without handing anyone a number to
+ * dispute.
  *
- * Nothing here is new. Every entry below was already on the page under the old
- * chart, so removing the scale did not quietly promote anything. What the chart
- * rated 1 or 2 sits under "Also used", which is where it honestly belongs once
- * there is no scale left to say so.
+ * Two things follow from dropping the scale, and both are deliberate.
+ *
+ * The first is that "Also used" now carries the hedge the low ratings used to.
+ * Flask was rated 1, "very limited exposure", and briefly sat beside Java and
+ * Python here, which read as a promotion it had not earned. It belongs at the
+ * bottom with the rest of the things worth mentioning and not worth leading on.
+ *
+ * The second is that a group name is the only signal left, so a name that
+ * undersells is as wrong as one that oversells. Security and threat analysis
+ * was three years of employment at Microsoft, not something picked up in
+ * passing, so it sits in a working group rather than under "Also used".
  */
 
 /** A named group of skills. One row of the list on the resume page. */
@@ -28,8 +35,11 @@ const skillGroups: SkillGroup[] = [
       'Frontend architecture',
       'API contract design',
       'engineering standards',
+      'design systems',
       'modernization planning',
       'accessibility',
+      'automated testing',
+      'AI-assisted engineering',
       'design and code review',
       'mentoring',
       'interviewing and onboarding',
@@ -42,11 +52,15 @@ const skillGroups: SkillGroup[] = [
       'JavaScript',
       'React',
       'Redux',
+      'Next.js',
       'HTML and CSS',
+      'Vite',
+      'Vitest',
+      'Testing Library',
     ],
   },
   {
-    name: 'Backend and data',
+    name: 'Backend, data, and analysis',
     items: [
       'Java',
       'Spring',
@@ -54,10 +68,11 @@ const skillGroups: SkillGroup[] = [
       'Node.js',
       'REST APIs',
       'SQL',
-      'Flask',
+      'pytest',
       'NumPy',
       'Pandas',
       'Jupyter',
+      'security and threat analysis',
     ],
   },
   {
@@ -80,10 +95,8 @@ const skillGroups: SkillGroup[] = [
       'C++',
       'C#',
       'R',
-      'ElasticSearch',
-      'data mining',
+      'Flask',
       'machine learning',
-      'security and threat analysis',
     ],
   },
 ];
