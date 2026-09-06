@@ -16,13 +16,14 @@ const sortCourses = (courses: CourseData[]) => [...courses].sort((a, b) => {
 
 const Courses = ({ data = [] }: CoursesProps) => (
   <section className="section" aria-labelledby="courses-title">
-    <div className="section-anchor" id="courses" />
-    <h2 className="section__title" id="courses-title">Selected Courses</h2>
-    <ul className="course-list">
-      {sortCourses(data).map((course) => (
-        <Course data={course} key={course.title} />
-      ))}
-    </ul>
+    <details className="resume__courses section-anchor" id="courses">
+      <summary><h2 className="section__title" id="courses-title">Selected Courses</h2></summary>
+      <ul className="course-list">
+        {sortCourses(data).map((course) => (
+          <Course data={course} key={course.title} />
+        ))}
+      </ul>
+    </details>
   </section>
 );
 

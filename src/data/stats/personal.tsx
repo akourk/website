@@ -13,36 +13,16 @@ export interface Stat {
   format?: (value: ReactNode) => ReactNode;
 }
 
-const MS_PER_DAY = 1000 * 60 * 60 * 24;
-const MS_PER_YEAR = MS_PER_DAY * 365.2421897; // ms in an average year
+// Age changes once a year; an hourly check keeps the page current without a
+// constantly animating number. Calendar dates avoid an ambiguous birth timezone.
+const ageStore = createTickingStore(() => {
+  const today = new Date();
+  const birthdayPending = today.getMonth() < 2
+    || (today.getMonth() === 2 && today.getDate() < 15);
+  return today.getFullYear() - 1990 - (birthdayPending ? 1 : 0);
+}, 1000 * 60 * 60);
 
-const BIRTH_TIME = new Date('1990-03-15T22:55:00').getTime();
-const DUOLINGO_START = new Date('2023-06-25').getTime();
-
-// Module scope, so the timer is created once and shared rather than per render.
-const ageStore = createTickingStore(
-  () => ((Date.now() - BIRTH_TIME) / MS_PER_YEAR).toFixed(11),
-  25,
-);
-const duolingoStore = createTickingStore(
-  () => Math.floor(Math.abs(Date.now() - DUOLINGO_START) / MS_PER_DAY),
-  1000 * 60 * 60, // Update every hour
-);
-
-// Both render a placeholder until the first tick. The prerendered HTML has no
-// clock in it, and the streak sits inside a link: an empty one would have no
-// accessible name, which is what the axe suite caught when this returned null.
-const PENDING = '\u2014';
-
-const Age = () => <>{useTickingValue(ageStore) ?? PENDING}</>;
-
-const DuolingoStreak = () => {
-  const days = useTickingValue(duolingoStore);
-
-  return <>{days ?? PENDING} days</>;
-};
-
-// Removed GitHub commits stat due to API limitations
+const Age = () => <>{useTickingValue(ageStore) ?? '—'}</>;
 
 const data: Stat[] = [
   {
@@ -62,8 +42,8 @@ const data: Stat[] = [
   },
   {
     key: 'duolingo',
-    label: 'Duolingo streak',
-    value: <DuolingoStreak />,
+    label: 'Started Duolingo',
+    value: <time dateTime="2023-06-25">June 25, 2023</time>,
     link: 'https://www.duolingo.com/',
   },
 ];

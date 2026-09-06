@@ -2,18 +2,12 @@ const THEME_KEY = 'theme';
 
 type Theme = 'light' | 'dark';
 
-const readStoredTheme = (): Theme | null => {
-  try {
-    const stored = localStorage.getItem(THEME_KEY);
-    return stored === 'light' || stored === 'dark' ? stored : null;
-  } catch {
-    // Private browsing, or storage disabled. Fall back to the system preference.
-    return null;
-  }
+const effectiveTheme = (): Theme => {
+  const applied = document.documentElement.dataset.theme;
+  // The DOM is the palette currently on screen, even when storage writes fail.
+  if (applied === 'light' || applied === 'dark') return applied;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
-
-const effectiveTheme = (): Theme => readStoredTheme()
-  ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
 const MoonIcon = () => (
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

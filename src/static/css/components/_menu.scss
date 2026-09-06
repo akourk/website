@@ -1,47 +1,50 @@
 @use '../tokens' as t;
 
-// The small-screen menu. react-burger-menu supplies the sliding panel; every
-// visual decision below is ours, and its own burger and cross buttons are not
-// rendered at all.
-
-.menu-toggle {
+.menu-toggle,
+.menu-close {
+	align-items: center;
 	color: var(--ink-strong);
-	display: none;
 	font-size: var(--text-1);
+	justify-content: center;
 	line-height: 1;
-	// A comfortable target, and wide enough that the glyph swap does not shift
-	// the masthead when the label changes.
 	min-height: 44px;
 	min-width: 44px;
 	padding: var(--space-2);
 }
 
+.menu-toggle { display: none; }
+.menu-close { display: inline-flex; }
+
 @media (max-width: t.$bp-nav) {
-	.menu-toggle {
-		align-items: center;
-		display: inline-flex;
-		justify-content: center;
-	}
+	.menu-toggle:enabled { display: inline-flex; }
 }
 
-// react-burger-menu writes inline styles for position and transform, so these
-// only cover what is left: the panel's surface and the links inside it.
-.bm-overlay {
-	background: var(--scrim) !important;
-}
-
-.bm-menu-wrap {
-	max-width: 88vw;
-}
-
-.bm-menu {
+.site-menu {
 	background: var(--paper);
+	border: 0;
 	border-left: 1px solid var(--rule);
-	padding: var(--space-8) var(--space-6);
+	color: var(--ink);
+	height: 100dvh;
+	inset: 0 0 0 auto;
+	margin: 0;
+	max-height: none;
+	max-width: 88vw;
+	overscroll-behavior: contain;
+	padding: var(--space-5) var(--space-6);
+	width: 20rem;
+
+	&::backdrop { background: var(--scrim); }
 }
 
-.bm-item-list {
-	margin: 0;
+html:has(.site-menu[open]) { overflow: hidden; }
+
+.site-menu__header {
+	align-items: center;
+	color: var(--ink-muted);
+	display: flex;
+	font-size: var(--text--1);
+	justify-content: space-between;
+	margin-bottom: var(--space-6);
 }
 
 .menu-list {
@@ -52,10 +55,6 @@
 	li {
 		border-top: 1px solid var(--rule);
 		margin: 0;
-
-		&:first-child {
-			border-top: 0;
-		}
 	}
 
 	a {
@@ -70,5 +69,7 @@
 	a:hover,
 	a[aria-current='page'] {
 		color: var(--accent);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
 	}
 }

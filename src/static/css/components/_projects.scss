@@ -1,36 +1,24 @@
 @use '../tokens' as t;
 
-// Projects. A plain list of entries with a wide image, rather than the
-// template's bordered cards.
-
 .project-list {
 	display: grid;
-	gap: var(--space-8);
-	grid-template-columns: 1fr;
+	gap: var(--space-7);
 	list-style: none;
 	margin: 0;
 	padding: 0;
 
-	// The grid gap does the spacing; the base list rhythm would double it.
-	li + li {
-		margin-top: 0;
-	}
-}
-
-@media (min-width: t.$bp-wide) {
-	.project-list {
-		gap: var(--space-8) var(--space-7);
-		grid-template-columns: repeat(2, 1fr);
-	}
+	li + li { margin-top: 0; }
 }
 
 .project {
-	max-width: 34rem;
+	border-top: 1px solid var(--rule);
+	max-width: none;
+	padding-top: var(--space-6);
 }
 
 .project__title {
 	font-size: var(--text-2);
-	margin-bottom: var(--space-1);
+	margin-bottom: var(--space-2);
 
 	a {
 		color: var(--ink-strong);
@@ -44,36 +32,65 @@
 	}
 }
 
+.project__subtitle {
+	color: var(--ink);
+	margin-bottom: var(--space-3);
+}
+
 .project__date {
 	color: var(--ink-muted);
 	display: block;
 	font-size: var(--text--1);
-	letter-spacing: 0.04em;
-	margin-bottom: var(--space-4);
-	text-transform: uppercase;
+	margin-bottom: var(--space-5);
 }
 
 .project__image {
 	background: var(--paper-sunk);
 	border: 1px solid var(--rule);
 	border-radius: 2px;
-	display: block;
-	margin-bottom: var(--space-4);
+	margin-bottom: var(--space-5);
 	overflow: hidden;
 
 	img {
 		aspect-ratio: 16 / 10;
 		object-fit: cover;
+		object-position: top;
 		width: 100%;
 	}
 }
 
-.project__description {
+.project__description { color: var(--ink-muted); }
+
+.project__technologies {
 	color: var(--ink-muted);
-	max-width: none;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: var(--text--1);
+	gap: var(--space-2) var(--space-4);
+	margin-top: var(--space-4);
 }
 
 .project__links {
-	font-size: var(--text--1);
-	margin-top: var(--space-3);
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-5);
+	margin-top: var(--space-5);
+}
+
+@media (min-width: t.$bp-wide) {
+	.project article:has(.project__image) {
+		column-gap: var(--space-7);
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+		> :not(.project__image) { grid-column: 1; }
+	}
+
+	.project__image {
+		align-self: start;
+		grid-column: 2;
+		grid-row: 1 / span 6;
+		margin: 0;
+	}
 }

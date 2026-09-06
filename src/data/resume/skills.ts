@@ -39,7 +39,6 @@ const skillGroups: SkillGroup[] = [
       'modernization planning',
       'accessibility',
       'automated testing',
-      'AI-assisted engineering',
       'design and code review',
       'mentoring',
       'interviewing and onboarding',

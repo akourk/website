@@ -1,49 +1,20 @@
+I’ve always liked figuring out how things work. As a kid, I took apart stereos and spent hours tinkering with an old computer my mom brought home. Putting things back together took a little more practice.
 
-## Intro
+## Finding my way to software
 
-I'm a Software Engineer based in the Seattle area. I enjoy building systems that make people’s lives better. Especially projects that intersect with health, sustainability, and social impact.
+Before software, I spent years coaching athletes and studied philosophy at Evergreen State College. Coaching taught me how much I enjoy helping someone work through something difficult. It also taught me to explain the same idea in different ways, listen carefully, and recognize when someone needs a different approach.
 
-## Currently
+I later joined Bellevue College’s first B.S. in Computer Science cohort. For my capstone, I worked with WattTime on emissions data collection and a dashboard. I had to learn several of the tools as I went, and I liked having a real problem to work on while learning them.
 
-I’m a Lead Software Engineer at State Farm, working on modernizing large-scale, customer-facing systems. I’m particularly interested in teams building thoughtful, well-crafted products where engineering quality and real-world impact matter.
+At Microsoft, I worked on detection and abuse analysis and trained new hires. I now lead frontend architecture at State Farm. The work has changed, but learning, teaching, and helping people still account for a lot of what I enjoy about it.
 
-## Background
+## Away from the keyboard
 
-I’ve taken a somewhat unconventional path into software, and I’m grateful for it. I grew up on an old Windows 3.0 machine, spent my teenage years breaking and fixing computers, and eventually found myself coaching athletics, studying philosophy, and wandering through the worlds of health sciences before committing fully to Computer Science.
+Coffee, dogs, reading, and health and fitness take up a fair amount of my time. I’m still interested in philosophy, especially how it shapes the way we think about people and technology. I like clean, functional design and the work of [Dieter Rams](https://us.gestalten.com/products/less-and-more-dieter-rams).
 
-Along the way:
+A few podcasts I return to are [The Partially Examined Life](https://partiallyexaminedlife.com/), [This American Life](https://www.thisamericanlife.org/), and [Radiolab](https://www.wnycstudios.org/shows/radiolab).
 
-- I coached for over 15 years and became a certified CrossFit Level 1 Trainer, helping grow a small gym into a thriving community.
-
-- I earned a B.A. in Philosophy from Evergreen State College, which continues to shape how I think about systems, people, ethics, and technology.
-
-- I later joined Bellevue College’s first B.S. in Computer Science cohort and completed additional coursework at 42 Silicon Valley.
-
-- For my senior project, I worked with the non-profit **WattTime**, building global emissions data pipelines used to support carbon-curving initiatives.
-
-- I joined **Microsoft** as an Engineer I, working on large-scale signal analysis, abuse detection, and improving algorithmic accuracy.
-
-- I’m currently a **Lead Software Engineer at State Farm**, helping modernize customer-facing insurance policy tools across legacy and modern platforms.
-
-Through all of this, I’ve always been driven by the same things: curiosity, a desire to understand how systems work, and a commitment to helping people, whether that’s through software, coaching, or education.
-
-## I like
-
-- Coffee
-- Dogs
-- Philosophy
-- Reading
-- Health & fitness
-- Podcasts ([The Partially Examined Life](https://partiallyexaminedlife.com/), [This American Life](https://www.thisamericanlife.org/), [Radiolab](https://www.wnycstudios.org/shows/radiolab), and others)
-- Clean, functional design ([Dieter Rams](https://us.gestalten.com/products/less-and-more-dieter-rams))
-
-## I aspire to
-
-- Keep learning
-- Build things that last
-- Help others through thoughtful, well-crafted work
-
-## Writing I enjoy
+## Reading I return to
 
 - [Hacker News](https://news.ycombinator.com/)
 - [Scott Aaronson](https://www.scottaaronson.com/blog/)

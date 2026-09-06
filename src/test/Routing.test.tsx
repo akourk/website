@@ -16,8 +16,8 @@ const renderAt = (route: string) => render(
 
 const description = () => document.querySelector('meta[name="description"]')?.getAttribute('content');
 
-// The masthead nav, the footer nav and the small-screen menu all link to every
-// route, so link queries have to say which navigation they mean.
+// Site navigation appears in more than one place, so link queries have to say
+// which navigation they mean. Project detail routes stay out of those menus.
 const mainNavLink = (name: string) => within(
   screen.getByRole('navigation', { name: 'Main' }),
 ).getByRole('link', { name });
@@ -27,6 +27,7 @@ test.each([
   ['/about', 'About | Alex Kourkoumelis', 'About Me'],
   ['/resume', 'Resume | Alex Kourkoumelis', 'Resume'],
   ['/projects', 'Projects | Alex Kourkoumelis', 'Projects'],
+  ['/projects/finledger', 'finledger case study | Alex Kourkoumelis', 'finledger'],
   ['/stats', 'Stats | Alex Kourkoumelis', 'Stats'],
   ['/contact', 'Contact | Alex Kourkoumelis', 'Contact'],
 ])('%s sets its own title, description and heading', async (route, title, heading) => {
@@ -80,4 +81,28 @@ test('client-side navigation swaps the page and its metadata', async () => {
   await waitFor(() => expect(screen.getByTestId('heading')).toHaveTextContent('Resume'));
   await waitFor(() => expect(document.title).toBe('Resume | Alex Kourkoumelis'));
   expect(description()).toContain('Experience, skills, and education');
+});
+
+test('a case study is reachable from Projects while its parent stays active in site navigation', async () => {
+  const user = userEvent.setup();
+  renderAt('/projects');
+
+  await user.click(await screen.findByRole('link', { name: 'Read case study for finledger' }));
+
+  await waitFor(() => expect(document.title).toBe('finledger case study | Alex Kourkoumelis'));
+  expect(screen.getByTestId('heading')).toHaveFocus();
+  expect(mainNavLink('Projects')).toHaveAttribute('aria-current', 'page');
+  expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
+    'href', 'https://akourk.github.io/website/projects/finledger/',
+  );
+  for (const navigation of ['Main', 'Mobile', 'Footer']) {
+    // Include the closed mobile dialog: hiding a link is not the same as keeping
+    // a detail page out of its navigation list.
+    const nav = screen.getByRole('navigation', { name: navigation, hidden: true });
+    expect(within(nav).queryByRole('link', { name: /finledger/i, hidden: true })).not.toBeInTheDocument();
+  }
+
+  await user.click(screen.getByRole('link', { name: 'Back to projects' }));
+  await waitFor(() => expect(document.title).toBe('Projects | Alex Kourkoumelis'));
+  expect(screen.getByTestId('heading')).toHaveFocus();
 });

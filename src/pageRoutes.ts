@@ -15,6 +15,7 @@ const loaders: Record<string, PageRoute['load']> = {
   '/about': () => import('./pages/About'),
   '/resume': () => import('./pages/Resume'),
   '/projects': () => import('./pages/Projects'),
+  '/projects/finledger': () => import('./pages/Finledger'),
   '/stats': () => import('./pages/Stats'),
   '/contact': () => import('./pages/Contact'),
 };

@@ -40,17 +40,21 @@ client-side routing works fine once any page has loaded.
 
 ## Accessibility
 
-Audited against WCAG 2.2 AA, and gated so it stays that way:
+Automated checks cover parts of WCAG 2.2 AA:
 
 - `src/test/Accessibility.test.tsx` runs axe-core against the prerendered
   markup of every route and fails on any violation rated serious or critical.
 - `src/test/Contrast.test.ts` computes the contrast ratios of both themes'
-  palettes in `src/static/css/_tokens.scss`, and checks that every colour in
-  the skills chart stays visible against its track in each. axe cannot check
+  palettes in `src/static/css/_tokens.scss`. axe cannot check
   contrast in jsdom, which has no layout engine, so this is done arithmetically
   instead.
 
 Both run in CI on every push, and `npm run test:a11y` runs them locally.
+
+`src/test/Interactions.test.tsx` covers theme changes when storage is unavailable,
+resume section links, and menu controls. The mobile menu uses a native modal
+dialog. Check its focus behavior, Escape key, backdrop dismissal, and layout
+in a real browser; jsdom cannot verify native modal behavior.
 
 ## Light and dark
 
@@ -93,19 +97,40 @@ Content lives in `src/data/`, separately from the components that render it:
 
 | File | What it holds |
 | --- | --- |
-| `routes.ts` | Every route. Drives the nav, the router and the prerenderer |
+| `routes.ts` | Every route. Drives the nav, the router and the prerenderer; `navigation: false` keeps detail pages out of menus |
 | `about.md` | The about page, rendered as markdown |
 | `projects.ts` | Project cards |
 | `contact.ts` | Contact links and their icons |
 | `resume/positions.ts` | Jobs |
 | `resume/degrees.ts` | Degrees |
 | `resume/courses.ts` | Selected courses |
-| `resume/skills.ts` | Skills, competency levels and category colours |
+| `resume/skills.ts` | Skills grouped by area |
 | `stats/personal.tsx` | Rows of the stats table |
 
 Adding a route means adding it to `routes.ts` and registering its page module
 in `src/pageRoutes.ts`; a route with no page module throws at import time
 rather than rendering blank.
+
+The finledger case study lives in `src/pages/Finledger.tsx` at
+`/projects/finledger/`. It has its own static HTML and metadata, and is linked
+from the project listing. Its screenshot is copied from finledger's reviewed,
+fictional demo image in `docs/img/dashboard.png`; refresh it from that source
+after validating the demo's provenance and inspecting the image.
+
+Link previews use `public/images/social-preview.png` (1200 × 630), with the
+editable SVG alongside it. Update the PNG after changing the SVG; metadata
+for both Open Graph and Twitter lives in `src/layouts/Main.tsx`.
+
+The downloadable one-page resume is `public/AlexKourkoumelisResume.pdf`. Its
+public text source is `docs/resume.md`, and `docs/AlexKourkoumelisResume.docx`
+is the editable export. The older files and detailed master notes under
+`resources/` are local reference material and are ignored by Git.
+
+To revise the resume, update the Markdown, run `python scripts/build-resume.py`
+with `python-docx` installed, and export the DOCX to PDF with Word or LibreOffice.
+Inspect the full rendered page before replacing the public PDF. Keep the
+titles, dates, and claims in `src/data/resume/positions.ts` consistent with it;
+the web page has room for more detail and earlier roles.
 
 ## Deploying
 

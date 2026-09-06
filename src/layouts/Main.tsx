@@ -25,8 +25,8 @@ const Main = ({
   children = null,
   fullPage = false,
   title,
-  description = 'Alex Kourkoumelis, Lead Software Engineer. Frontend architecture, and the '
-    + 'incremental replacement of a mainframe that cannot go down.',
+  description = 'Alex Kourkoumelis, Lead Software Engineer. Frontend architecture, React, '
+    + 'TypeScript, and modernizing customer-facing software.',
 }: MainProps) => {
   const { pathname } = useLocation();
   const mainRef = useRef<HTMLElement>(null);
@@ -57,7 +57,12 @@ const Main = ({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonical} />
-      <meta name="twitter:card" content="summary" />
+      <meta property="og:image" content={`${SITE_URL}/images/social-preview.png`} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Alex Kourkoumelis, Lead Software Engineer. Frontend architecture, React, and TypeScript." />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image" content={`${SITE_URL}/images/social-preview.png`} />
 
       <a className="skip-link" href="#main">Skip to content</a>
       <div className="shell">

@@ -3,6 +3,7 @@ import {
 } from 'react';
 import type { ReactNode, RefObject } from 'react';
 import { useLocation } from 'react-router';
+import hashTarget from '../../utils/hashTarget';
 
 /**
  * Focus management across client-side navigation.
@@ -52,16 +53,23 @@ export const RouteFocusProvider = ({ children }: { children: ReactNode }) => {
  */
 export const useFocusOnRouteChange = (container: RefObject<HTMLElement | null>) => {
   const hasNavigated = useContext(HasNavigatedContext);
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
     if (!hasNavigated) return;
 
-    const heading = container.current?.querySelector<HTMLElement>('h1, h2');
+    const anchor = hashTarget(hash);
+    if (hash && !anchor) return;
+    const heading = anchor
+      ? anchor.querySelector<HTMLElement>('h1, h2, summary')
+        ?? anchor.closest('section')?.querySelector<HTMLElement>('h2') ?? anchor
+      : container.current?.querySelector<HTMLElement>('h1, h2');
     if (!heading) return;
 
-    // Headings are not focusable by default. -1 makes them programmatically
-    // focusable without adding a tab stop.
-    heading.setAttribute('tabindex', '-1');
-    heading.focus();
-  }, [container, hasNavigated]);
+    // Add programmatic focus to headings, but preserve native controls' tab order.
+    if (!heading.matches('summary, a[href], button, input, select, textarea, [tabindex]')) {
+      heading.setAttribute('tabindex', '-1');
+    }
+    heading.focus({ preventScroll: true });
+  }, [container, hasNavigated, pathname, hash]);
 };

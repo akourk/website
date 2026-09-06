@@ -1,13 +1,20 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router';
+import { revealHashTarget } from '../../utils/hashTarget';
 
-// See https://reacttraining.com/react-router/web/guides/scroll-restoration/scroll-to-top
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    if (hash && hash !== '#') {
+      const target = revealHashTarget(hash);
+      // The lazy route's real layout retries once its anchor is mounted.
+      if (!target) return;
+      target.scrollIntoView({ block: 'start' });
+      return;
+    }
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash]);
 
   return null;
 };

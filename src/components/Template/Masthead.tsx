@@ -2,10 +2,10 @@ import { NavLink, Link } from 'react-router';
 
 import Hamburger from './Hamburger';
 import ThemeToggle from './ThemeToggle';
-import routes from '../../data/routes';
+import { navigationRoutes } from '../../data/routes';
 
-const home = routes.find((route) => route.index);
-const navRoutes = routes.filter((route) => !route.index);
+const home = navigationRoutes.find((route) => route.index);
+const navRoutes = navigationRoutes.filter((route) => !route.index);
 
 // The masthead: name, role, and the routes from src/data/routes. Type only, and
 // it scrolls away with the page rather than being pinned to the viewport.

@@ -82,6 +82,27 @@
 	margin-bottom: var(--space-3);
 }
 
+.entry__progression {
+	color: var(--ink-muted);
+	font-size: var(--text--1);
+	margin-bottom: var(--space-3);
+}
+
+.resume__courses {
+	summary {
+		cursor: pointer;
+		min-height: 44px;
+		padding: var(--space-2) 0;
+	}
+
+	.section__title {
+		display: inline;
+		margin: 0;
+	}
+
+	.course-list { margin-top: var(--space-5); }
+}
+
 .entry__points {
 	color: var(--ink-muted);
 	margin: 0;

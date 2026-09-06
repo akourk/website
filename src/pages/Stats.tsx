@@ -10,7 +10,7 @@ const Stats = () => (
     <article className="page" id="stats">
       <header className="page__header">
         <h1 className="page__title" data-testid="heading">Stats</h1>
-        <p className="page__standfirst">A few numbers, some of them ticking.</p>
+        <p className="page__standfirst">A few things beyond the resume.</p>
       </header>
       <Personal />
     </article>

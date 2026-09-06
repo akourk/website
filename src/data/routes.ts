@@ -6,7 +6,7 @@
 // navigation, which imports this file, so a page reference here would close an
 // import cycle. The page modules are attached in src/pageRoutes.ts instead.
 
-/** A path the router knows about and the navigation links to. */
+/** A path the router and prerenderer know about. */
 export interface Route {
   /** Link text in the header and hamburger menu. */
   label: string;
@@ -14,6 +14,8 @@ export interface Route {
   path: string;
   /** The site title link, rendered as the <h1> rather than a nav item. */
   index?: boolean;
+  /** Detail pages remain reachable without crowding the site navigation. */
+  navigation?: boolean;
 }
 
 const routes: Route[] = [
@@ -35,6 +37,11 @@ const routes: Route[] = [
     path: '/projects',
   },
   {
+    label: 'finledger case study',
+    path: '/projects/finledger',
+    navigation: false,
+  },
+  {
     label: 'Stats',
     path: '/stats',
   },
@@ -43,5 +50,7 @@ const routes: Route[] = [
     path: '/contact',
   },
 ];
+
+export const navigationRoutes = routes.filter((route) => route.navigation !== false);
 
 export default routes;

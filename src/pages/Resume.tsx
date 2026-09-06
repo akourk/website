@@ -1,11 +1,11 @@
 import Main from '../layouts/Main';
 import assetUrl from '../utils/assetUrl';
+import { revealHashTarget } from '../utils/hashTarget';
 
 import Education from '../components/Resume/Education';
 import Experience from '../components/Resume/Experience';
 import Skills from '../components/Resume/Skills';
 import Courses from '../components/Resume/Courses';
-import References from '../components/Resume/References';
 
 import courses from '../data/resume/courses';
 import degrees from '../data/resume/degrees';
@@ -13,11 +13,10 @@ import positions from '../data/resume/positions';
 import skillGroups from '../data/resume/skills';
 
 const sections = [
-  'Education',
   'Experience',
   'Skills',
+  'Education',
   'Courses',
-  'References',
 ];
 
 const Resume = () => (
@@ -38,7 +37,12 @@ const Resume = () => (
             <ul>
               {sections.map((sec) => (
                 <li key={sec}>
-                  <a href={`#${sec.toLowerCase()}`}>{sec}</a>
+                  <a
+                    href={`#${sec.toLowerCase()}`}
+                    onClick={() => { revealHashTarget(`#${sec.toLowerCase()}`); }}
+                  >
+                    {sec}
+                  </a>
                 </li>))}
             </ul>
           </nav>
@@ -51,11 +55,10 @@ const Resume = () => (
           Download PDF
         </a>
       </header>
-      <Education data={degrees} />
       <Experience data={positions} />
       <Skills data={skillGroups} />
+      <Education data={degrees} />
       <Courses data={courses} />
-      <References />
     </article>
   </Main>
 );

@@ -1,7 +1,7 @@
 /** A project card on the projects page. */
 export interface Project {
   title: string;
-  /** One-line framing shown under the title in the source data. */
+  /** One-line introduction shown under the title. */
   subtitle: string;
   /**
    * Path under public/, resolved against the deployment base by assetUrl.
@@ -12,8 +12,12 @@ export interface Project {
   /** ISO yyyy-mm-dd, formatted for display with dayjs. */
   date: string;
   desc: string;
+  technologies: string[];
   /** Absent while a project has nowhere public to link to. */
   link?: string;
+  linkLabel?: string;
+  /** Optional internal route with a fuller account of the engineering work. */
+  caseStudy?: string;
   /** Shown as a second link beside the title when the source is public. */
   source?: string;
 }
@@ -26,17 +30,14 @@ const data: Project[] = [
     date: '2026-09-06',
     link: 'https://akourk.github.io/finledger/',
     source: 'https://github.com/akourk/finledger',
+    caseStudy: '/projects/finledger',
+    technologies: ['Python', 'JavaScript', 'pytest'],
     desc:
-      'Raw broker CSV exports go in, a self-contained HTML dashboard comes out. '
-      + 'It handles cost basis and tax lots with FIFO and reconciles the result '
-      + 'against the broker-reported 1099s, so the numbers can be checked rather '
-      + 'than trusted. Nine broker parsers detect their own format and deduplicate '
-      + 'across overlapping exports. The dashboard is about 9,700 lines of '
-      + 'JavaScript across thirteen modules with no external libraries, and '
-      + 'axe-core runs against the rendered page in CI. Over a thousand tests, '
-      + 'none of which touch the network, and a pre-commit hook that blocks '
-      + 'accidental commits of personal data. Python and plain JavaScript, no '
-      + 'server, no database. The linked demo is fictional sample data.',
+      'Turn broker CSV exports into a portfolio dashboard you can open locally. '
+      + 'It combines transactions across nine broker formats, removes duplicates, '
+      + 'and tracks cost basis and tax lots, with reconciliation against broker '
+      + 'tax statements. Over a thousand tests check the calculations and imports. '
+      + 'The demo uses fictional data.',
   },
   {
     title: 'This website',
@@ -44,14 +45,13 @@ const data: Project[] = [
     date: '2026-09-06',
     link: 'https://akourk.github.io/website/',
     source: 'https://github.com/akourk/website',
+    linkLabel: 'Visit site',
+    technologies: ['React', 'TypeScript', 'Vite'],
     desc:
-      'React 19 and TypeScript in strict mode, built with Vite and React Router 8. '
-      + 'Every route prerenders to static HTML, so each page arrives with its own '
-      + 'title, description, and real content before any JavaScript runs, and an '
-      + 'unknown URL returns the 404 page rather than a blank one. Dark mode follows '
-      + 'the system preference with a switch to override it. It was audited against '
-      + 'WCAG 2.2 AA, and axe runs in CI alongside contrast and routing tests so the '
-      + 'result does not quietly regress.',
+      'A personal site hosted on GitHub Pages. Each page arrives as static HTML, '
+      + 'so content and navigation work before JavaScript loads. Light and dark '
+      + 'themes follow your preference. Automated checks cover accessibility, '
+      + 'color contrast, and routing.',
   },
 ];
 

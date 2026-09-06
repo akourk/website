@@ -20,7 +20,7 @@ export interface ContactLink {
 const data: ContactLink[] = [
   {
     link: 'https://github.com/akourk',
-    label: 'Github',
+    label: 'GitHub',
     icon: faGithub,
   },
   {

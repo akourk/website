@@ -98,7 +98,9 @@
 }
 
 @media (max-width: t.$bp-nav) {
-	.masthead__nav {
+	// Keep navigation available until the mobile control works, including
+	// when JavaScript is disabled or fails to load.
+	.masthead:has(.menu-toggle:enabled) .masthead__nav {
 		display: none;
 	}
 }

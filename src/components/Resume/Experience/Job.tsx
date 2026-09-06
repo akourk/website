@@ -10,6 +10,7 @@ const Job = ({ data }: JobProps) => (
       <a href={data.link}>{data.company}</a>, {data.position}
     </h3>
     <p className="entry__meta">{data.daterange}</p>
+    {data.previousRole && <p className="entry__progression">{data.previousRole}</p>}
     <p className="entry__summary">{data.description}</p>
     <ul className="entry__points">
       {data.points.map((point) => (

@@ -2,7 +2,7 @@ import { NavLink, Link } from 'react-router';
 
 import ContactIcons from '../Contact/ContactIcons';
 import assetUrl from '../../utils/assetUrl';
-import routes from '../../data/routes';
+import { navigationRoutes } from '../../data/routes';
 
 interface SiteFooterProps {
   /** The bio card is dropped on pages that are already about Alex. */
@@ -39,7 +39,7 @@ const SiteFooter = ({ showBio = true }: SiteFooterProps) => (
 
     <nav className="footer-nav" aria-label="Footer">
       <ul>
-        {routes.map((route) => (
+        {navigationRoutes.map((route) => (
           <li key={route.label}>
             <NavLink to={route.path}>{route.index ? 'Home' : route.label}</NavLink>
           </li>

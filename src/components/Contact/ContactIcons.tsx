@@ -4,9 +4,10 @@ import data from '../../data/contact';
 
 interface ContactIconsProps {
   className?: string;
+  showLabels?: boolean;
 }
 
-const ContactIcons = ({ className = '' }: ContactIconsProps) => (
+const ContactIcons = ({ className = '', showLabels = false }: ContactIconsProps) => (
   <ul className={`social ${className}`.trim()}>
     {data.map((s) => (
       <li key={s.label}>
@@ -17,6 +18,7 @@ const ContactIcons = ({ className = '' }: ContactIconsProps) => (
         */}
         <a href={s.link} aria-label={s.label}>
           <FontAwesomeIcon icon={s.icon} />
+          {showLabels && <span>{s.label}</span>}
         </a>
       </li>
     ))}

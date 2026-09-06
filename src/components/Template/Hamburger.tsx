@@ -1,27 +1,40 @@
-import { Suspense, lazy, useCallback, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router';
 
-import routes from '../../data/routes';
+import { navigationRoutes } from '../../data/routes';
 import useIsHydrated from '../../utils/useIsHydrated';
-
-const Menu = lazy(() => import('react-burger-menu/lib/menus/slide'));
 
 const MENU_ID = 'site-menu';
 
 const Hamburger = () => {
   const [open, setOpen] = useState(false);
-  // The sliding panel is unreachable without JavaScript, and renderToString
-  // cannot resolve a lazy import, so prerendering it only produced an
-  // unfinished Suspense boundary and a page of React's diagnostic text. It is
-  // mounted after hydration instead.
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
   const isHydrated = useIsHydrated();
 
-  // react-burger-menu also closes itself on Escape and on an overlay click, so
-  // the toggle's aria-expanded has to follow the menu rather than only the click.
-  const handleStateChange = useCallback(
-    ({ isOpen }: { isOpen: boolean }) => setOpen(isOpen),
-    [],
-  );
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    // The backdrop is not a DOM element. Escape and the close button provide
+    // the keyboard equivalents of tapping outside the panel.
+    const dismissBackdrop = (event: MouseEvent) => {
+      if (!dialog || event.target !== dialog) return;
+      const bounds = dialog.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right
+        || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+    };
+    const desktop = window.matchMedia('(min-width: 43.001em)');
+    const closeOnDesktop = () => {
+      if (desktop.matches) dialogRef.current?.close();
+    };
+    dialog?.addEventListener('click', dismissBackdrop);
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => {
+      dialog?.removeEventListener('click', dismissBackdrop);
+      desktop.removeEventListener('change', closeOnDesktop);
+    };
+  }, []);
+
+  const close = () => dialogRef.current?.close();
 
   return (
     <>
@@ -29,44 +42,46 @@ const Hamburger = () => {
         type="button"
         className="menu-toggle"
         aria-expanded={open}
-        aria-controls={isHydrated ? MENU_ID : undefined}
-        onClick={() => setOpen(!open)}
+        aria-controls={MENU_ID}
+        aria-haspopup="dialog"
+        disabled={!isHydrated}
+        onClick={() => {
+          dialogRef.current?.showModal();
+          setOpen(true);
+          closeRef.current?.focus();
+        }}
       >
-        <span aria-hidden="true">{open ? '✕' : '☰'}</span>
-        <span className="screen-reader-only">{open ? 'Close menu' : 'Open menu'}</span>
+        <span aria-hidden="true">☰</span>
+        <span className="screen-reader-only">Open menu</span>
       </button>
-      {isHydrated && (
-      <Suspense fallback={null}>
-        <Menu
-          right
-          isOpen={open}
-          id={MENU_ID}
-          onStateChange={handleStateChange}
-          customBurgerIcon={false}
-          customCrossIcon={false}
-        >
+      {/* Native modal behavior keeps the background inert and handles Escape
+          and focus restoration without competing with route focus management. */}
+      <dialog
+        ref={dialogRef}
+        id={MENU_ID}
+        className="site-menu"
+        aria-label="Site navigation"
+        onClose={() => setOpen(false)}
+      >
+        <div className="site-menu__header">
+          <span>Navigation</span>
+          <button ref={closeRef} type="button" className="menu-close" onClick={close}>
+            <span aria-hidden="true">✕</span>
+            <span className="screen-reader-only">Close menu</span>
+          </button>
+        </div>
+        <nav aria-label="Mobile">
           <ul className="menu-list">
-            {routes.map((route) => (
-              <li key={route.label}>
-                {/*
-                  The closed menu is aria-hidden but still in the layout, so its
-                  links have to leave the tab order too. Focusable content inside
-                  aria-hidden is an axe "aria-hidden-focus" violation and strands
-                  keyboard users in an invisible menu.
-                */}
-                <NavLink
-                  to={route.path}
-                  onClick={() => setOpen(false)}
-                  tabIndex={open ? 0 : -1}
-                >
+            {navigationRoutes.map((route) => (
+              <li key={route.path}>
+                <NavLink to={route.path} onClick={close}>
                   {route.index ? 'Home' : route.label}
                 </NavLink>
               </li>
             ))}
           </ul>
-        </Menu>
-      </Suspense>
-      )}
+        </nav>
+      </dialog>
     </>
   );
 };
