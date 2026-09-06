@@ -101,7 +101,7 @@ class Skills extends Component<SkillsProps, SkillsState> {
             ))}
           </ol>
         </div>
-        <div className="skill-button-container">
+        <div className="skill-button-container" role="group" aria-label="Filter skills by category">
           {this.getButtons()}
         </div>
         <div className="skill-row-container">

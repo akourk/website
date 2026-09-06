@@ -10,6 +10,9 @@ const CategoryButton = ({ handleClick, active, label }: CategoryButtonProps) => 
   <button
     className={`skillbutton ${active[label] ? 'skillbutton-active' : ''}`}
     type="button"
+    // The active button is styled differently but is otherwise indistinguishable
+    // to a screen reader, and colour alone cannot carry the selected state.
+    aria-pressed={active[label]}
     onClick={() => handleClick(label)}
   >
     {label}

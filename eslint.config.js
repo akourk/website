@@ -41,11 +41,6 @@ export default tseslint.config(
       '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
-      // The hamburger toggle is a <div> with an onClick and no keyboard path.
-      // These two rules were off in the old airbnb config for the same reason.
-      // Section 4 rebuilds it as a real button and turns them back on.
-      'jsx-a11y/click-events-have-key-events': 'off',
-      'jsx-a11y/no-static-element-interactions': 'off',
     },
   },
 

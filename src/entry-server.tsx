@@ -8,6 +8,13 @@ import type { PageMap } from './AppRoutes';
 import pageRoutes from './pageRoutes';
 import './static/css/main.scss';
 
+// react-helmet-async picks its client or server path from whether a global
+// `document` exists. The prerenderer runs in plain Node so it would choose
+// correctly, but the accessibility tests render these same routes inside jsdom,
+// where it would silently produce no head tags at all. This entry point is only
+// ever a server renderer, so say so rather than letting the environment decide.
+HelmetProvider.canUseDOM = false;
+
 const base = import.meta.env.BASE_URL;
 
 // Resolve every page module up front. renderToString cannot suspend, so the

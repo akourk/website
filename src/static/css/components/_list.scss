@@ -55,7 +55,14 @@
 
 				> * {
 					@include icon;
+					// WCAG 2.2 2.5.8 asks for a 24x24 minimum target. The glyph
+					// alone is smaller than that.
+					align-items: center;
 					border: 0;
+					display: inline-flex;
+					justify-content: center;
+					min-height: 24px;
+					min-width: 24px;
 
 					.label {
 						display: none;

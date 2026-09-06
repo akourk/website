@@ -1,4 +1,3 @@
-
 import type { Category, Skill } from '../../../data/resume/skills';
 
 interface SkillBarProps {
@@ -24,8 +23,13 @@ const SkillBar = ({ data, categories = [] }: SkillBarProps) => {
   return (
     <div className="skillbar clearfix">
       <div className="skillbar-title" style={titleStyle}><span>{title}</span></div>
-      <div className="skillbar-bar" style={barStyle} />
-      <div className="skill-bar-percent">{competency} / 5</div>
+      {/*
+        The bar restates the rating that the text beside it already gives, and
+        does it with colour and length alone. Hiding it keeps the chart from
+        being read out twice and keeps the meaning in the text.
+      */}
+      <div className="skillbar-bar" style={barStyle} aria-hidden="true" />
+      <div className="skill-bar-percent">{competency} out of 5</div>
     </div>
   );
 };

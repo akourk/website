@@ -9,10 +9,14 @@ const SideBar = () => {
   const { pathname } = useLocation();
 
   return (
-    <section id="sidebar">
+    <aside id="sidebar" aria-label="About Alex Kourkoumelis">
       <section id="intro">
+        {/*
+          The image is the link's only content, so an empty alt would leave the
+          link with no accessible name.
+        */}
         <Link to="/" className="logo">
-          <img src={assetUrl('/images/me.jpg')} alt="" />
+          <img src={assetUrl('/images/me.jpg')} alt="Alex Kourkoumelis" />
         </Link>
         <header>
           <h2>Alex Kourkoumelis</h2>
@@ -36,7 +40,7 @@ const SideBar = () => {
         <ContactIcons />
         <p className="copyright">&copy; Alex Kourkoumelis <Link to="/">https://akourk.github.io/website/</Link>.</p>
       </section>
-    </section>
+    </aside>
   );
 };
 

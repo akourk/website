@@ -1,0 +1,29 @@
+# Accessibility gate. Runs axe-core against the prerendered markup of every
+# route and checks the colour palette's contrast ratios arithmetically, which
+# is the part axe cannot do without a layout engine. Fails on any violation
+# axe rates serious or critical.
+
+name: Accessibility
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  axe:
+    name: axe-core and contrast
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: '.nvmrc'
+        cache: npm
+    - name: Install
+      run: npm ci
+    - name: Audit every route
+      run: npm run test:a11y

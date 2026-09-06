@@ -11,7 +11,7 @@ const Navigation = () => (
         <Link key={l.label} to={l.path}>{l.label}</Link>
       ))}
     </h1>
-    <nav className="links">
+    <nav className="links" aria-label="Main">
       <ul>
         {routes.filter((l) => !l.index).map((l) => (
           <li key={l.label}>

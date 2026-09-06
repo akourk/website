@@ -11,7 +11,12 @@ const TableRow = ({
   label, link, value = null, format = (x) => x,
 }: TableRowProps) => (
   <tr>
-    <td width="70%">{label}</td>
+    {/*
+      The label names its row, so it is a row header rather than a plain cell.
+      Without scope="row" a screen reader reads the value with no idea what it
+      is a value of.
+    */}
+    <th scope="row" className="stat-label">{label}</th>
     <td>{link ? <a href={link}>{format(value)}</a> : format(value)}</td>
   </tr>
 );

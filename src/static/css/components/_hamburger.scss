@@ -4,8 +4,19 @@
   margin-top: 0;
 }
 
+// The toggle is a real <button> now, so it needs the browser's button chrome
+// stripped back to what the surrounding header expects.
 .menu-hover {
- padding: 0 1em;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  font-size: 1em;
+  height: 3.5em;
+  line-height: 3.5em;
+  min-width: 3em;
+  padding: 0 1em;
 }
 
 .menu-hover:hover {

@@ -3,6 +3,7 @@ import type { ComponentType } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Main from './layouts/Main'; // fallback for lazy pages
+import { RouteFocusProvider } from './components/Template/RouteFocus';
 import NotFound from './pages/NotFound';
 import pageRoutes from './pageRoutes';
 
@@ -23,15 +24,17 @@ interface AppRoutesProps {
 }
 
 const AppRoutes = ({ pages = lazyPages }: AppRoutesProps) => (
-  <Suspense fallback={<Main />}>
-    <Routes>
-      {pageRoutes.map(({ path }) => {
-        const Page = pages.get(path);
-        return Page ? <Route key={path} path={path} element={<Page />} /> : null;
-      })}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  </Suspense>
+  <RouteFocusProvider>
+    <Suspense fallback={<Main />}>
+      <Routes>
+        {pageRoutes.map(({ path }) => {
+          const Page = pages.get(path);
+          return Page ? <Route key={path} path={path} element={<Page />} /> : null;
+        })}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
+  </RouteFocusProvider>
 );
 
 export default AppRoutes;

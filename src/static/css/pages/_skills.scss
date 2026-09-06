@@ -11,7 +11,9 @@
 
 .skillbutton {
 	box-shadow: none;
-	outline: none
+	// The outline reset here removed the only focus indicator these buttons had.
+	// _a11y.scss supplies a :focus-visible ring instead.
+	min-height: 2.75em;
 }
 
 .skillbutton-active {
@@ -85,9 +87,9 @@
 	position:absolute;
 	right:10px;
 	top:0;
-	font-size:11px;
+	// 11px at rgba(0,0,0,0.4) over the #eee track came out at roughly 3:1.
+	font-size:12px;
 	height:35px;
 	line-height:35px;
-	color:#444;
-	color:rgba(0, 0, 0, 0.4);
+	color:_palette(fg-bold);
 }

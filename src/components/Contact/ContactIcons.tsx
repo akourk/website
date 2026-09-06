@@ -6,7 +6,12 @@ const ContactIcons = () => (
   <ul className="icons">
     {data.map((s) => (
       <li key={s.label}>
-        <a href={s.link}>
+        {/*
+          FontAwesome renders its svg aria-hidden, so without a label these links
+          have no accessible name at all and a screen reader announces "link".
+          The label is already in the data for exactly this.
+        */}
+        <a href={s.link} aria-label={s.label}>
           <FontAwesomeIcon icon={s.icon} />
         </a>
       </li>

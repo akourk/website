@@ -41,6 +41,28 @@ test('an unknown route renders the NotFound page', async () => {
   await waitFor(() => expect(document.title).toBe('404 Not Found'));
 });
 
+test('navigation moves focus to the new page heading, but arriving does not', async () => {
+  const user = userEvent.setup();
+  renderAt('/');
+
+  await waitFor(() => expect(screen.getByTestId('heading')).toHaveTextContent('Lead Software Engineer'));
+  // Arriving on a page must not steal focus from the reader.
+  expect(document.activeElement).toBe(document.body);
+
+  await user.click(screen.getByRole('link', { name: 'Resume' }));
+
+  await waitFor(() => expect(screen.getByTestId('heading')).toHaveTextContent('Resume'));
+  await waitFor(() => expect(document.activeElement).toBe(screen.getByTestId('heading')));
+});
+
+test('the skip link points at the main landmark', () => {
+  renderAt('/');
+
+  const skip = screen.getByRole('link', { name: /skip to content/i });
+  expect(skip).toHaveAttribute('href', '#main');
+  expect(document.querySelector('main#main')).toBeInTheDocument();
+});
+
 test('client-side navigation swaps the page and its metadata', async () => {
   const user = userEvent.setup();
   renderAt('/');

@@ -1,13 +1,15 @@
-
 import TableRow from './TableRow';
 import type { Stat } from '../../data/stats/personal';
 
 interface TableProps {
   data: Stat[];
+  /** Names the table for screen readers. Visually hidden. */
+  caption: string;
 }
 
-const Table = ({ data }: TableProps) => (
+const Table = ({ data, caption }: TableProps) => (
   <table>
+    <caption className="screen-reader-only">{caption}</caption>
     <tbody>
       {data.map((pair) => (
         <TableRow

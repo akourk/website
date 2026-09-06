@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import type { ReactNode } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
@@ -6,6 +7,7 @@ import Analytics from '../components/Template/Analytics';
 import Navigation from '../components/Template/Navigation';
 import SideBar from '../components/Template/SideBar';
 import ScrollToTop from '../components/Template/ScrollToTop';
+import { useFocusOnRouteChange } from '../components/Template/RouteFocus';
 
 // Where the site actually lives. Used for absolute URLs in <link rel="canonical">
 // and the Open Graph tags, both of which crawlers need spelled out in full.
@@ -28,6 +30,9 @@ const Main = ({
     + 'incremental replacement of a mainframe that cannot go down.',
 }: MainProps) => {
   const { pathname } = useLocation();
+  const mainRef = useRef<HTMLElement>(null);
+  useFocusOnRouteChange(mainRef);
+
   const canonical = `${SITE_URL}${pathname}`;
   const fullTitle = title ? `${title} | Alex Kourkoumelis` : 'Alex Kourkoumelis';
 
@@ -46,11 +51,13 @@ const Main = ({
         <meta property="og:url" content={canonical} />
         <meta name="twitter:card" content="summary" />
       </Helmet>
+      <a className="skip-link" href="#main">Skip to content</a>
       <div id="wrapper">
         <Navigation />
-        <div id="main">
+        {/* tabIndex -1 so the skip link can land here without adding a tab stop. */}
+        <main id="main" tabIndex={-1} ref={mainRef}>
           {children}
-        </div>
+        </main>
         {fullPage ? null : <SideBar />}
       </div>
     </>

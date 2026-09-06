@@ -31,12 +31,19 @@ const Resume = () => (
       <header>
         <div className="title">
           <h2 data-testid="heading"><Link to="/resume">Resume</Link></h2>
-          <div className="link-container">
-            {sections.map((sec) => (
-              <h4 key={sec}>
-                <a href={`#${sec.toLowerCase()}`}>{sec}</a>
-              </h4>))}
-          </div>
+          {/*
+            These were <h4> elements directly under the page's <h2>, which skips
+            a heading level. They are a table of contents, so they are marked up
+            as one.
+          */}
+          <nav className="link-container" aria-label="Resume sections">
+            <ul>
+              {sections.map((sec) => (
+                <li key={sec}>
+                  <a href={`#${sec.toLowerCase()}`}>{sec}</a>
+                </li>))}
+            </ul>
+          </nav>
 
         </div>
         <a

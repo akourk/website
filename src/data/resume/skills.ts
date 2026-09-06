@@ -236,20 +236,23 @@ const skills: Skill[] = declaredSkills.map((skill) => ({
   category: [...skill.category].sort(),
 }));
 
-// this is a list of colors that I like. The length should be == to the
-// number of categories. Re-arrange this list until you find a pattern you like.
+// One colour per category, in the same order the sorted categories come out in.
+// The bars carry white text, so every one of these has to clear 4.5:1 against
+// white. The original palette had five that did not, the worst at 2.03:1. These
+// keep each original hue and drop lightness until the ratio passes; the check
+// lives in src/test/Contrast.test.ts so a future edit cannot quietly undo it.
 const colors: string[] = [
   '#6968b3',
-  '#37b1f5',
+  '#097cbd',
   '#40494e',
   '#515dd4',
-  '#e47272',
-  '#cc7b94',
-  '#3896e2',
+  '#d93a3a',
+  '#bc5373',
+  '#1d7ac5',
   '#c3423f',
-  '#d75858',
-  '#747fff',
-  '#64cb7b',
+  '#d24343',
+  '#5563ff',
+  '#2d8541',
 ];
 
 const categories: Category[] = [
