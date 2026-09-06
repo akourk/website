@@ -1,13 +1,13 @@
 
-# Intro
+## Intro
 
 I'm a Software Engineer based in the Seattle area. I enjoy building systems that make people’s lives better. Especially projects that intersect with health, sustainability, and social impact.
 
-# Currently
+## Currently
 
 I’m a Lead Software Engineer at State Farm, working on modernizing large-scale, customer-facing systems. I’m particularly interested in teams building thoughtful, well-crafted products where engineering quality and real-world impact matter.
 
-# Background
+## Background
 
 I’ve taken a somewhat unconventional path into software, and I’m grateful for it. I grew up on an old Windows 3.0 machine, spent my teenage years breaking and fixing computers, and eventually found myself coaching athletics, studying philosophy, and wandering through the worlds of health sciences before committing fully to Computer Science.
 
@@ -27,7 +27,7 @@ Along the way:
 
 Through all of this, I’ve always been driven by the same things: curiosity, a desire to understand how systems work, and a commitment to helping people, whether that’s through software, coaching, or education.
 
-# I like
+## I like
 
 - Coffee
 - Dogs
@@ -37,13 +37,13 @@ Through all of this, I’ve always been driven by the same things: curiosity, a 
 - Podcasts ([The Partially Examined Life](https://partiallyexaminedlife.com/), [This American Life](https://www.thisamericanlife.org/), [Radiolab](https://www.wnycstudios.org/shows/radiolab), and others)
 - Clean, functional design ([Dieter Rams](https://us.gestalten.com/products/less-and-more-dieter-rams))
 
-# I aspire to
+## I aspire to
 
 - Keep learning
 - Build things that last
 - Help others through thoughtful, well-crafted work
 
-# Writing I enjoy
+## Writing I enjoy
 
 - [Hacker News](https://news.ycombinator.com/)
 - [Scott Aaronson](https://www.scottaaronson.com/blog/)

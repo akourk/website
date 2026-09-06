@@ -18,10 +18,7 @@ const About = () => (
         <h1 className="page__title" data-testid="heading">About Me</h1>
         <p className="page__standfirst">In about {count} words.</p>
       </header>
-      <ReactMarkdown
-        source={markdown}
-        escapeHtml={false}
-      />
+      <ReactMarkdown>{markdown}</ReactMarkdown>
     </article>
   </Main>
 );

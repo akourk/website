@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
+
+import { createTickingStore, useTickingValue } from '../../utils/tickingStore';
 
 /** One row of the stats table. */
 export interface Stat {
@@ -12,43 +13,33 @@ export interface Stat {
   format?: (value: ReactNode) => ReactNode;
 }
 
-const Age = () => {
-  const [age, setAge] = useState<string>();
+const MS_PER_DAY = 1000 * 60 * 60 * 24;
+const MS_PER_YEAR = MS_PER_DAY * 365.2421897; // ms in an average year
 
-  const tick = () => {
-    const divisor = 1000 * 60 * 60 * 24 * 365.2421897; // ms in an average year
-    const birthTime = new Date('1990-03-15T22:55:00');
-    setAge(((Date.now() - birthTime.getTime()) / divisor).toFixed(11));
-  };
+const BIRTH_TIME = new Date('1990-03-15T22:55:00').getTime();
+const DUOLINGO_START = new Date('2023-06-25').getTime();
 
-  useEffect(() => {
-    const timer = setInterval(() => tick(), 25);
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-  return <>{age}</>;
-};
+// Module scope, so the timer is created once and shared rather than per render.
+const ageStore = createTickingStore(
+  () => ((Date.now() - BIRTH_TIME) / MS_PER_YEAR).toFixed(11),
+  25,
+);
+const duolingoStore = createTickingStore(
+  () => Math.floor(Math.abs(Date.now() - DUOLINGO_START) / MS_PER_DAY),
+  1000 * 60 * 60, // Update every hour
+);
+
+// Both render a placeholder until the first tick. The prerendered HTML has no
+// clock in it, and the streak sits inside a link: an empty one would have no
+// accessible name, which is what the axe suite caught when this returned null.
+const PENDING = '\u2014';
+
+const Age = () => <>{useTickingValue(ageStore) ?? PENDING}</>;
 
 const DuolingoStreak = () => {
-  const [days, setDays] = useState<number>();
+  const days = useTickingValue(duolingoStore);
 
-  const calculateDays = () => {
-    const startDate = new Date('2023-06-25');
-    const now = new Date();
-    const diffTime = Math.abs(now.getTime() - startDate.getTime());
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    setDays(diffDays);
-  };
-
-  useEffect(() => {
-    calculateDays();
-    const timer = setInterval(() => calculateDays(), 1000 * 60 * 60); // Update every hour
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-  return <>{days} days</>;
+  return <>{days ?? PENDING} days</>;
 };
 
 // Removed GitHub commits stat due to API limitations
