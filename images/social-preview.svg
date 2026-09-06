@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#fcfcfa"/>
+  <rect x="76" y="96" width="72" height="5" fill="#1f4ea8"/>
+  <text x="76" y="220" fill="#0c0c0f" font-family="Georgia, serif" font-size="72">Alex Kourkoumelis</text>
+  <text x="80" y="304" fill="#1b1b1f" font-family="Arial, sans-serif" font-size="36">Lead Software Engineer</text>
+  <text x="80" y="368" fill="#5a5a63" font-family="Arial, sans-serif" font-size="28">Frontend architecture · React · TypeScript</text>
+  <line x1="80" y1="476" x2="1120" y2="476" stroke="#dedbd3"/>
+  <text x="80" y="538" fill="#1f4ea8" font-family="Arial, sans-serif" font-size="26">Projects, experience, and a little about me.</text>
+</svg>
