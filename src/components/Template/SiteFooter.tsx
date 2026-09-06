@@ -16,7 +16,9 @@ const SiteFooter = ({ showBio = true }: SiteFooterProps) => (
     {showBio && (
       <div className="bio">
         <div className="bio__portrait">
-          <img src={assetUrl('/images/me.jpg')} alt="Alex Kourkoumelis" width="208" height="208" />
+          {/* The file's own dimensions, so the box reserved before it loads is the
+              shape it actually arrives in. */}
+          <img src={assetUrl('/images/me.jpg')} alt="Alex Kourkoumelis" width="296" height="296" />
         </div>
         <div>
           <h2 className="bio__name">Alex Kourkoumelis</h2>

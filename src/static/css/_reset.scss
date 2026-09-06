@@ -32,6 +32,15 @@ svg {
 	max-width: 100%;
 }
 
+// max-width on its own squashes any image carrying both a width and a height
+// attribute: the constraint shrinks the width while the attribute goes on
+// holding the height. The footer portrait is a square file and was rendering
+// 104x208 because of it. Scoped to img, since an svg sized by its own rule
+// would collapse with an auto height.
+img {
+	height: auto;
+}
+
 input,
 button,
 textarea,
