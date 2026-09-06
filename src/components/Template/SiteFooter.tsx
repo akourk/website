@@ -45,6 +45,18 @@ const SiteFooter = ({ showBio = true }: SiteFooterProps) => (
       </ul>
     </nav>
 
+    {/*
+      The resume page drops the bio card, so a project mentioned only there
+      would be missing from the one page a recruiter is most likely to open.
+      This sits with the colophon instead, which every page carries.
+    */}
+    <p className="footer-elsewhere">
+      Also on GitHub:{' '}
+      <a href="https://github.com/akourk/finledger">finledger</a>, a multi-broker
+      portfolio tracker, with a{' '}
+      <a href="https://akourk.github.io/finledger/">live demo</a>.
+    </p>
+
     <p className="colophon">
       &copy; {new Date().getFullYear()} Alex Kourkoumelis.{' '}
       <Link to="/">akourk.github.io/website</Link>.{' '}
