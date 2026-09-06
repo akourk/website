@@ -31,10 +31,12 @@ const data: Project[] = [
       + 'It handles cost basis and tax lots with FIFO and reconciles the result '
       + 'against the broker-reported 1099s, so the numbers can be checked rather '
       + 'than trusted. Nine broker parsers detect their own format and deduplicate '
-      + 'across overlapping exports. Roughly 220 tests, none of which touch the '
-      + 'network, and a pre-commit hook that blocks accidental commits of personal '
-      + 'data. Python, no server, no database. The linked demo is fictional sample '
-      + 'data.',
+      + 'across overlapping exports. The dashboard is about 9,700 lines of '
+      + 'JavaScript across thirteen modules with no external libraries, and '
+      + 'axe-core runs against the rendered page in CI. Over a thousand tests, '
+      + 'none of which touch the network, and a pre-commit hook that blocks '
+      + 'accidental commits of personal data. Python and plain JavaScript, no '
+      + 'server, no database. The linked demo is fictional sample data.',
   },
   {
     title: 'This website',
