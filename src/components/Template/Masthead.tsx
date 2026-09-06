@@ -1,6 +1,7 @@
 import { NavLink, Link } from 'react-router-dom';
 
 import Hamburger from './Hamburger';
+import ThemeToggle from './ThemeToggle';
 import routes from '../../data/routes';
 
 const home = routes.find((route) => route.index);
@@ -17,6 +18,12 @@ const Masthead = () => (
       <span className="masthead__role">Lead Software Engineer</span>
     </div>
 
+    <div className="masthead__controls">
+      <ThemeToggle />
+      <Hamburger />
+    </div>
+
+    {/* Its own row under the name, so the navigation has space to breathe. */}
     <nav className="masthead__nav" aria-label="Main">
       <ul>
         {navRoutes.map((route) => (
@@ -27,8 +34,6 @@ const Masthead = () => (
         ))}
       </ul>
     </nav>
-
-    <Hamburger />
   </header>
 );
 

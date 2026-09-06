@@ -39,12 +39,23 @@ Audited against WCAG 2.2 AA, and gated so it stays that way:
 
 - `src/test/Accessibility.test.tsx` runs axe-core against the prerendered
   markup of every route and fails on any violation rated serious or critical.
-- `src/test/Contrast.test.ts` computes the contrast ratios of the palette in
-  `src/static/css/_tokens.scss` and of every colour in the skills chart. axe
-  cannot check contrast in jsdom, which has no layout engine, so this is done
-  arithmetically instead.
+- `src/test/Contrast.test.ts` computes the contrast ratios of both themes'
+  palettes in `src/static/css/_tokens.scss`, and checks that every colour in
+  the skills chart stays visible against its track in each. axe cannot check
+  contrast in jsdom, which has no layout engine, so this is done arithmetically
+  instead.
 
 Both run in CI on every push, and `npm run test:a11y` runs them locally.
+
+## Light and dark
+
+The site follows the system preference, and the switch in the masthead overrides
+it and persists the choice. A small inline script in `index.html` applies a
+saved theme before the first paint, because as a module it would run a frame
+late and a reader who chose dark would see the light page flash first.
+
+Both themes are one variable swap in `src/static/css/_tokens.scss`, and
+`src/test/Contrast.test.ts` checks the ratios for both.
 
 ## Running it
 

@@ -1,10 +1,7 @@
 // axe cannot check colour contrast in jsdom: there is no layout engine, so it
 // reports every contrast rule as "incomplete" rather than pass or fail. The
-// ratios are arithmetic, though, so they can be checked directly.
-//
-// This covers the pairs that actually appear on the page. The skill chart is the
-// interesting one: it draws white text on a category colour, and five of the
-// eleven original colours failed, the worst at 2.03:1.
+// ratios are arithmetic, though, so they can be checked directly, for both
+// themes, against the token values the stylesheet actually uses.
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, test } from 'vitest';
@@ -15,6 +12,35 @@ import { categories } from '../data/resume/skills';
 // empty strings, `?raw` included, because it does not process CSS by default.
 // Vitest runs with the project root as its working directory.
 const tokens = readFileSync(resolve('src/static/css/_tokens.scss'), 'utf8');
+
+/**
+ * The two token blocks in _tokens.scss: the `:root` rule holds the light theme,
+ * the `dark-tokens` mixin holds what the dark theme overrides. Both end at a
+ * closing brace in the first column.
+ */
+const block = (opener: string) => {
+  const start = tokens.indexOf(opener);
+  if (start === -1) throw new Error(`No "${opener}" block in _tokens.scss`);
+  const end = tokens.indexOf('\n}', start);
+  return tokens.slice(start, end);
+};
+
+const light = block(':root {');
+const dark = block('@mixin dark-tokens {');
+
+const colorFrom = (source: string, name: string) => {
+  const match = new RegExp(`^\\s*--${name}:\\s*(#[0-9a-fA-F]{3,8});`, 'm').exec(source);
+  return match?.[1];
+};
+
+/** A theme's value for a token, falling back to the light value it inherits. */
+const palette = (theme: 'light' | 'dark', name: string): string => {
+  const value = theme === 'dark'
+    ? colorFrom(dark, name) ?? colorFrom(light, name)
+    : colorFrom(light, name);
+  if (!value) throw new Error(`No --${name} colour in _tokens.scss`);
+  return value;
+};
 
 const channel = (value: number) => {
   const v = value / 255;
@@ -33,41 +59,54 @@ export const contrastRatio = (a: string, b: string) => {
   return (lighter + 0.05) / (darker + 0.05);
 };
 
-/** Reads a colour custom property so the test tracks the real token. */
-const palette = (name: string) => {
-  const match = new RegExp(`^\\s*--${name}:\\s*(#[0-9a-fA-F]{3,8});`, 'm').exec(tokens);
-  if (!match) throw new Error(`No --${name} colour in _tokens.scss`);
-  return match[1];
-};
-
 const AA_TEXT = 4.5;
+const AA_NON_TEXT = 3;
+const themes = ['light', 'dark'] as const;
 
-describe('palette contrast, WCAG 2.2 AA', () => {
-  test.each([
-    ['ink', 'paper'],
-    ['ink', 'paper-sunk'],
-    ['ink-strong', 'paper'],
-    ['ink-muted', 'paper'],
-    ['ink-muted', 'paper-sunk'],
-    ['accent', 'paper'],
-    ['accent', 'paper-sunk'],
-    ['accent-strong', 'paper'],
-    // Reversed out: the button and the active filter chip.
-    ['paper', 'ink-strong'],
-  ])('%s on %s clears 4.5:1', (fg, bg) => {
-    const ratio = contrastRatio(palette(fg), palette(bg));
-    expect(ratio, `${fg} (${palette(fg)}) on ${bg} (${palette(bg)}) is ${ratio.toFixed(2)}:1`)
+const textPairs = [
+  ['ink', 'paper'],
+  ['ink', 'paper-sunk'],
+  ['ink-strong', 'paper'],
+  ['ink-muted', 'paper'],
+  ['ink-muted', 'paper-sunk'],
+  ['accent', 'paper'],
+  ['accent', 'paper-sunk'],
+  ['accent-strong', 'paper'],
+  // Reversed out: the download button and the active filter chip.
+  ['paper', 'ink-strong'],
+] as const;
+
+describe.each(themes)('%s theme, WCAG 2.2 AA', (theme) => {
+  test.each(textPairs)('%s on %s clears 4.5:1', (fg, bg) => {
+    const [a, b] = [palette(theme, fg), palette(theme, bg)];
+    const ratio = contrastRatio(a, b);
+    expect(ratio, `${theme}: ${fg} (${a}) on ${bg} (${b}) is ${ratio.toFixed(2)}:1`)
       .toBeGreaterThanOrEqual(AA_TEXT);
+  });
+
+  // 1.4.11: the edge of a control is how you know it is one.
+  test('control borders clear 3:1 against the page', () => {
+    const [border, bg] = [palette(theme, 'control-border'), palette(theme, 'paper')];
+    const ratio = contrastRatio(border, bg);
+    expect(ratio, `${theme}: control-border (${border}) on paper (${bg}) is ${ratio.toFixed(2)}:1`)
+      .toBeGreaterThanOrEqual(AA_NON_TEXT);
   });
 });
 
 describe('skill chart contrast', () => {
+  // No text is drawn on these bars, so the requirement is not 4.5:1 for text but
+  // 1.4.11's 3:1 for non-text: each bar has to be visible against its track. The
+  // track is near-white in one theme and near-black in the other, so a colour
+  // has to clear it both ways.
   test.each(categories.map((c) => [c.name, c.color]))(
-    '%s bars carry white text at 4.5:1 or better',
+    '%s stays visible against the track in both themes',
     (name, color) => {
-      const ratio = contrastRatio(color, '#ffffff');
-      expect(ratio, `${name} (${color}) against white text is ${ratio.toFixed(2)}:1`)
-        .toBeGreaterThanOrEqual(AA_TEXT);
+      for (const theme of themes) {
+        const track = palette(theme, 'paper-sunk');
+        const ratio = contrastRatio(color, track);
+        expect(ratio, `${theme}: ${name} (${color}) on the track (${track}) is ${ratio.toFixed(2)}:1`)
+          .toBeGreaterThanOrEqual(AA_NON_TEXT);
+      }
     },
   );
 

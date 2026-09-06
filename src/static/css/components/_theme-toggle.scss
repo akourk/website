@@ -1,0 +1,49 @@
+// The light/dark switch.
+//
+// Both labels are in the markup and CSS decides which one is live, mirroring the
+// three rules in _tokens.scss that pick the palette. That keeps the button
+// correct in prerendered HTML, before any JavaScript has run.
+
+.theme-toggle {
+	align-items: center;
+	border: 1px solid transparent;
+	border-radius: 999px;
+	color: var(--ink-muted);
+	display: inline-flex;
+	justify-content: center;
+	// Comfortably past WCAG 2.2's 24x24 minimum target.
+	min-height: 40px;
+	min-width: 40px;
+	transition: color 120ms ease, border-color 120ms ease;
+}
+
+.theme-toggle:hover {
+	border-color: var(--control-border);
+	color: var(--ink-strong);
+}
+
+.theme-toggle__option {
+	align-items: center;
+	display: inline-flex;
+}
+
+// Default, and the light theme: offer dark.
+.theme-toggle__to-dark { display: inline-flex; }
+.theme-toggle__to-light { display: none; }
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme='light']) {
+		.theme-toggle__to-dark { display: none; }
+		.theme-toggle__to-light { display: inline-flex; }
+	}
+}
+
+:root[data-theme='dark'] {
+	.theme-toggle__to-dark { display: none; }
+	.theme-toggle__to-light { display: inline-flex; }
+}
+
+:root[data-theme='light'] {
+	.theme-toggle__to-dark { display: inline-flex; }
+	.theme-toggle__to-light { display: none; }
+}

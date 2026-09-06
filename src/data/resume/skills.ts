@@ -237,22 +237,24 @@ const skills: Skill[] = declaredSkills.map((skill) => ({
 }));
 
 // One colour per category, in the same order the sorted categories come out in.
-// The bars carry white text, so every one of these has to clear 4.5:1 against
-// white. The original palette had five that did not, the worst at 2.03:1. These
-// keep each original hue and drop lightness until the ratio passes; the check
-// lives in src/test/Contrast.test.ts so a future edit cannot quietly undo it.
+// Nothing is written on these bars, so what matters is that each is visible
+// against the track it sits on, in both themes: WCAG 1.4.11's 3:1 for non-text.
+// That is a narrower band than it sounds, since the track is near-white in one
+// theme and near-black in the other. Each keeps the hue it started with and
+// takes the lightness that maximises the worse of the two ratios, which lands
+// them all around 3.8:1 either way. src/test/Contrast.test.ts checks it.
 const colors: string[] = [
-  '#6968b3',
-  '#097cbd',
-  '#40494e',
-  '#515dd4',
-  '#d93a3a',
-  '#bc5373',
-  '#1d7ac5',
-  '#c3423f',
-  '#d24343',
-  '#5563ff',
-  '#2d8541',
+  '#7372b8',
+  '#097fc2',
+  '#6c7c84',
+  '#6570d9',
+  '#db4242',
+  '#be5877',
+  '#1e7dca',
+  '#c95451',
+  '#d34949',
+  '#5b68ff',
+  '#2f8a43',
 ];
 
 const categories: Category[] = [

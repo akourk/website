@@ -27,7 +27,7 @@
 // react-burger-menu writes inline styles for position and transform, so these
 // only cover what is left: the panel's surface and the links inside it.
 .bm-overlay {
-	background: color-mix(in srgb, var(--ink-strong) 45%, transparent) !important;
+	background: var(--scrim) !important;
 }
 
 .bm-menu-wrap {

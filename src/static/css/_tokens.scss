@@ -1,10 +1,13 @@
 // Design tokens.
 //
 // Everything downstream reads from here. Colours are custom properties so they
-// are inspectable in the browser and so the contrast test can parse them out of
-// this one file; breakpoints stay Sass because media queries cannot use them.
+// are inspectable in the browser, so the two themes are one variable swap, and
+// so the contrast test can parse the real values out of this one file;
+// breakpoints stay Sass because media queries cannot use custom properties.
 
 :root {
+	color-scheme: light;
+
 	// Paper and ink, rather than white and black. The page is very slightly warm
 	// so long stretches of text do not glare, and the text is not pure black,
 	// which reads as harsh at this size.
@@ -13,7 +16,11 @@
 	--ink: #1b1b1f;
 	--ink-strong: #0c0c0f;
 	--ink-muted: #5a5a63;
+	// Hairlines between sections. Decorative, so not held to a contrast ratio.
 	--rule: #dedbd3;
+	// The edge of a control, which WCAG 1.4.11 does hold to 3:1.
+	--control-border: #928d87;
+	--scrim: rgba(12, 12, 15, 0.45);
 	--accent: #1f4ea8;
 	--accent-strong: #15366f;
 
@@ -50,6 +57,40 @@
 	--page-width: 46rem;
 	--page-width-wide: 62rem;
 	--gutter: clamp(1.25rem, 5vw, 3rem);
+}
+
+// The dark theme is the same page with the ink and the paper swapped. Near-black
+// rather than black, warm-neutral rather than blue, and the text a shade off
+// white: full-strength white on true black is the combination that smears.
+@mixin dark-tokens {
+	color-scheme: dark;
+
+	--paper: #131316;
+	--paper-sunk: #1e1e23;
+	--ink: #e6e4df;
+	--ink-strong: #f7f6f3;
+	--ink-muted: #a2a0a8;
+	--rule: #33333b;
+	--control-border: #65646f;
+	--scrim: rgba(0, 0, 0, 0.6);
+	// The light theme's blue is far too dark to sit on this background, so the
+	// accent inverts along with everything else.
+	--accent: #8fb6f5;
+	--accent-strong: #b6cffa;
+}
+
+// Follow the system unless the reader has explicitly asked for light.
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme='light']) {
+		@include dark-tokens;
+	}
+}
+
+// An explicit choice wins over the system, in both directions. These come after
+// the media query on purpose: the selectors have equal specificity, so source
+// order is what decides.
+:root[data-theme='dark'] {
+	@include dark-tokens;
 }
 
 // Breakpoints, named for what changes rather than for device sizes.
