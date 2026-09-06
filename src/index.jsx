@@ -12,8 +12,10 @@ const StrictApp = () => (
 const rootElement = document.getElementById('root');
 
 // Prerendered HTML is served for every route, so hydrate when markup is already
-// present and fall back to a fresh render (dev server, empty shell) when it is not.
-if (rootElement.hasChildNodes()) {
+// present and fall back to a fresh render when it is not. The test is on element
+// children, not child nodes: the dev server ships the shell with the
+// <!--app-html--> placeholder still in it, and a comment node is a child node.
+if (rootElement.childElementCount > 0) {
   hydrateRoot(rootElement, <StrictApp />);
 } else {
   createRoot(rootElement).render(<StrictApp />);

@@ -28,7 +28,9 @@ jobs:
     - run: npm ci
     - name: Lint
       run: npm run lint
-    - name: Build
+    - name: Build and Statically Render
       run: npm run build
+    - name: Verify prerendered routes
+      run: npm run check:prerender
     - name: Test
       run: npm test
