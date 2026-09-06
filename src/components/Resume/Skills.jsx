@@ -70,7 +70,7 @@ class Skills extends Component {
       buttons.All = !Object.keys(prevState.buttons).some((key) => buttons[key]);
       return { buttons };
     });
-  }
+  };
 
   render() {
     return (

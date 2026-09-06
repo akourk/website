@@ -2,14 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import ContactIcons from '../Contact/ContactIcons';
-
-const { PUBLIC_URL } = process.env; // set automatically from package.json:homepage
+import assetUrl from '../../utils/assetUrl';
 
 const SideBar = () => (
   <section id="sidebar">
     <section id="intro">
       <Link to="/" className="logo">
-        <img src={`${PUBLIC_URL}/images/me.jpg`} alt="" />
+        <img src={assetUrl('/images/me.jpg')} alt="" />
       </Link>
       <header>
         <h2>Alex Kourkoumelis</h2>

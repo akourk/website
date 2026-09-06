@@ -1,67 +1,63 @@
 {
   "name": "website",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "homepage": "https://akourk.github.io/website/",
   "license": "MIT",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/akourk/website.git"
   },
   "engines": {
-    "node": ">=20.x"
+    "node": ">=22.12"
   },
   "scripts": {
-    "build": "rimraf ./build && react-scripts build",
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint $(git ls-files '*.js' '*.jsx')",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "lint": "eslint $(git ls-files '*.js')",
-    "test": "react-scripts test --watchAll=false",
-    "analyze": "npm run build && source-map-explorer build/static/js/*.chunk.js"
+    "deploy": "gh-pages -d dist -t"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.3.0",
-    "@fortawesome/free-brands-svg-icons": "^6.1.1",
-    "@fortawesome/free-regular-svg-icons": "^6.1.1",
-    "@fortawesome/free-solid-svg-icons": "^6.3.0",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "dayjs": "^1.11.3",
-    "gh-pages": "^6.3.0",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "dayjs": "^1.11.13",
     "prop-types": "^15.8.1",
-    "raw.macro": "^0.4.2",
     "react": "^18.3.1",
     "react-burger-menu": "^3.1.0",
     "react-dom": "^18.3.1",
     "react-ga": "^3.3.0",
     "react-helmet-async": "^1.3.0",
     "react-markdown": "^5.0.3",
-    "react-router-dom": "^6.28.0",
-    "react-scripts": "^5.0.1",
-    "react-snap": "^0.2.0",
-    "rimraf": "^3.0.2"
+    "react-router-dom": "^6.28.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.25.9",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^14.3.1",
-    "eslint": "^7.19.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "eslint": "^8.57.1",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "6.5.1",
-    "eslint-plugin-react": "^7.30.0",
-    "sass": "^1.52.3",
-    "source-map-explorer": "^2.5.2"
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "gh-pages": "^6.3.0",
+    "jsdom": "^29.1.1",
+    "sass": "^1.104.0",
+    "vite": "^8.2.2",
+    "vitest": "^5.0.0"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
 }

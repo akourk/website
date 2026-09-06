@@ -1,10 +1,10 @@
 {
   "extends": "airbnb",
-  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "requireConfigFile": false,
-    "babelOptions": {
-      "presets": ["@babel/preset-react"]
+    "ecmaVersion": 2022,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
     }
   },
   "env": {
@@ -17,6 +17,10 @@
       "components": ["Link"],
       "specialLink": ["to", "hrefLeft", "hrefRight"],
       "aspects": ["noHref", "invalidHref", "preferButton"]
+    }],
+    "import/no-unresolved": ["error", { "ignore": ["\\?raw$"] }],
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": ["vite.config.js", "scripts/**", "src/test/**", "**/*.test.{js,jsx}"]
     }],
     "jsx-a11y/click-events-have-key-events": 0,
     "jsx-a11y/href-no-hash": "off",
@@ -40,6 +44,21 @@
     }],
     "linebreak-style": 0,
     "react/require-default-props": 0
+  },
+  "overrides": [
+    {
+      "files": ["vite.config.js", "scripts/**/*.js"],
+      "rules": {
+        "import/no-unresolved": 0
+      }
+    }
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx"]
+      }
+    }
   },
   "plugins": [
     "react"

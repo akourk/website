@@ -2,17 +2,17 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
-const { NODE_ENV, REACT_APP_GA_TRACKING_ID } = process.env;
+const { PROD, VITE_GA_TRACKING_ID } = import.meta.env;
 
-if (NODE_ENV === 'production') {
-  ReactGA.initialize(REACT_APP_GA_TRACKING_ID);
+if (PROD && VITE_GA_TRACKING_ID) {
+  ReactGA.initialize(VITE_GA_TRACKING_ID);
 }
 
 const Analytics = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (NODE_ENV === 'production') {
+    if (PROD && VITE_GA_TRACKING_ID) {
       ReactGA.set({
         page: pathname,
       });

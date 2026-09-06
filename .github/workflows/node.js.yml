@@ -1,5 +1,5 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# Installs dependencies, lints, builds and tests the site on every push and PR.
+# See: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: Node.js CI
 
@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x, 22.x]
+        node-version: [22.x, 24.x]
 
     steps:
     - uses: actions/checkout@v4
@@ -24,14 +24,11 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
+        cache: npm
     - run: npm ci
     - name: Lint
       run: npm run lint
-    - name: Build and Statically Render
-      run: npm run predeploy
-      env:
-        NODE_ENV: development
+    - name: Build
+      run: npm run build
     - name: Test
       run: npm test
-      env:
-        NODE_ENV: development

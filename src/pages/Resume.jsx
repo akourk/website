@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Main from '../layouts/Main';
+import assetUrl from '../utils/assetUrl';
 
 import Education from '../components/Resume/Education';
 import Experience from '../components/Resume/Experience';
@@ -40,7 +41,7 @@ const Resume = () => (
 
         </div>
         <a
-          href={`${process.env.PUBLIC_URL}/AlexKourkoumelisResume.pdf`}
+          href={assetUrl('/AlexKourkoumelisResume.pdf')}
           download="AlexKourkoumelisResume.pdf"
           className="button"
         >

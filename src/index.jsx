@@ -11,7 +11,8 @@ const StrictApp = () => (
 
 const rootElement = document.getElementById('root');
 
-// hydrateRoot is required by react-snap.
+// Prerendered HTML is served for every route, so hydrate when markup is already
+// present and fall back to a fresh render (dev server, empty shell) when it is not.
 if (rootElement.hasChildNodes()) {
   hydrateRoot(rootElement, <StrictApp />);
 } else {

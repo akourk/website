@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
+import assetUrl from '../../utils/assetUrl';
+
 const Cell = ({ data }) => (
   <div className="cell-container">
     <article className="mini-post">
@@ -10,7 +12,7 @@ const Cell = ({ data }) => (
         <time className="published">{dayjs(data.date).format('MMMM, YYYY')}</time>
       </header>
       <a href={data.link} className="image">
-        <img src={`${process.env.PUBLIC_URL}${data.image}`} alt={data.title} />
+        <img src={assetUrl(data.image)} alt={data.title} />
       </a>
       <div className="description">
         <p>{data.desc}</p>
