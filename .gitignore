@@ -46,6 +46,12 @@ build/
 # OSX
 .DS_Store
 
+# macOS file sync (iCloud Drive and friends) duplicates files it thinks have
+# conflicted, as "main 2.scss", "ThemeToggle 2.tsx" and so on. They are exact
+# copies of files that are already tracked, and one has already been staged by
+# accident. Nothing in a source tree is legitimately named this way.
+* [0-9].*
+
 # Nohup
 nohup.out
 
