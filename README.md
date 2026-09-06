@@ -20,8 +20,13 @@ The build runs in three steps:
 1. `vite build` produces the client bundle and the HTML shell.
 2. `vite build --ssr` produces a server bundle exporting a `render(path)`.
 3. `scripts/prerender.js` renders every route in `src/data/routes.ts` and
-   writes `dist/<route>/index.html`, injecting the markup and the
-   react-helmet-async head tags into the shell.
+   writes `dist/<route>/index.html`, injecting the markup into the shell.
+
+Per-page `<title>`, `<meta>` and `<link rel="canonical">` are plain elements
+rendered by the layout. React 19 hoists them into `<head>` on the client, and
+in a server render emits them ahead of the markup, which `src/entry-server.tsx`
+splits off so the prerenderer can put them in the shell's head. No metadata
+library involved.
 
 Unknown routes render the NotFound page into `dist/404.html`, which GitHub
 Pages serves with a 404 status. No redirect hack. The client hydrates the
@@ -59,7 +64,7 @@ Both themes are one variable swap in `src/static/css/_tokens.scss`, and
 
 ## Running it
 
-Node 22.12 or newer; `.nvmrc` pins the major.
+Node 22.22 or newer; `.nvmrc` pins the major.
 
 ```bash
 nvm install
@@ -113,7 +118,7 @@ There are no environment variables to set.
 
 ## Built with
 
-Vite, React 18, React Router 6, TypeScript, Sass, Vitest and axe-core.
+Vite, React 19, React Router 8, TypeScript, Sass, Vitest and axe-core.
 Type is [Newsreader](https://fonts.google.com/specimen/Newsreader) and
 [Inter](https://fonts.google.com/specimen/Inter).
 

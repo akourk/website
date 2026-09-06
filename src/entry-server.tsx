@@ -1,19 +1,10 @@
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
-import { HelmetProvider } from 'react-helmet-async';
-import type { HelmetServerState } from 'react-helmet-async';
 
 import AppRoutes from './AppRoutes';
 import type { PageMap } from './AppRoutes';
 import pageRoutes from './pageRoutes';
 import './static/css/main.scss';
-
-// react-helmet-async picks its client or server path from whether a global
-// `document` exists. The prerenderer runs in plain Node so it would choose
-// correctly, but the accessibility tests render these same routes inside jsdom,
-// where it would silently produce no head tags at all. This entry point is only
-// ever a server renderer, so say so rather than letting the environment decide.
-HelmetProvider.canUseDOM = false;
 
 const base = import.meta.env.BASE_URL;
 
@@ -27,11 +18,31 @@ const loadPages = async (): Promise<PageMap> => new Map(
 
 let pagesPromise: Promise<PageMap> | null = null;
 
+/**
+ * React 19 hoists <title>, <meta>, <link>, <style> and <script> rendered
+ * anywhere in the tree, and in a server render it emits them as a prefix, ahead
+ * of the component's own markup. Splitting that prefix off is what lets the
+ * prerenderer put them in the shell's <head> where a crawler will read them.
+ */
+const HOISTED = /^\s*<(title|meta|link|style|script)\b[^>]*(?:\/>|>[\s\S]*?<\/\1>)/;
+
+const splitHoistedHead = (rendered: string) => {
+  const head: string[] = [];
+  let rest = rendered;
+
+  for (let match = HOISTED.exec(rest); match; match = HOISTED.exec(rest)) {
+    head.push(match[0].trim());
+    rest = rest.slice(match[0].length);
+  }
+
+  return { head: head.join('\n    '), html: rest };
+};
+
 export interface RenderResult {
-  /** Markup for #root. */
+  /** Markup for #root, with the hoisted metadata removed. */
   html: string;
-  /** The page's title, meta and link tags, ready to serialise into <head>. */
-  helmet: HelmetServerState;
+  /** The page's title, meta and link tags, ready to place in <head>. */
+  head: string;
 }
 
 /**
@@ -44,22 +55,21 @@ export const render = async (path: string): Promise<RenderResult> => {
   pagesPromise = pagesPromise ?? loadPages();
   const pages = await pagesPromise;
 
-  const helmetContext: { helmet?: HelmetServerState } = {};
   const location = `${base}${path.replace(/^\/+/, '')}`;
 
-  const html = renderToString(
-    <HelmetProvider context={helmetContext}>
-      <StaticRouter basename={base} location={location}>
-        <AppRoutes pages={pages} />
-      </StaticRouter>
-    </HelmetProvider>,
+  const rendered = renderToString(
+    <StaticRouter basename={base} location={location}>
+      <AppRoutes pages={pages} />
+    </StaticRouter>,
   );
 
-  if (!helmetContext.helmet) {
-    throw new Error(`react-helmet-async produced no head tags for ${path}`);
+  const { head, html } = splitHoistedHead(rendered);
+
+  if (!head.includes('<title')) {
+    throw new Error(`No <title> was hoisted out of the render for ${path}`);
   }
 
-  return { html, helmet: helmetContext.helmet };
+  return { html, head };
 };
 
 // Re-exported so the prerenderer gets the route list from the same bundle it

@@ -33,12 +33,6 @@ const renderInto = (html, head) => {
     .replace('<!--app-html-->', html);
 };
 
-const headTagsFrom = (helmet) => [
-  helmet.title.toString(),
-  helmet.meta.toString(),
-  helmet.link.toString(),
-].filter(Boolean).join('\n    ');
-
 const write = async (file, contents) => {
   await mkdir(dirname(file), { recursive: true });
   await writeFile(file, contents, 'utf8');
@@ -52,10 +46,12 @@ const pages = [
 ];
 
 for (const { route, file } of pages) {
-  const { html, helmet } = await render(route);
-  const head = headTagsFrom(helmet);
+  // React 19 hoists the page's <title> and <meta> to the front of the render
+  // output; entry-server splits them off so they can go in the shell's head.
+  const { html, head } = await render(route);
 
-  // The shell already has a <title>; drop it so helmet's is the only one.
+  // The shell carries a placeholder <title> so the page has one before the
+  // route's own is injected. Drop it, or the document would have two.
   const shell = renderInto(html, head).replace('<title>Alex Kourkoumelis</title>\n    ', '');
 
   await write(file, shell);

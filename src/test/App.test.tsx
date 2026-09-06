@@ -7,7 +7,6 @@ import { render, screen } from '@testing-library/react';
 import type { ReactElement, ReactNode } from 'react';
 
 import { BrowserRouter } from 'react-router';
-import { HelmetProvider } from 'react-helmet-async';
 
 import About from '../pages/About';
 import Contact from '../pages/Contact';
@@ -56,13 +55,8 @@ const pages: Page[] = [
   },
 ];
 
-// HelmetProvider used to live inside Main. It moved to the app root so that the
-// prerenderer can collect each page's title and meta tags from a single context,
-// which means page components now need it supplied by the test.
 const Providers = ({ children }: { children: ReactNode }) => (
-  <HelmetProvider>
-    <BrowserRouter>{children}</BrowserRouter>
-  </HelmetProvider>
+  <BrowserRouter>{children}</BrowserRouter>
 );
 
 // Adds router to Page context and allows us to navigate to the

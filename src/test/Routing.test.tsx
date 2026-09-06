@@ -5,16 +5,13 @@ import '@testing-library/jest-dom';
 import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router';
-import { HelmetProvider } from 'react-helmet-async';
 
 import AppRoutes from '../AppRoutes';
 
 const renderAt = (route: string) => render(
-  <HelmetProvider>
-    <MemoryRouter initialEntries={[route]}>
-      <AppRoutes />
-    </MemoryRouter>
-  </HelmetProvider>,
+  <MemoryRouter initialEntries={[route]}>
+    <AppRoutes />
+  </MemoryRouter>,
 );
 
 const description = () => document.querySelector('meta[name="description"]')?.getAttribute('content');
@@ -44,7 +41,10 @@ test('an unknown route renders the NotFound page', async () => {
   renderAt('/no-such-page');
 
   await waitFor(() => expect(screen.getByText(/Page Not Found/i)).toBeInTheDocument());
-  await waitFor(() => expect(document.title).toBe('404 Not Found'));
+  // The 404 carries the site name like every other page now. It used to be the
+  // one page without it, because it was the one page outside the layout that
+  // applied helmet's title template.
+  await waitFor(() => expect(document.title).toBe('404 Not Found | Alex Kourkoumelis'));
 });
 
 test('navigation moves focus to the new page heading, but arriving does not', async () => {

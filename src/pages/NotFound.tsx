@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { Link } from 'react-router';
-import { Helmet } from 'react-helmet-async';
 
 import { useFocusOnRouteChange } from '../components/Template/RouteFocus';
 
@@ -10,10 +9,9 @@ const PageNotFound = () => {
 
   return (
     <main className="not-found" id="main" tabIndex={-1} ref={mainRef}>
-      <Helmet title="404 Not Found">
-        <meta name="description" content="The content you are looking for cannot be found." />
-        <meta name="robots" content="noindex" />
-      </Helmet>
+      <title>404 Not Found | Alex Kourkoumelis</title>
+      <meta name="description" content="The content you are looking for cannot be found." />
+      <meta name="robots" content="noindex" />
       <h1 data-testid="heading">Page Not Found</h1>
       <p>There is nothing at this address. Return <Link to="/">home</Link>.</p>
     </main>

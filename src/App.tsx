@@ -1,15 +1,12 @@
 import { BrowserRouter } from 'react-router';
-import { HelmetProvider } from 'react-helmet-async';
 
 import AppRoutes from './AppRoutes';
 import './static/css/main.scss'; // All of our styles
 
 const App = () => (
-  <HelmetProvider>
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <AppRoutes />
-    </BrowserRouter>
-  </HelmetProvider>
+  <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <AppRoutes />
+  </BrowserRouter>
 );
 
 export default App;

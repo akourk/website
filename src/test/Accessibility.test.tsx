@@ -21,7 +21,10 @@ const describeViolations = (violations: Result[]) => violations
   .join('\n\n');
 
 const auditRoute = async (path: string) => {
-  const { html } = await renderRoute(path);
+  const { html, head } = await renderRoute(path);
+  // The hoisted metadata belongs in the head, the same split the prerenderer
+  // makes, so axe audits the document a reader would actually be served.
+  document.head.insertAdjacentHTML('beforeend', head);
   document.body.innerHTML = `<div id="root">${html}</div>`;
 
   const results = await axe.run(document.body, {
@@ -39,6 +42,7 @@ const auditRoute = async (path: string) => {
 
 afterEach(() => {
   document.body.innerHTML = '';
+  document.head.querySelectorAll('title, meta, link').forEach((el) => { el.remove(); });
 });
 
 describe('axe-core, prerendered routes', () => {
