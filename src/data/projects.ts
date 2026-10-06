@@ -41,7 +41,7 @@ const data: Project[] = [
   },
   {
     title: 'This website',
-    subtitle: 'The site you are reading, rebuilt from a Create React App template.',
+    subtitle: 'The site you are reading, with its own design, build, and accessibility tests.',
     date: '2026-09-06',
     link: 'https://akourk.github.io/website/',
     source: 'https://github.com/akourk/website',

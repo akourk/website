@@ -62,8 +62,7 @@ const SiteFooter = ({ showBio = true }: SiteFooterProps) => (
     <p className="colophon">
       &copy; {new Date().getFullYear()} Alex Kourkoumelis.{' '}
       <Link to="/">akourk.github.io/website</Link>.{' '}
-      <a href="https://github.com/akourk/website">Source on GitHub</a>, built on a template
-      by <a href="https://github.com/mldangelo/personal-site">mldangelo</a>.
+      <a href="https://github.com/akourk/website">Source on GitHub</a>.
     </p>
   </footer>
 );
