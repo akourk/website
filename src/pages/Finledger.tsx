@@ -37,7 +37,7 @@ const Finledger = () => (
         <a href={assetUrl('/images/projects/finledger.png')} aria-label="Open full-size finledger demo screenshot">
           <img
             src={assetUrl('/images/projects/finledger.png')}
-            alt="finledger overview with holdings, portfolio history, and reconciliation checks. A banner identifies the fictional demo."
+            alt="finledger overview with portfolio value, reconciliation status, and portfolio history. A banner identifies the fictional demo."
             width="1440"
             height="1100"
           />
@@ -110,6 +110,11 @@ const Finledger = () => (
           directories, and a fixed date, with network access disabled. CI checks the finished
           artifact before publishing that same file. This makes the demonstration reproducible
           without sharing a personal dashboard.
+        </p>
+        <p>
+          The public demo can also open a snapshot exported from a local run. The browser
+          reads the file on your device: nothing is uploaded, no prices are fetched, and
+          nothing is saved to browser storage, so a reload returns to the fictional sample.
         </p>
         <p>
           Results still depend on complete exports and correct account classifications.

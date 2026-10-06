@@ -36,8 +36,9 @@ const data: Project[] = [
       'Turn broker CSV exports into a portfolio dashboard you can open locally. '
       + 'It combines transactions across nine broker formats, removes duplicates, '
       + 'and tracks cost basis and tax lots, with reconciliation against broker '
-      + 'tax statements. Over a thousand tests check the calculations and imports. '
-      + 'The demo uses fictional data.',
+      + 'tax statements. About 1,500 tests check the calculations and imports. '
+      + 'The demo uses fictional data. You can also open your own exported snapshot '
+      + 'in the demo, and it never leaves your browser.',
   },
   {
     title: 'This website',
