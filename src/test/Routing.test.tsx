@@ -60,6 +60,20 @@ test('navigation moves focus to the new page heading, but arriving does not', as
   await waitFor(() => expect(document.activeElement).toBe(screen.getByTestId('heading')));
 });
 
+test('About in the site navigation is the home page, and is current only there', async () => {
+  const user = userEvent.setup();
+  renderAt('/resume');
+
+  await waitFor(() => expect(screen.getByTestId('heading')).toHaveTextContent('Resume'));
+  expect(mainNavLink('About')).not.toHaveAttribute('aria-current');
+
+  await user.click(mainNavLink('About'));
+
+  await waitFor(() => expect(screen.getByTestId('heading')).toHaveTextContent('Hi, I’m Alex'));
+  expect(mainNavLink('About')).toHaveAttribute('aria-current', 'page');
+  expect(mainNavLink('About')).toHaveAttribute('href', '/');
+});
+
 test('the skip link points at the main landmark', () => {
   renderAt('/');
 

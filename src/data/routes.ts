@@ -12,8 +12,10 @@ export interface Route {
   label: string;
   /** Router path, always rooted. Combined with the deployment base at render time. */
   path: string;
-  /** The site title link, rendered as the <h1> rather than a nav item. */
+  /** The home page. Its label is the site title link in the masthead. */
   index?: boolean;
+  /** Link text in the site navigation, when it differs from the label. */
+  navLabel?: string;
   /** Detail pages remain reachable without crowding the site navigation. */
   navigation?: boolean;
 }
@@ -22,6 +24,7 @@ const routes: Route[] = [
   {
     index: true,
     label: 'Alex Kourkoumelis',
+    navLabel: 'About',
     path: '/',
   },
   {

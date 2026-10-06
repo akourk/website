@@ -75,7 +75,7 @@ const Hamburger = () => {
             {navigationRoutes.map((route) => (
               <li key={route.path}>
                 <NavLink to={route.path} onClick={close}>
-                  {route.index ? 'Home' : route.label}
+                  {route.navLabel ?? route.label}
                 </NavLink>
               </li>
             ))}

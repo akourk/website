@@ -41,7 +41,7 @@ const SiteFooter = ({ showBio = true }: SiteFooterProps) => (
       <ul>
         {navigationRoutes.map((route) => (
           <li key={route.label}>
-            <NavLink to={route.path}>{route.index ? 'Home' : route.label}</NavLink>
+            <NavLink to={route.path}>{route.navLabel ?? route.label}</NavLink>
           </li>
         ))}
       </ul>
