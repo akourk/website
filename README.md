@@ -98,14 +98,14 @@ Content lives in `src/data/`, separately from the components that render it:
 | File | What it holds |
 | --- | --- |
 | `routes.ts` | Every route. Drives the nav, the router and the prerenderer; `navigation: false` keeps detail pages out of menus |
-| `about.md` | The about page, rendered as markdown |
+| `about.md` | The story sections of the home page, rendered as markdown |
 | `projects.ts` | Project cards |
 | `contact.ts` | Contact links and their icons |
 | `resume/positions.ts` | Jobs |
 | `resume/degrees.ts` | Degrees |
 | `resume/courses.ts` | Selected courses |
 | `resume/skills.ts` | Skills grouped by area |
-| `stats/personal.tsx` | Rows of the stats table |
+| `stats/personal.tsx` | Rows of the "By the numbers" table on the home page |
 
 Adding a route means adding it to `routes.ts` and registering its page module
 in `src/pageRoutes.ts`; a route with no page module throws at import time

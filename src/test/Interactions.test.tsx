@@ -74,7 +74,7 @@ test('navigating to Courses focuses its disclosure without removing it from the 
       <AppRoutes />
     </MemoryRouter>,
   );
-  await screen.findByRole('heading', { name: 'Lead Software Engineer', level: 1 });
+  await screen.findByRole('heading', { name: 'Hi, I’m Alex', level: 1 });
   await user.click(screen.getByRole('link', { name: 'Go to courses' }));
   await screen.findByRole('heading', { name: 'Resume', level: 1 });
 

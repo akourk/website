@@ -1,12 +1,12 @@
-I’ve always liked figuring out how things work. As a kid, I took apart stereos and spent hours tinkering with an old computer my mom brought home. Putting things back together took a little more practice.
-
 ## Finding my way to software
+
+I’ve always liked figuring out how things work. As a kid, I took apart stereos and spent hours tinkering with an old computer my mom brought home. Putting things back together took a little more practice.
 
 Before software, I spent years coaching athletes and studied philosophy at Evergreen State College. Coaching taught me how much I enjoy helping someone work through something difficult. It also taught me to explain the same idea in different ways, listen carefully, and recognize when someone needs a different approach.
 
-I later joined Bellevue College’s first B.S. in Computer Science cohort. For my capstone, I worked with WattTime on emissions data collection and a dashboard. I had to learn several of the tools as I went, and I liked having a real problem to work on while learning them.
+I later joined Bellevue College’s first B.S. in Computer Science cohort. For my capstone, I worked with [WattTime](https://www.watttime.org/) on emissions data collection and a dashboard. I had to learn several of the tools as I went, and I liked having a real problem to work on while learning them.
 
-At Microsoft, I worked on detection and abuse analysis and trained new hires. I now lead frontend architecture at State Farm. The work has changed, but learning, teaching, and helping people still account for a lot of what I enjoy about it.
+At Microsoft, I worked on detection and abuse analysis and trained new hires, then moved to State Farm in 2022. The work has changed, but learning, teaching, and helping people still account for a lot of what I enjoy about it.
 
 ## Away from the keyboard
 

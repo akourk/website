@@ -25,10 +25,6 @@ const routes: Route[] = [
     path: '/',
   },
   {
-    label: 'About',
-    path: '/about',
-  },
-  {
     label: 'Resume',
     path: '/resume',
   },
@@ -40,10 +36,6 @@ const routes: Route[] = [
     label: 'finledger case study',
     path: '/projects/finledger',
     navigation: false,
-  },
-  {
-    label: 'Stats',
-    path: '/stats',
   },
   {
     label: 'Contact',

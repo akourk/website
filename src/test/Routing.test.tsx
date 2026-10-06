@@ -23,12 +23,10 @@ const mainNavLink = (name: string) => within(
 ).getByRole('link', { name });
 
 test.each([
-  ['/', 'Alex Kourkoumelis', 'Lead Software Engineer'],
-  ['/about', 'About | Alex Kourkoumelis', 'About Me'],
+  ['/', 'Alex Kourkoumelis', 'Hi, I’m Alex'],
   ['/resume', 'Resume | Alex Kourkoumelis', 'Resume'],
   ['/projects', 'Projects | Alex Kourkoumelis', 'Projects'],
   ['/projects/finledger', 'finledger case study | Alex Kourkoumelis', 'finledger'],
-  ['/stats', 'Stats | Alex Kourkoumelis', 'Stats'],
   ['/contact', 'Contact | Alex Kourkoumelis', 'Contact'],
 ])('%s sets its own title, description and heading', async (route, title, heading) => {
   renderAt(route);
@@ -52,7 +50,7 @@ test('navigation moves focus to the new page heading, but arriving does not', as
   const user = userEvent.setup();
   renderAt('/');
 
-  await waitFor(() => expect(screen.getByTestId('heading')).toHaveTextContent('Lead Software Engineer'));
+  await waitFor(() => expect(screen.getByTestId('heading')).toHaveTextContent('Hi, I’m Alex'));
   // Arriving on a page must not steal focus from the reader.
   expect(document.activeElement).toBe(document.body);
 

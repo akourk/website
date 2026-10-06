@@ -21,12 +21,10 @@ const BASE = '/website/';
 // deliberately page-specific: a shell with an empty #root would still carry the
 // nav links, so matching on those would pass a broken build.
 const expectations = [
-  { path: '', title: 'Alex Kourkoumelis', text: ['Lead Software Engineer', 'easier to change'] },
-  { path: 'about', title: 'About | Alex Kourkoumelis', text: ['About Me', 'philosophy'] },
+  { path: '', title: 'Alex Kourkoumelis', text: ['Finding my way to software', 'Countries visited'] },
   { path: 'resume', title: 'Resume | Alex Kourkoumelis', text: ['Selected Courses', 'Bellevue College'] },
   { path: 'projects', title: 'Projects | Alex Kourkoumelis', text: ['finledger', 'broker CSV exports'] },
   { path: 'projects/finledger', title: 'finledger case study | Alex Kourkoumelis', text: ['acquisition history', 'fictional inputs'] },
-  { path: 'stats', title: 'Stats | Alex Kourkoumelis', text: ['Countries visited', 'Started Duolingo'] },
   { path: 'contact', title: 'Contact | Alex Kourkoumelis', text: ['akourk@icloud.com'] },
 ];
 

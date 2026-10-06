@@ -70,14 +70,21 @@
 	margin-top: var(--space-6);
 }
 
-.about__header {
+.home__header {
 	align-items: center;
 	display: grid;
 	gap: var(--space-5);
 	grid-template-columns: minmax(0, 1fr) clamp(4rem, 10vw, 6.5rem);
 }
 
-.about__portrait { border-radius: 2px; }
+.home__portrait { border-radius: 2px; }
+
+// The buttons run under both columns, so a phone's portrait column does not
+// squeeze them onto separate lines.
+.home__header .page__actions {
+	grid-column: 1 / -1;
+	margin-top: var(--space-2);
+}
 
 @media (max-width: t.$bp-nav) {
 	#main { padding: var(--space-7) 0 var(--space-8); }

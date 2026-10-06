@@ -12,11 +12,9 @@ export interface PageRoute {
 // code-split on it, while the prerenderer awaits them all up front.
 const loaders: Record<string, PageRoute['load']> = {
   '/': () => import('./pages/Index'),
-  '/about': () => import('./pages/About'),
   '/resume': () => import('./pages/Resume'),
   '/projects': () => import('./pages/Projects'),
   '/projects/finledger': () => import('./pages/Finledger'),
-  '/stats': () => import('./pages/Stats'),
   '/contact': () => import('./pages/Contact'),
 };
 

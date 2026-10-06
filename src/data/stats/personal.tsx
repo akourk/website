@@ -31,6 +31,11 @@ const data: Stat[] = [
     value: <Age />,
   },
   {
+    key: 'coaching',
+    label: 'Years coaching athletes',
+    value: 15,
+  },
+  {
     key: 'countries',
     label: 'Countries visited',
     value: 'USA, Canada, Japan, Australia, Iceland, Greece',
