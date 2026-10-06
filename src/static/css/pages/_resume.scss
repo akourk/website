@@ -72,13 +72,13 @@
 .entry__meta {
 	color: var(--ink-muted);
 	font-size: var(--text--1);
-	letter-spacing: 0.04em;
 	margin-bottom: var(--space-3);
-	text-transform: uppercase;
 }
 
+// The summary frames the role and the points are the evidence, so the points
+// get the full ink and the summary steps back.
 .entry__summary {
-	color: var(--ink);
+	color: var(--ink-muted);
 	margin-bottom: var(--space-3);
 }
 
@@ -103,8 +103,12 @@
 	.course-list { margin-top: var(--space-5); }
 }
 
-.entry__points {
-	color: var(--ink-muted);
+// The reset strips markers and padding from every classed list, and ul[class]
+// outranks a lone class, so without the ancestor these were never bullets at
+// all, just indented paragraphs.
+.entry .entry__points {
+	color: var(--ink);
+	list-style: disc;
 	margin: 0;
 	padding-left: 1.1em;
 
@@ -112,8 +116,9 @@
 		padding-left: var(--space-1);
 	}
 
+	// The control edge colour: visible without competing with the text.
 	li::marker {
-		color: var(--rule);
+		color: var(--control-border);
 	}
 }
 

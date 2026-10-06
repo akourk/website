@@ -28,12 +28,10 @@
 	}
 }
 
+// The same size as the items, so the two columns share a baseline.
 .skill-group__name {
 	color: var(--ink-strong);
-	font-size: var(--text--1);
 	font-weight: 600;
-	letter-spacing: 0.04em;
-	text-transform: uppercase;
 }
 
 .skill-group__items {

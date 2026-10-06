@@ -47,6 +47,11 @@ p + p {
 	margin-top: var(--space-4);
 }
 
+// A paragraph after a list otherwise sits flush against the last item.
+:is(ul, ol) + p {
+	margin-top: var(--space-5);
+}
+
 a {
 	color: var(--accent);
 	// A 1px underline offset clear of the descenders, rather than the default

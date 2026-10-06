@@ -37,17 +37,29 @@ const Cell = ({ data }: CellProps) => (
               <span className="screen-reader-only">for {data.title}</span>
             </Link>
           )}
-          {data.link && (
-            <a className={data.caseStudy ? undefined : 'button button--quiet'} href={data.link}>
+          {data.link && !data.caseStudy && (
+            <a className="button button--quiet" href={data.link}>
               {data.linkLabel ?? 'View demo'}{' '}
               <span className="screen-reader-only">for {data.title}</span>
             </a>
           )}
-          {data.source && (
-            <a href={data.source}>
-              Source{' '}
-              <span className="screen-reader-only">for {data.title}</span>
-            </a>
+          {/* The text links wrap as a pair, so a narrow screen never strands
+              one of them on a line by itself. */}
+          {(data.source ?? (data.caseStudy && data.link)) && (
+            <span className="project__text-links">
+              {data.caseStudy && data.link && (
+                <a href={data.link}>
+                  {data.linkLabel ?? 'View demo'}{' '}
+                  <span className="screen-reader-only">for {data.title}</span>
+                </a>
+              )}
+              {data.source && (
+                <a href={data.source}>
+                  Source{' '}
+                  <span className="screen-reader-only">for {data.title}</span>
+                </a>
+              )}
+            </span>
           )}
         </p>
       )}

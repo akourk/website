@@ -3,7 +3,7 @@ export interface Position {
   company: string;
   position: string;
   link: string;
-  /** Free text, e.g. "October 2022 - Present". Not parsed. */
+  /** Free text, e.g. "October 2022 – Present". Not parsed. */
   daterange: string;
   previousRole?: string;
   description: string;
@@ -15,8 +15,8 @@ const positions: Position[] = [
     company: 'State Farm',
     position: 'Lead Software Engineer',
     link: 'https://www.statefarm.com',
-    daterange: 'November 2024 - Present',
-    previousRole: 'Previously Software Engineer II, October 2022 - November 2024',
+    daterange: 'November 2024 – Present',
+    previousRole: 'Previously Software Engineer II, October 2022 – November 2024',
     description: 'Lead frontend architecture for customer-facing life insurance applications, working with backend engineers and designers to modernize the tools customers use to manage their policies.',
     points: [
       'Own frontend architecture for two React applications supporting 10 life insurance policy types. Together, they handled approximately 128,000 user actions in August 2026.',
@@ -32,7 +32,7 @@ const positions: Position[] = [
     company: 'Microsoft',
     position: 'Engineer I, Detection and Abuse Analysis',
     link: 'https://microsoft.com',
-    daterange: 'November 2019 - October 2022',
+    daterange: 'November 2019 – October 2022',
     description: 'Monitored and investigated security, spam, and abuse signals across Microsoft platforms to protect algorithmic integrity and reduce system misuse.',
     points: [
       'Analyzed false-positive and false-negative cases and delivered structured feedback that helped tune detection models used across global services.',
@@ -46,7 +46,7 @@ const positions: Position[] = [
     company: 'WattTime',
     position: 'Software Engineer, Senior Capstone Project',
     link: 'https://www.watttime.org/',
-    daterange: 'September 2019 - June 2020',
+    daterange: 'September 2019 – June 2020',
     description: 'Built emissions data collection tools and a dashboard for a nonprofit researching when and where electricity produces fewer emissions.',
     points: [
       'Reviewed reporting standards from balancing authorities in the US, Canada, Australia, and Taiwan to define requirements for automated data collection.',
@@ -59,7 +59,7 @@ const positions: Position[] = [
     company: 'Bellevue College',
     position: 'Teaching Assistant',
     link: 'https://www.bellevuecollege.edu/',
-    daterange: 'January 2019 - March 2019',
+    daterange: 'January 2019 – March 2019',
     description: 'Helped upper-division computer science students work through difficult concepts in individual and group sessions.',
     points: [
       'Supported upper-division CS courses by guiding students through challenging concepts in both 1:1 and group settings.',
@@ -71,7 +71,7 @@ const positions: Position[] = [
     company: 'Lake Hills CrossFit',
     position: 'Certified Level 1 CrossFit Trainer',
     link: 'http://www.lakehillscrossfit.com/',
-    daterange: 'August 2015 - May 2020',
+    daterange: 'August 2015 – May 2020',
     description: 'Helped grow a fitness business from start-up to profitability through coaching, client onboarding, and day-to-day operations.',
     points: [
       'Designed a structured multi-step client onboarding program that increased new-client conversion to 85%.',

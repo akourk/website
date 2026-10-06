@@ -74,8 +74,13 @@
 	align-items: center;
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--space-5);
+	gap: var(--space-4) var(--space-5);
 	margin-top: var(--space-5);
+}
+
+.project__text-links {
+	display: inline-flex;
+	gap: var(--space-5);
 }
 
 @media (min-width: t.$bp-wide) {
