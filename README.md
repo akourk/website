@@ -139,6 +139,13 @@ and publishes `dist/` to the `gh-pages` branch. The site is served from the
 `/website/` subdirectory, which is set once as `base` in `vite.config.ts` and
 read by the router as `import.meta.env.BASE_URL`.
 
+`npm run deploy` builds the site and publishes it using `scripts/deploy.js`.
+The script uses Node and Git directly, preserving the branch history and replacing
+old assets in a temporary checkout. This avoids the unpatched `braces` dependency
+in the `gh-pages` npm package. It includes dotfiles such as `.nojekyll` and refuses
+to force-push over a concurrent deployment. Deployment tests use a local Git
+repository and run as part of `npm test`.
+
 There are no environment variables to set.
 
 ## Built with
