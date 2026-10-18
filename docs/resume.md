@@ -8,13 +8,11 @@ Bellevue, WA | [akourk@icloud.com](mailto:akourk@icloud.com) | 425-777-0196
 **Lead Software Engineer** | November 2024 - Present
 **Software Engineer II** | October 2022 - November 2024
 Lead frontend development for customer-facing life insurance applications covering policy servicing and digital claims across 10 policy types. Roughly 128,000 user actions per month.
-- Led frontend delivery of an in-house beneficiary change flow to replace an off-site vendor experience. Shipped simpler changes first to reduce manual handling, then expanded to estates, trusts, and organizations, enabling retirement of the vendor contract.
-- Migrated both applications from Create React App to Vite and from React 18 to 19. Observed about 40% lower p75 page load in the 30 days after the Vite release compared with the preceding 30 days.
+- Led the consolidation of policy-servicing projects into a shared repository, designing a modular frontend structure and engineering conventions for adding and maintaining customer transaction flows.
+- Built a shared React component library used across the team’s flows to standardize layout and accessibility. Presented the approach to department leadership.
+- Modernized customer-facing life insurance applications with Vite and React 19, including a TypeScript and corporate design-system migration for policy servicing.
 - Mentor six engineers through design and code reviews; interviewed 10+ candidates and onboarded four.
-- Consolidated four flows across two repositories into a shared structure that now supports nine.
-- Led TypeScript and corporate design-system migration for policy servicing, released August 2026.
-- Built automated checks for types, tests, and design-system compatibility; led accessibility fixes from company audits.
-- Helped plan AI adoption across Engineering and Technology, including coding agents and MCP servers. Co-developed AGENTS.md project guidance and reusable agent skills, and trained engineers to apply them and establish development guardrails.
+- Helped plan AI adoption across Engineering and Technology, including coding agents and MCP servers. Co-developed project guidance and reusable agent skills, and trained engineers to apply them and establish development guardrails.
 
 ### Microsoft
 **Engineer I, Detection and Abuse Analysis** | November 2019 - October 2022
