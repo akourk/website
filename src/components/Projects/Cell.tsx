@@ -15,9 +15,13 @@ const Cell = ({ data }: CellProps) => (
         {data.link ? <a href={data.link}>{data.title}</a> : data.title}
       </h2>
       <p className="project__subtitle">{data.subtitle}</p>
-      <time className="project__date" dateTime={data.date}>
-        {dayjs(data.date).format('MMMM YYYY')}
-      </time>
+      {data.dateLabel ? (
+        <span className="project__date">{data.dateLabel}</span>
+      ) : data.date && (
+        <time className="project__date" dateTime={data.date}>
+          {dayjs(data.date).format('MMMM YYYY')}
+        </time>
+      )}
       {/* Not every project has a screenshot worth showing; a card without one
           is a text card rather than an empty frame. */}
       {data.image && (
@@ -69,7 +73,7 @@ const Cell = ({ data }: CellProps) => (
               )}
               {data.source && (
                 <a href={data.source}>
-                  Source{' '}
+                  View source{' '}
                   <span className="screen-reader-only">for {data.title}</span>
                 </a>
               )}

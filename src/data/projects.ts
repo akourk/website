@@ -15,7 +15,9 @@ export interface Project {
   /** Posters are shown uncropped, with a link to the original image. */
   imageKind?: 'poster';
   /** ISO yyyy-mm-dd, formatted for display with dayjs. */
-  date: string;
+  date?: string;
+  /** Used instead of a date for ongoing projects. */
+  dateLabel?: string;
   desc: string;
   /** Optional context before the account of Alex's contribution. */
   context?: string;
@@ -34,32 +36,19 @@ const data: Project[] = [
     title: 'finledger',
     subtitle: 'A multi-broker portfolio tracker that runs entirely on your own machine.',
     image: '/images/projects/finledger.png',
-    date: '2026-09-06',
+    imageAlt: 'Fictional finledger portfolio showing balances, reconciliation status, and a history chart.',
+    imageWidth: 1440,
+    imageHeight: 1100,
+    dateLabel: 'Ongoing',
     link: 'https://akourk.github.io/finledger/',
     source: 'https://github.com/akourk/finledger',
     caseStudy: '/projects/finledger',
     technologies: ['Python', 'JavaScript', 'pytest'],
     desc:
-      'Turn broker CSV exports into a portfolio dashboard you can open locally. '
-      + 'It combines transactions across nine broker formats, removes duplicates, '
-      + 'and tracks cost basis and tax lots, with reconciliation against broker '
-      + 'tax statements. About 1,500 tests check the calculations and imports. '
-      + 'The demo uses fictional data. You can also open your own exported snapshot '
-      + 'in the demo, and it never leaves your browser.',
-  },
-  {
-    title: 'This website',
-    subtitle: 'The site you are reading, with its own design, build, and accessibility tests.',
-    date: '2026-09-06',
-    link: 'https://akourk.github.io/website/',
-    source: 'https://github.com/akourk/website',
-    linkLabel: 'Visit site',
-    technologies: ['React', 'TypeScript', 'Vite'],
-    desc:
-      'A personal site hosted on GitHub Pages. Each page arrives as static HTML, '
-      + 'so content and navigation work before JavaScript loads. Light and dark '
-      + 'themes follow your preference. Automated checks cover accessibility, '
-      + 'color contrast, and routing.',
+      'I built a Python pipeline that combines broker CSV exports into one ledger '
+      + 'and a JavaScript dashboard that opens locally. It tracks cost basis and '
+      + 'tax lots, with checks against figures you supply from broker statements. '
+      + 'The public demo uses fictional data.',
   },
   {
     title: 'WattTime',
@@ -74,18 +63,27 @@ const data: Project[] = [
     linkLabel: 'About WattTime',
     technologies: ['Python', 'React', 'SQL'],
     context:
-      'The emissions caused by using electricity depend on where and when you use it. '
-      + 'An electric car might charge more cleanly during a period of surplus solar '
-      + 'generation than when fossil-fuel plants would supply the extra demand. '
-      + 'WattTime uses grid data and forecasting models to help smart chargers and '
-      + 'other flexible devices shift electricity use to cleaner times.',
+      'Electricity emissions change by location and time of day. WattTime uses '
+      + 'grid data to help devices such as smart chargers shift electricity use '
+      + 'to cleaner times.',
     desc:
-      'For my senior capstone at Bellevue College, I worked with WattTime on the '
-      + 'data collection and visualization side of that problem. Grid operators '
-      + 'publish data in different formats, so I researched reporting standards '
-      + 'across the US, Canada, Australia, and Taiwan and wrote Python scripts to '
-      + 'collect, normalize, and validate those reports in a shared SQL database. '
-      + 'I also built a React dashboard to explore emissions trends by time and geography.',
+      'For my senior capstone at Bellevue College, I built a Python data pipeline '
+      + 'and a React dashboard for WattTime. I researched reporting standards '
+      + 'across the US, Canada, Australia, and Taiwan, then collected, normalized, '
+      + 'and validated grid reports in a shared SQL database. The dashboard made '
+      + 'it possible to explore emissions by time and geography.',
+  },
+  {
+    title: 'This website',
+    subtitle: 'The site you are reading, with its own design, build, and accessibility tests.',
+    dateLabel: 'Ongoing',
+    source: 'https://github.com/akourk/website',
+    technologies: ['React', 'TypeScript', 'Vite'],
+    desc:
+      'A personal site hosted on GitHub Pages. Each page arrives as static HTML, '
+      + 'so content and navigation work before JavaScript loads. Light and dark '
+      + 'themes follow your preference. Automated checks cover accessibility, '
+      + 'color contrast, and routing.',
   },
 ];
 

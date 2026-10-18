@@ -8,14 +8,14 @@ const SOURCE = 'https://github.com/akourk/finledger';
 const Finledger = () => (
   <Main
     title="finledger case study"
-    description="How I built finledger: a local portfolio tracker that reconciles overlapping broker exports, preserves acquisition history, and produces a portable dashboard."
+    description="How I built finledger: combining broker exports, checking the calculations, and designing a local dashboard for exploring the results."
   >
     <article className="page case-study">
       <header className="page__header">
         <p className="case-study__eyebrow"><Link to="/projects">Projects</Link> / Case study</p>
         <h1 className="page__title" data-testid="heading">finledger</h1>
         <p className="page__standfirst">
-          Making a portfolio easier to check, one transaction at a time.
+          Combining broker exports into a portfolio you can trace back to the source.
         </p>
         <p className="case-study__scope">
           Personal project · Python, JavaScript, CSS and SVG
@@ -27,10 +27,11 @@ const Finledger = () => (
       </header>
 
       <p>
-        I built finledger to turn broker CSV exports into one ledger and a dashboard
-        that can be checked against source documents. I wrote the ingestion pipeline,
-        financial calculations, and browser interface. It supports nine broker formats
-        and produces a single HTML file that opens locally, without a server or account.
+        A portfolio spread across brokers is hard to review as a whole. I built finledger
+        to combine their CSV exports and make the resulting figures easier to check.
+        I wrote the Python ingestion pipeline, financial calculations, and JavaScript
+        interface. It supports nine broker formats and produces one HTML file you can
+        open locally.
       </p>
 
       <figure className="case-study__figure">
@@ -43,90 +44,106 @@ const Finledger = () => (
           />
         </a>
         <figcaption>
-          The public demo uses invented transactions and illustrative prices, fixed at
-          June 30, 2026. These are not investment results.
+          The demo uses fictional transactions and illustrative prices, fixed at
+          June 30, 2026.
         </figcaption>
       </figure>
 
       <div className="markdown">
-        <h2>The hard part is understanding the inputs</h2>
+        <h2>One ledger from different formats</h2>
         <p>
           Brokers use different date formats, action names, and sign conventions.
           Their exports can overlap or describe only one side of an account transfer.
           Adding every row together can produce a convincing chart with the wrong holdings.
         </p>
         <p>
-          Each parser translates its broker’s vocabulary into a common transaction schema.
-          I preserve the source filename and original action so a calculation can be traced
-          back to the export. A shared action catalog defines how each event affects
-          balances, lots, and cash flow; the dashboard receives that catalog too.
+          Each parser translates its broker’s vocabulary into the same transaction format.
+          I keep the source filename and original action with each row so the result can
+          be traced back to the export.
         </p>
 
         <ol className="case-study__pipeline" aria-label="How broker exports become a dashboard">
           <li><strong>Parse</strong><span>Translate broker formats</span></li>
-          <li><strong>Reconstruct</strong><span>Deduplicate and carry lots</span></li>
-          <li><strong>Check</strong><span>Compare with statements</span></li>
+          <li><strong>Reconstruct</strong><span>Preserve transaction history</span></li>
+          <li><strong>Check</strong><span>Compare with supplied figures</span></li>
           <li><strong>Explore</strong><span>Open the local dashboard</span></li>
         </ol>
 
-        <h2>Two details that change the answer</h2>
+        <h2>Preserving the transaction history</h2>
+        <h3>Overlapping exports</h3>
         <p>
-          Deduplication needs more care than removing identical rows. Two identical trades
-          in one statement may both be real. My rule keeps the largest number of occurrences
-          found in any single source file. If one export contains two matching trades and
-          another repeats them, the ledger keeps two. Without stable transaction IDs this
-          remains an inference: splitting genuine repeats across separate files can lose one.
+          Two identical trades in one statement may both be real. When merging overlapping
+          exports, I keep the largest number of occurrences found in any single file.
+          If one export contains two matching trades and another repeats them, the ledger
+          keeps two. Without stable transaction IDs, identical transactions split across
+          files can still be ambiguous.
         </p>
+        <h3>Transfers between accounts</h3>
         <p>
-          Transfers need to preserve acquisition history. In a fictional example, moving
-          ten shares from account A to account B should leave ten shares overall, with the
-          original acquisition date and cost basis. It should not create a purchase or
-          realized profit. The lot walker carries that history through paired transfers;
-          reconstructed transfer rows identify themselves in the ledger.
-        </p>
-        <p>
-          Reconciliation compares the reconstruction with broker figures supplied separately
-          as metadata. Differences remain visible. An explained difference can be recorded,
-          and a later result outside that explanation is flagged again.
+          Moving ten shares from account A to account B should leave ten shares overall,
+          with the original purchase date and cost basis. I carry that acquisition history
+          through paired transfers so a move between accounts does not become a new
+          purchase or realized profit. Any transfer rows reconstructed by the pipeline
+          are marked in the ledger.
         </p>
 
-        <h2>A portable output, with a maintenance cost</h2>
+        <h2>Checking the result</h2>
         <p>
-          I package the data, styles, and JavaScript into one HTML file. It needs no database,
-          CDN, or live connection to view. Normal ingestion can request symbol prices and
-          sectors through yfinance; broker files and the complete ledger stay local.
-        </p>
-        <p>
-          That portability means the file contains the full ledger and should be treated as
-          private. It also means maintaining some calculations in both Python and JavaScript.
-          Parity tests check their agreement, alongside tests for accounting rules,
-          historical cutoffs, and reconciliation failures. Browser tests exercise keyboard
-          controls and the dashboard at phone sizes.
+          You can supply balances or tax figures from broker statements for finledger to
+          compare with its reconstructed ledger. Differences stay visible for review.
+          An expected difference can have a recorded explanation; any further drift is
+          flagged again.
         </p>
 
-        <h2>What the demo establishes, and what it cannot</h2>
+        <h2>Making the figures easier to inspect</h2>
         <p>
-          The public build starts from independently constructed fictional inputs, isolated
-          directories, and a fixed date, with network access disabled. CI checks the finished
-          artifact before publishing that same file. This makes the demonstration reproducible
-          without sharing a personal dashboard.
+          I kept headline balances and charts in the overview, with data checks and detailed
+          controls in expandable sections. Someone can start with the overall portfolio,
+          then open a statement comparison or the transactions behind an income or realized
+          gain figure when it needs attention.
         </p>
         <p>
-          The public demo can also open a snapshot exported from a local run. The browser
-          reads the file on your device: nothing is uploaded, no prices are fetched, and
-          nothing is saved to browser storage, so a reload returns to the fictional sample.
+          Historical views show holdings at an earlier date, and individual holdings expand
+          to show their purchase lots. The history chart supports touch and arrow-key
+          inspection. Allocation charts have values listed beside them, so color and
+          pointer position are not the only ways to read the data.
+        </p>
+
+        <figure className="case-study__figure case-study__figure--detail">
+          <a href={assetUrl('/images/projects/finledger-reconciliation.jpg')} aria-label="Open full-size fictional reconciliation example">
+            <img
+              src={assetUrl('/images/projects/finledger-reconciliation.jpg')}
+              alt="Six statement comparisons in the fictional demo: five match and the Roth IRA has an explained difference. Reported and calculated balances remain side by side."
+              width="628"
+              height="258"
+              loading="lazy"
+            />
+          </a>
+          <figcaption>
+            Statement checks in the fictional demo. The Roth IRA keeps an explained
+            $142.60 difference visible; its zero delta is the remaining difference after
+            that explanation.
+          </figcaption>
+        </figure>
+
+        <h2>Portable output and checks that support it</h2>
+        <p>
+          The dashboard uses plain JavaScript, CSS, and SVG, packaged with the data in one
+          HTML file. It opens without a server, account, or live connection. Importing broker
+          exports can fetch market prices through yfinance, but the exports and ledger stay
+          local. The generated file contains the ledger and needs to stay private too.
         </p>
         <p>
-          Results still depend on complete exports and correct account classifications.
-          Missing acquisition history cannot be recovered from nothing; estimated basis,
-          broker lot-selection differences, and wash-sale treatment need review against
-          statements. The project is a tool for inspecting a reconstructed ledger, and
-          broker records remain authoritative.
+          Some calculations run in both Python and JavaScript, so tests compare their
+          results. Other checks cover repeated imports, transferred cost basis, historical
+          views, and reconciliation failures. Browser tests exercise keyboard controls and
+          phone layouts. The public demo is built from fixed fictional inputs and checked
+          before publication.
         </p>
         <p>
-          The most useful engineering work here is making those boundaries visible:
-          where a row came from, which rule changed it, and where the result disagrees
-          with an independent source.
+          Results still depend on complete exports and correct account types. Missing
+          acquisition history, differing tax-lot choices, and wash-sale treatment can cause
+          disagreements. Broker statements remain the reference for reviewing them.
         </p>
       </div>
 

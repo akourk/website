@@ -116,6 +116,11 @@ The finledger case study lives in `src/pages/Finledger.tsx` at
 from the project listing. Its screenshot is copied from finledger's reviewed,
 fictional demo image in `docs/img/dashboard.png`; refresh it from that source
 after validating the demo's provenance and inspecting the image.
+The focused `public/images/projects/finledger-reconciliation.jpg` image was
+captured from the published fictional demo on October 17, 2026, with Overview's
+Status panel expanded and all six reconciliation checks shown. It is cropped
+to the comparison table; its caption explains the expected difference. Refresh
+this image only from the fictional demo, never from a personal snapshot.
 
 Link previews use `public/images/social-preview.png` (1200 × 630), with the
 editable SVG alongside it. Update the PNG after changing the SVG; metadata
