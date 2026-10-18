@@ -33,3 +33,35 @@
 		font-variant-numeric: tabular-nums;
 	}
 }
+
+// Reserve the decimal width so this small detail never moves nearby content.
+.age-detail {
+	align-items: baseline;
+	background: none;
+	border: 0;
+	color: inherit;
+	cursor: pointer;
+	display: inline-flex;
+	font: inherit;
+	font-variant-numeric: tabular-nums;
+	padding: 0;
+	text-align: left;
+	white-space: nowrap;
+
+	&__decimals {
+		color: var(--ink-muted);
+		opacity: 0;
+		transition: opacity 400ms ease;
+		width: 9ch;
+	}
+
+	&--active &__decimals {
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.age-detail__decimals {
+		transition: none;
+	}
+}

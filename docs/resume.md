@@ -7,13 +7,14 @@ Bellevue, WA | [akourk@icloud.com](mailto:akourk@icloud.com) | 425-777-0196
 ### State Farm
 **Lead Software Engineer** | November 2024 - Present
 **Software Engineer II** | October 2022 - November 2024
-- Own frontend architecture for two customer-facing applications supporting 10 life insurance policy types. Together, they handled approximately 128,000 user actions in August 2026.
-- Consolidated transaction flows from two repositories into a shared structure that grew from four flows to nine. Designed API contracts with backend engineers, including endpoints that combine data from multiple services.
-- Migrated both applications from Create React App to Vite and from React 18 to 19. In the 30-day windows before and after the Vite release, p75 page load fell about 40% while traffic roughly doubled.
-- Led the TypeScript and corporate design-system migration for the policy-servicing application, released in August 2026.
-- Rebuilt the beneficiary change flow through five design iterations informed by user research, adding support for estates, trusts, and organizations.
-- Set coding and review standards, built automated quality checks, and led accessibility fixes based on company audits.
-- Mentor six engineers through design and code reviews. Interviewed at least ten candidates and onboarded four engineers.
+Lead frontend development for customer-facing life insurance applications covering policy servicing and digital claims across 10 policy types. Roughly 128,000 user actions per month.
+- Led frontend delivery of an in-house beneficiary change flow to replace an off-site vendor experience. Shipped simpler changes first to reduce manual handling, then expanded to estates, trusts, and organizations, enabling retirement of the vendor contract.
+- Migrated both applications from Create React App to Vite and from React 18 to 19. Observed about 40% lower p75 page load in the 30 days after the Vite release compared with the preceding 30 days.
+- Mentor six engineers through design and code reviews; interviewed 10+ candidates and onboarded four.
+- Consolidated four flows across two repositories into a shared structure that now supports nine.
+- Led TypeScript and corporate design-system migration for policy servicing, released August 2026.
+- Built automated checks for types, tests, and design-system compatibility; led accessibility fixes from company audits.
+- Helped plan AI adoption across Engineering and Technology, including coding agents and MCP servers. Co-developed AGENTS.md project guidance and reusable agent skills, and trained engineers to apply them and establish development guardrails.
 
 ### Microsoft
 **Engineer I, Detection and Abuse Analysis** | November 2019 - October 2022

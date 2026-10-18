@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 
 import { createTickingStore, useTickingValue } from '../../utils/tickingStore';
+import duolingoStreak from '../../utils/duolingoStreak';
+import Age from '../../components/Stats/Age';
 
 /** One row of the stats table. */
 export interface Stat {
@@ -13,16 +15,16 @@ export interface Stat {
   format?: (value: ReactNode) => ReactNode;
 }
 
-// Age changes once a year; an hourly check keeps the page current without a
-// constantly animating number. Calendar dates avoid an ambiguous birth timezone.
-const ageStore = createTickingStore(() => {
-  const today = new Date();
-  const birthdayPending = today.getMonth() < 2
-    || (today.getMonth() === 2 && today.getDate() < 15);
-  return today.getFullYear() - 1990 - (birthdayPending ? 1 : 0);
-}, 1000 * 60 * 60);
+const streakStore = createTickingStore(() => duolingoStreak(new Date()), 60 * 1000);
 
-const Age = () => <>{useTickingValue(ageStore) ?? '—'}</>;
+const DuolingoStreak = () => {
+  const streak = useTickingValue(streakStore);
+  return (
+    <span title="Counting up daily from 1,187 days on October 17, 2026.">
+      {streak === undefined ? '—' : `${streak.toLocaleString('en-US')} days`}
+    </span>
+  );
+};
 
 const data: Stat[] = [
   {
@@ -38,7 +40,7 @@ const data: Stat[] = [
   {
     key: 'countries',
     label: 'Countries visited',
-    value: 'USA, Canada, Japan, Australia, Iceland, Greece',
+    value: 'USA, Canada, Japan, Australia, Iceland, Greece, South Korea, Jamaica, Honduras, Mexico',
   },
   {
     key: 'location',
@@ -47,9 +49,14 @@ const data: Stat[] = [
   },
   {
     key: 'duolingo',
-    label: 'Started Duolingo',
-    value: <time dateTime="2023-06-25">June 25, 2023</time>,
+    label: 'Duolingo streak',
+    value: <DuolingoStreak />,
     link: 'https://www.duolingo.com/',
+  },
+  {
+    key: 'language',
+    label: 'Currently learning',
+    value: 'Greek',
   },
 ];
 

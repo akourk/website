@@ -48,7 +48,7 @@
 	background: var(--paper-sunk);
 	border: 1px solid var(--rule);
 	border-radius: 2px;
-	margin-bottom: var(--space-5);
+	margin: 0 0 var(--space-5);
 	overflow: hidden;
 
 	img {
@@ -56,6 +56,19 @@
 		object-fit: cover;
 		object-position: top;
 		width: 100%;
+	}
+}
+
+.project__image--poster {
+	img {
+		aspect-ratio: auto;
+		display: block;
+		height: auto;
+	}
+
+	figcaption {
+		font-size: var(--text--1);
+		padding: var(--space-3) var(--space-4);
 	}
 }
 

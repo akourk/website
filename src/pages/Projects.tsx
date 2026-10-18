@@ -6,13 +6,13 @@ import data from '../data/projects';
 const Projects = () => (
   <Main
     title="Projects"
-    description="Explore Alex Kourkoumelis's projects, including finledger, with live demos and source code."
+    description="Explore Alex Kourkoumelis's personal projects and capstone work, including finledger and WattTime."
   >
     <article className="page page--wide" id="projects">
       <header className="page__header">
         <h1 className="page__title" data-testid="heading">Projects</h1>
         <p className="page__standfirst">
-          Selected projects, with live demos and source code.
+          Personal projects and work from my computer science capstone.
         </p>
       </header>
       <ul className="project-list">

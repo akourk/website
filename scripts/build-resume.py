@@ -99,7 +99,9 @@ def build(source, output):
         else:
             is_bullet = line.startswith('- ')
             style = 'List Bullet' if is_bullet else (
-                'Contact' if in_header else 'Role' if current_section == 'Experience' else 'Normal'
+                'Contact' if in_header else (
+                    'Role' if current_section == 'Experience' and line.startswith('**') else 'Normal'
+                )
             )
             paragraph = document.add_paragraph(style=style)
             inline(paragraph, line[2:] if is_bullet else line)

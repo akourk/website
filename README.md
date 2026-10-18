@@ -105,7 +105,7 @@ Content lives in `src/data/`, separately from the components that render it:
 | `resume/degrees.ts` | Degrees |
 | `resume/courses.ts` | Selected courses |
 | `resume/skills.ts` | Skills grouped by area |
-| `stats/personal.tsx` | Rows of the "By the numbers" table on the home page |
+| `stats/personal.tsx` | Rows of the "At a glance" table on the home page |
 
 Adding a route means adding it to `routes.ts` and registering its page module
 in `src/pageRoutes.ts`; a route with no page module throws at import time

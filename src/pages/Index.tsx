@@ -10,7 +10,7 @@ import markdown from '../data/about.md?raw';
 const Index = () => (
   <Main
     fullPage
-    description="Alex Kourkoumelis, Lead Software Engineer. Frontend architecture, React, and TypeScript, by way of coaching and philosophy."
+    description="Alex Kourkoumelis, Lead Software Engineer. Frontend development, React, and TypeScript, by way of coaching and philosophy."
   >
     <article className="page markdown" id="index">
       <header className="page__header home__header">
@@ -27,15 +27,15 @@ const Index = () => (
         </div>
       </header>
       <p>
-        I lead frontend architecture at <a href="https://www.statefarm.com">State Farm</a>,
-        building the tools customers use to manage their insurance policies. My work
-        centers on React and TypeScript, modernizing the frontend while keeping it
-        connected to the systems people already depend on.
+        I’m a Lead Software Engineer at <a href="https://www.statefarm.com">State Farm</a>,
+        where I lead frontend development for customer-facing life insurance
+        applications. I work primarily with React and TypeScript, combining hands-on
+        development with technical planning, code reviews, and mentoring.
       </p>
       <p>
-        I like working with existing systems. There’s a lot to learn from the decisions
-        that came before, and I enjoy figuring out what to keep, what to change, and how
-        to help the team work through it.
+        I enjoy planning and building new systems as much as improving existing ones.
+        In both, I like understanding the problem, working through the tradeoffs, and
+        helping the team find a practical way forward.
       </p>
       <p>
         I’m always open to new opportunities, especially in public health, the
@@ -43,8 +43,8 @@ const Index = () => (
         interesting, <Link to="/contact">get in touch</Link>.
       </p>
       <ReactMarkdown>{markdown}</ReactMarkdown>
-      <section aria-labelledby="numbers-title">
-        <h2 id="numbers-title">By the numbers</h2>
+      <section aria-labelledby="personal-title">
+        <h2 id="personal-title">At a glance</h2>
         <Personal />
       </section>
     </article>

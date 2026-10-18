@@ -9,9 +9,16 @@ export interface Project {
    * than a placeholder.
    */
   image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  /** Posters are shown uncropped, with a link to the original image. */
+  imageKind?: 'poster';
   /** ISO yyyy-mm-dd, formatted for display with dayjs. */
   date: string;
   desc: string;
+  /** Optional context before the account of Alex's contribution. */
+  context?: string;
   technologies: string[];
   /** Absent while a project has nowhere public to link to. */
   link?: string;
@@ -53,6 +60,32 @@ const data: Project[] = [
       + 'so content and navigation work before JavaScript loads. Light and dark '
       + 'themes follow your preference. Automated checks cover accessibility, '
       + 'color contrast, and routing.',
+  },
+  {
+    title: 'WattTime',
+    subtitle: 'Making grid emissions data easier to collect, compare, and understand.',
+    image: '/images/projects/WattTimePoster.png',
+    imageAlt: 'Energy Emissions Dashboard capstone poster showing the data collection pipeline, Python server, and React dashboard.',
+    imageWidth: 1698,
+    imageHeight: 1271,
+    imageKind: 'poster',
+    date: '2020-06-01',
+    link: 'https://www.watttime.org/',
+    linkLabel: 'About WattTime',
+    technologies: ['Python', 'React', 'SQL'],
+    context:
+      'The emissions caused by using electricity depend on where and when you use it. '
+      + 'An electric car might charge more cleanly during a period of surplus solar '
+      + 'generation than when fossil-fuel plants would supply the extra demand. '
+      + 'WattTime uses grid data and forecasting models to help smart chargers and '
+      + 'other flexible devices shift electricity use to cleaner times.',
+    desc:
+      'For my senior capstone at Bellevue College, I worked with WattTime on the '
+      + 'data collection and visualization side of that problem. Grid operators '
+      + 'publish data in different formats, so I researched reporting standards '
+      + 'across the US, Canada, Australia, and Taiwan and wrote Python scripts to '
+      + 'collect, normalize, and validate those reports in a shared SQL database. '
+      + 'I also built a React dashboard to explore emissions trends by time and geography.',
   },
 ];
 

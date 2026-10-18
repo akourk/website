@@ -21,10 +21,22 @@ const Cell = ({ data }: CellProps) => (
       {/* Not every project has a screenshot worth showing; a card without one
           is a text card rather than an empty frame. */}
       {data.image && (
-        <div className="project__image">
-          <img src={assetUrl(data.image)} alt="" loading="lazy" />
-        </div>
+        <figure className={`project__image${data.imageKind === 'poster' ? ' project__image--poster' : ''}`}>
+          <img
+            src={assetUrl(data.image)}
+            alt={data.imageAlt ?? ''}
+            width={data.imageWidth}
+            height={data.imageHeight}
+            loading="lazy"
+          />
+          {data.imageKind === 'poster' && (
+            <figcaption>
+              <a href={assetUrl(data.image)}>View the original capstone poster</a>
+            </figcaption>
+          )}
+        </figure>
       )}
+      {data.context && <p className="project__description">{data.context}</p>}
       <p className="project__description">{data.desc}</p>
       <ul className="project__technologies" aria-label={`Technologies used in ${data.title}`}>
         {data.technologies.map((technology) => <li key={technology}>{technology}</li>)}
@@ -40,7 +52,9 @@ const Cell = ({ data }: CellProps) => (
           {data.link && !data.caseStudy && (
             <a className="button button--quiet" href={data.link}>
               {data.linkLabel ?? 'View demo'}{' '}
-              <span className="screen-reader-only">for {data.title}</span>
+              {!data.linkLabel?.includes(data.title) && (
+                <span className="screen-reader-only">for {data.title}</span>
+              )}
             </a>
           )}
           {/* The text links wrap as a pair, so a narrow screen never strands

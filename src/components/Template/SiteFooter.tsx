@@ -23,10 +23,10 @@ const SiteFooter = ({ showBio = true }: SiteFooterProps) => (
         <div>
           <h2 className="bio__name">Alex Kourkoumelis</h2>
           <p className="bio__text">
-            I lead frontend architecture at State Farm. Before software I coached athletes for
-            fifteen years and took a philosophy degree at{' '}
-            <a href="https://www.evergreen.edu/">Evergreen State College</a>, then a computer
-            science degree at{' '}
+            I’m a Lead Software Engineer at State Farm. My background includes coaching athletes
+            and degrees in philosophy from{' '}
+            <a href="https://www.evergreen.edu/">Evergreen State College</a> and computer
+            science from{' '}
             <a href="https://www.bellevuecollege.edu/">Bellevue College</a>.
           </p>
           <p className="bio__text">
